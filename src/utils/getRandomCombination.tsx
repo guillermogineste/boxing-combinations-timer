@@ -13,6 +13,5 @@ export const getRandomCombination = (
   }
 
   const randomIndex = Math.floor(Math.random() * list.length);
-  console.log(list[randomIndex]);
   return list[randomIndex];
 };
