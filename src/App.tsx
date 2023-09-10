@@ -24,9 +24,6 @@ const INITIAL_COUNTDOWN_TYPE = "interval";
 const INITIAL_MIN_ACTION_BEEP_INTERVAL = 1200;
 const INITIAL_MAX_ACTION_BEEP_INTERVAL = 4000;
 
-declare type WakeLockSentinel = any;
-let wakeLock: WakeLockSentinel | null = null;
-
 const App: React.FC = () => {
   // State to hold the random combination
   const [
@@ -34,29 +31,6 @@ const App: React.FC = () => {
     setRandomCombination
   ] = useState<Combination | null>(null);
 
-  async function requestWakeLock() {
-    if ("wakeLock" in navigator) {
-      try {
-        wakeLock = await (navigator as any).wakeLock.request("screen");
-        wakeLock.addEventListener("release", () => {
-          console.log("Screen Wake Lock was released");
-        });
-        console.log("Screen Wake Lock active:", wakeLock.active);
-      } catch (err) {
-        console.error(`${(err as Error).name}, ${(err as Error).message}`);
-      }
-    }
-  }
-
-  function releaseWakeLock() {
-    if (wakeLock !== null && wakeLock.released === false) {
-      wakeLock.release().catch((err: any) => {
-        console.error(
-          `Could not release wake lock: ${err.name}, ${err.message}`
-        );
-      });
-    }
-  }
   // Countdown type
   const [countdownType, setCountdownType] = useState<"interval" | "rest">(
     "interval"
@@ -100,7 +74,6 @@ const App: React.FC = () => {
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
     if (isTimerRunning) {
-      requestWakeLock();
       // Play a beep at the start of the first round
       if (
         currentRound === 1 &&
@@ -175,8 +148,6 @@ const App: React.FC = () => {
           }
         }
       }, 1000);
-    } else {
-      releaseWakeLock();
     }
 
     return () => {
