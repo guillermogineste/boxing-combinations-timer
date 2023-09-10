@@ -1,22 +1,8 @@
 import combinations from "../combinations.json";
-import { Combination, Combinations } from "../types";
-
-function validateCombinations(data: any): data is Combinations {
-  // You can add more detailed checks depending on your exact data structure.
-  return (
-    data &&
-    Array.isArray(data.simple) &&
-    Array.isArray(data.advanced) &&
-    Array.isArray(data.additive)
-  );
-}
-
-if (!validateCombinations(combinations)) {
-  throw new Error("Invalid combinations JSON structure.");
-}
+import { Combination } from "../types";
 
 export const getRandomCombination = (
-  type: "simple" | "advanced" | "both" | "additive"
+  type: "simple" | "advanced" | "both"
 ): Combination => {
   let list: Combination[] = [];
 
