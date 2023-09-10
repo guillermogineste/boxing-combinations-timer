@@ -80,6 +80,7 @@ const App: React.FC = () => {
         currentInterval === 1 &&
         countdown === INTERVAL_TIME
       ) {
+        console.log("Start of first round - Beep")
         playBeep(1200, 750, 1, 1);
       }
 
@@ -92,6 +93,7 @@ const App: React.FC = () => {
             countdownType === "interval" &&
             !(currentInterval === INTERVALS_PER_ROUND)
           ) {
+            console.log("End of an interval - Beep")
             playBeep(900, 750, 1, 1);
           }
           // At the end of a rest period
@@ -100,6 +102,7 @@ const App: React.FC = () => {
             countdownType === "rest" &&
             currentRound !== NUMBER_OF_ROUNDS
           ) {
+            console.log("End of rest period - Beep")
             playBeep(1200, 750, 1, 1);
           }
         } else {
@@ -109,10 +112,12 @@ const App: React.FC = () => {
             countdownType === "interval" &&
             currentInterval === INTERVALS_PER_ROUND
           ) {
-            playBeep(600, 750, 1, 1, 400); // 100 milliseconds gap
+            console.log("End of a round - Beep Beep Beep")
+            playBeep(600, 750, 1, 1, 400);
           }
           // At the end of the full workout
           if (countdownType === "rest" && currentRound === NUMBER_OF_ROUNDS) {
+            console.log("End of full workout - Beep")
             playBeep(900, 750, 1, 2, 100); // Long beeps
           }
           // Logic to set countdown duration based on type
