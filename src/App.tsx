@@ -12,7 +12,7 @@ import { playBeep } from "./utils/playBeep";
 
 // Constants
 const REST_TIME = 30;
-const NUMBER_OF_ROUNDS = 10;
+const NUMBER_OF_ROUNDS = 3;
 const INTERVALS_PER_ROUND = 3;
 const INTERVAL_TIME = 60;
 // Constants for initial state
@@ -69,83 +69,76 @@ const App: React.FC = () => {
   useEffect(() => {
     setRandomCombination(getRandomCombination(selectedLevel));
   }, [selectedLevel]);
-
+  const isStartOfFirstRound = currentRound === 1 && currentInterval === 1 &&
+  countdown === INTERVAL_TIME;
+  const isEndOfAnInterval = countdown === 1 && countdownType === "interval" &&
+      !(currentInterval === INTERVALS_PER_ROUND);
+  const isEndOfRestPeriod = countdown === 1 &&
+      countdownType === "rest" &&
+      currentRound !== NUMBER_OF_ROUNDS;
+  const isEndOfRound = countdown <= 3 &&
+      countdownType === "interval" &&
+      currentInterval === INTERVALS_PER_ROUND;
+  const isEndOfWorkout = countdownType === "rest" && currentRound === NUMBER_OF_ROUNDS;
   // useEffect for the timer
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
     if (isTimerRunning) {
       // Play a beep at the start of the first round
-      if (
-        currentRound === 1 &&
-        currentInterval === 1 &&
-        countdown === INTERVAL_TIME
-      ) {
+      if (isStartOfFirstRound) {
         console.log("Start of first round - Beep")
         playBeep(1200, 750, 1, 1);
       }
-
       timer = setTimeout(() => {
         if (countdown > 0) {
           setCountdown(countdown - 1);
           // At the end of an interval
-          if (
-            countdown === 1 &&
-            countdownType === "interval" &&
-            !(currentInterval === INTERVALS_PER_ROUND)
-          ) {
+          if (isEndOfAnInterval) {
             console.log("End of an interval - Beep")
             playBeep(900, 750, 1, 1);
           }
           // At the end of a rest period
-          if (
-            countdown === 1 &&
-            countdownType === "rest" &&
-            currentRound !== NUMBER_OF_ROUNDS
-          ) {
+          if (isEndOfRestPeriod) {
             console.log("End of rest period - Beep")
             playBeep(1200, 750, 1, 1);
           }
         } else {
           // Play three overlapping beeps at the end of a round
-          if (
-            countdown <= 3 &&
-            countdownType === "interval" &&
-            currentInterval === INTERVALS_PER_ROUND
-          ) {
+          if (isEndOfRound) {
             console.log("End of a round - Beep Beep Beep")
             playBeep(600, 750, 1, 1, 400);
           }
           // At the end of the full workout
-          if (countdownType === "rest" && currentRound === NUMBER_OF_ROUNDS) {
+          if (isEndOfWorkout) {
             console.log("End of full workout - Beep")
             playBeep(900, 750, 1, 2, 100); // Long beeps
           }
           // Logic to set countdown duration based on type
-          setCountdown(
-            countdownType === "interval" ? INTERVAL_TIME : REST_TIME
-          );
+          const currentIntervalType = countdownType === "interval" ? INTERVAL_TIME : REST_TIME
+          setCountdown(currentIntervalType);
 
           // Fetch new combination only if it's not a rest period
-          if (countdownType === "interval") {
+          const isCurrentInterval = countdownType === "interval"
+          if (isCurrentInterval) {
             setRandomCombination(getRandomCombination(selectedLevel));
           }
 
           // Logic for intervals, rounds, and rest periods
-          if (
-            currentInterval < INTERVALS_PER_ROUND &&
-            countdownType === "interval"
-          ) {
+          const isNextIntervalInRound = currentInterval < INTERVALS_PER_ROUND &&
+          countdownType === "interval";
+          const isNextRestPeriod = currentInterval === INTERVALS_PER_ROUND &&
+          countdownType === "interval";
+          const isFirstRoundInterval = countdownType === "rest" &&
+          currentRound < NUMBER_OF_ROUNDS;
+          if (isNextIntervalInRound) {
+            console.log("Increase interval count + 1")
             setCurrentInterval(currentInterval + 1);
-          } else if (
-            currentInterval === INTERVALS_PER_ROUND &&
-            countdownType === "interval"
-          ) {
+          } else if (isNextRestPeriod) {
+            console.log("Change to rest period")
             setIsResting(true);
             setCountdownType("rest");
-          } else if (
-            countdownType === "rest" &&
-            currentRound < NUMBER_OF_ROUNDS
-          ) {
+          } else if (isFirstRoundInterval) {
+            console.log("Reset intervals after rest")
             setIsResting(false);
             setCountdownType("interval");
             setCurrentInterval(1);
@@ -179,14 +172,15 @@ const App: React.FC = () => {
         minActionBeepInterval;
 
       actionBeepTimer = setTimeout(() => {
-        if (isActionBeepRunning && !isResting && isActionBeepEnabled) {
+        const isActionBeepModeActive = isActionBeepRunning && !isResting && isActionBeepEnabled;
+        if (isActionBeepModeActive) {
           playBeep(100, 500, 1, 1); // Modify these parameters as per your beep function
           setRandomActionBeep(); // Set the next random beep
         }
       }, randomTime);
     };
-
-    if (isTimerRunning && !isResting) {
+    const isRunningInterval = isTimerRunning && !isResting;
+    if (isRunningInterval) {
       setIsActionBeepRunning(true);
       setRandomActionBeep();
     } else {
