@@ -44,12 +44,18 @@ html:has(.is-rest) {
 .App {
   font-family: "IBM Plex Mono", monospace;
   text-align: center;
-  padding: 56px;
-  margin: 56px auto;
+  /* padding: 56px; */
+  padding-left: clamp(56px, 10vw, 80px);
+  padding-right: clamp(56px, 10vw, 80px);
+  padding-top: clamp(56px, 8vh, 80px);
+  padding-bottom: clamp(56px, 8vh, 80px);
+  margin: 4vh auto;
   border-radius: 8px;
   outline: 2px solid #650d08;
   border: 6px solid black;
   max-width: 720px;
+  max-height: 90vh;
+  width: 90vw;
   transition: all 200ms;
 }
 
@@ -70,24 +76,27 @@ html:has(.is-rest) {
 }
 
 .heading--1 {
-  font-size: 2.4em;
+  /* font-size: 2.4em; */
+  font-size: clamp(1.5em, 3vw, 2em);
 }
 .heading--2 {
-  font-size: 1.2em;
+  /* font-size: 1.2em; */
+  font-size: clamp(0.9em, 2.5vw, 1.2em);
 }
 
 .timer-display {
   text-align: center;
-  padding-bottom: 16px;
+  padding-bottom: 2vh;
 }
 .round-info,
 .interval-info {
-  margin: 8px 0;
+  margin: 1vh 0;
 }
 
 /* Countdown timer */
 .countdown {
-  font-size: 7em;
+  /* font-size: 7em; */
+  font-size: clamp(4em, 5vw, 5em);
   font-family: "IBM Plex Mono", monospace;
   font-weight: 300;
   color: white;
@@ -98,7 +107,9 @@ html:has(.is-rest) {
 }
 
 .display-combination {
-  min-height: 260px;
+  /* min-height: 260px; */
+  height: clamp(100px, 25vh, 260px);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,10 +143,14 @@ html:has(.is-rest) {
   font-size: 1em;
   cursor: pointer;
   border: none;
-  margin-right: 16px;
+  /* margin-right: 16px; */
+  margin-right: 3vw;
   border-radius: 4px;
   border: 2px solid white;
   color: white;
+}
+.button:last-of-type {
+  margin-right: 0;
 }
 .button:hover {
   background: #650d08;
@@ -148,7 +163,7 @@ html:has(.is-rest) {
 .button--reset,
 .button--replay {
   width: 100px;
-  height: 90px;
+  height: 80px;
   background: transparent;
 }
 .button--toggle {
@@ -164,10 +179,11 @@ html:has(.is-rest) {
   background-color: #081d5d;
 }
 
-.button--reset {
+/* .button--reset {
   margin-right: 0;
-}
-.button--refresh {
+} */
+.button.button--refresh {
+  font-size: 0.8em;
   padding: 8px 12px;
   align-self: flex-start;
   margin: 8px auto;
@@ -178,7 +194,8 @@ html:has(.is-rest) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 32px;
+  /* margin-top: 32px; */
+  margin-top: 3vh;
 }
 
 .level-dropdown {
