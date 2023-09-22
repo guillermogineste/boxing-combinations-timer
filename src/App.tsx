@@ -131,18 +131,17 @@ const App: React.FC = () => {
         currentInterval,
         currentRound,
       });
-
       if (conditions.isStartOfFirstRound) {
-        playBeep(1200, 750, 1, 1);
+        playBeep(1200, 650, 0.9, 1);
       }
       timer = setTimeout(() => {
         if (countdown > 0) {
           setCountdown(countdown - 1);
-          conditions.isEndOfAnInterval && playBeep(900, 750, 1, 1);
-          conditions.isEndOfRestPeriod && playBeep(1200, 750, 1, 1);
-          conditions.isEndOfWorkout && playBeep(900, 750, 1, 2, 100);
+          conditions.isEndOfAnInterval && playBeep(700, 650, 0.9, 1);
+          conditions.isEndOfRestPeriod && playBeep(1200, 650, 0.9, 1);
+          conditions.isEndOfWorkout && playBeep(800, 700, 1, 2, 100, 1);
+          conditions.isAlmostEndOfRound && playBeep(500, 700, 0.9, 1, 400);
         } else {
-          conditions.isAlmostEndOfRound && playBeep(600, 750, 1, 1, 400);
           const newCountdownDuration =
             countdownType === "interval" ? INTERVAL_TIME : REST_TIME;
           setCountdown(newCountdownDuration);
@@ -161,7 +160,7 @@ const App: React.FC = () => {
             setCountdownType("interval");
             setCurrentInterval(1);
             setCurrentRound(currentRound + 1);
-          } else if (conditions.isEndOfWorkout) {
+          } else {
             setIsTimerRunning(false);
             setCurrentRound(INITIAL_ROUND);
             setCurrentInterval(INITIAL_INTERVAL);
