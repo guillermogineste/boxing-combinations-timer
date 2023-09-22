@@ -80,16 +80,7 @@ const App: React.FC = () => {
     countdownType: string;
     currentInterval: number;
     currentRound: number;
-  }): {
-    isStartOfFirstRound: boolean;
-    isEndOfAnInterval: boolean;
-    isEndOfRestPeriod: boolean;
-    isAlmostEndOfRound: boolean;
-    isEndOfWorkout: boolean;
-    isNextIntervalInRound: boolean;
-    isNextRestPeriod: boolean;
-    isFirstRoundInterval: boolean;
-  } => ({
+  }) => ({
     isStartOfFirstRound:
       currentRound === 1 &&
       currentInterval === 1 &&
