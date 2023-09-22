@@ -11,10 +11,10 @@ import { getRandomCombination } from "./utils/getRandomCombination";
 import { playBeep } from "./utils/playBeep";
 
 // Constants
-const REST_TIME = 30;
+const REST_TIME = 5;
 const NUMBER_OF_ROUNDS = 3;
 const INTERVALS_PER_ROUND = 3;
-const INTERVAL_TIME = 60;
+const INTERVAL_TIME = 5;
 // Constants for initial state
 const INITIAL_ROUND = 1;
 const INITIAL_INTERVAL = 1;
@@ -26,14 +26,12 @@ const INITIAL_MAX_ACTION_BEEP_INTERVAL = 4000;
 
 const App: React.FC = () => {
   // State to hold the random combination
-  const [
-    randomCombination,
-    setRandomCombination
-  ] = useState<Combination | null>(null);
+  const [randomCombination, setRandomCombination] =
+    useState<Combination | null>(null);
 
   // Countdown type
   const [countdownType, setCountdownType] = useState<"interval" | "rest">(
-    "interval"
+    "interval",
   );
 
   // Timer feature
@@ -53,12 +51,14 @@ const App: React.FC = () => {
   // Random timer
   const [isActionBeepEnabled, setIsActionBeepEnabled] = useState(false);
   const [isActionBeepRunning, setIsActionBeepRunning] = useState(false);
-  const [minActionBeepInterval, setMinActionBeepInterval] = useState(
-    INITIAL_MIN_ACTION_BEEP_INTERVAL
-  );
-  const [maxActionBeepInterval, setMaxActionBeepInterval] = useState(
-    INITIAL_MAX_ACTION_BEEP_INTERVAL
-  );
+  // const [minActionBeepInterval, setMinActionBeepInterval] = useState(
+  //   INITIAL_MIN_ACTION_BEEP_INTERVAL
+  // );
+  // const [maxActionBeepInterval, setMaxActionBeepInterval] = useState(
+  //   INITIAL_MAX_ACTION_BEEP_INTERVAL
+  // );
+  const [minActionBeepInterval] = useState(INITIAL_MIN_ACTION_BEEP_INTERVAL);
+  const [maxActionBeepInterval] = useState(INITIAL_MAX_ACTION_BEEP_INTERVAL);
 
   // Refresh the combination
   const refreshCombination = () => {
@@ -69,80 +69,105 @@ const App: React.FC = () => {
   useEffect(() => {
     setRandomCombination(getRandomCombination(selectedLevel));
   }, [selectedLevel]);
-  const isStartOfFirstRound = currentRound === 1 && currentInterval === 1 &&
-  countdown === INTERVAL_TIME;
-  const isEndOfAnInterval = countdown === 1 && countdownType === "interval" &&
-      !(currentInterval === INTERVALS_PER_ROUND);
-  const isEndOfRestPeriod = countdown === 1 &&
-      countdownType === "rest" &&
-      currentRound !== NUMBER_OF_ROUNDS;
-  const isEndOfRound = countdown <= 3 &&
+
+  const checkConditions = ({
+    countdown,
+    countdownType,
+    currentInterval,
+    currentRound,
+  }: {
+    countdown: number;
+    countdownType: string;
+    currentInterval: number;
+    currentRound: number;
+  }): {
+    isStartOfFirstRound: boolean;
+    isEndOfAnInterval: boolean;
+    isEndOfRestPeriod: boolean;
+    isAlmostEndOfRound: boolean;
+    isEndOfWorkout: boolean;
+    isNextIntervalInRound: boolean;
+    isNextRestPeriod: boolean;
+    isFirstRoundInterval: boolean;
+  } => ({
+    isStartOfFirstRound:
+      currentRound === 1 &&
+      currentInterval === 1 &&
+      countdown === INTERVAL_TIME,
+    isEndOfAnInterval:
+      countdown === 1 &&
       countdownType === "interval" &&
-      currentInterval === INTERVALS_PER_ROUND;
-  const isEndOfWorkout = countdownType === "rest" && currentRound === NUMBER_OF_ROUNDS;
+      !(currentInterval === INTERVALS_PER_ROUND),
+    isEndOfRestPeriod:
+      countdown === 1 &&
+      countdownType === "rest" &&
+      currentRound !== NUMBER_OF_ROUNDS,
+    isAlmostEndOfRound:
+      countdown <= 3 &&
+      countdownType === "interval" &&
+      currentInterval === INTERVALS_PER_ROUND,
+    isEndOfWorkout:
+      countdown === 1 &&
+      countdownType === "interval" &&
+      currentInterval === INTERVALS_PER_ROUND &&
+      currentRound === NUMBER_OF_ROUNDS,
+    isNextIntervalInRound:
+      currentInterval < INTERVALS_PER_ROUND && countdownType === "interval",
+    isNextRestPeriod:
+      currentInterval === INTERVALS_PER_ROUND &&
+      countdownType === "interval" &&
+      currentRound !== NUMBER_OF_ROUNDS,
+    isFirstRoundInterval:
+      countdownType === "rest" && currentRound < NUMBER_OF_ROUNDS,
+  });
+
   // useEffect for the timer
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
     if (isTimerRunning) {
-      // Play a beep at the start of the first round
-      if (isStartOfFirstRound) {
-        console.log("Start of first round - Beep")
-        playBeep(1200, 750, 1, 1);
+      const conditions = checkConditions({
+        countdown,
+        countdownType,
+        currentInterval,
+        currentRound,
+      });
+      if (conditions.isStartOfFirstRound) {
+        playBeep(1200, 650, 0.9, 1);
       }
       timer = setTimeout(() => {
         if (countdown > 0) {
           setCountdown(countdown - 1);
-          // At the end of an interval
-          if (isEndOfAnInterval) {
-            console.log("End of an interval - Beep")
-            playBeep(900, 750, 1, 1);
-          }
-          // At the end of a rest period
-          if (isEndOfRestPeriod) {
-            console.log("End of rest period - Beep")
-            playBeep(1200, 750, 1, 1);
-          }
+          conditions.isEndOfAnInterval && playBeep(700, 650, 0.9, 1);
+          conditions.isEndOfRestPeriod && playBeep(1200, 650, 0.9, 1);
+          conditions.isEndOfWorkout && playBeep(800, 700, 1, 2, 100, 1);
+          conditions.isAlmostEndOfRound && playBeep(500, 700, 0.9, 1, 400);
         } else {
-          // Play three overlapping beeps at the end of a round
-          if (isEndOfRound) {
-            console.log("End of a round - Beep Beep Beep")
-            playBeep(600, 750, 1, 1, 400);
-          }
-          // At the end of the full workout
-          if (isEndOfWorkout) {
-            console.log("End of full workout - Beep")
-            playBeep(900, 750, 1, 2, 100); // Long beeps
-          }
-          // Logic to set countdown duration based on type
-          const currentIntervalType = countdownType === "interval" ? INTERVAL_TIME : REST_TIME
-          setCountdown(currentIntervalType);
+          const newCountdownDuration =
+            countdownType === "interval" ? INTERVAL_TIME : REST_TIME;
+          setCountdown(newCountdownDuration);
 
-          // Fetch new combination only if it's not a rest period
-          const isCurrentInterval = countdownType === "interval"
-          if (isCurrentInterval) {
+          if (countdownType === "interval") {
             setRandomCombination(getRandomCombination(selectedLevel));
           }
 
-          // Logic for intervals, rounds, and rest periods
-          const isNextIntervalInRound = currentInterval < INTERVALS_PER_ROUND &&
-          countdownType === "interval";
-          const isNextRestPeriod = currentInterval === INTERVALS_PER_ROUND &&
-          countdownType === "interval";
-          const isFirstRoundInterval = countdownType === "rest" &&
-          currentRound < NUMBER_OF_ROUNDS;
-          if (isNextIntervalInRound) {
-            console.log("Increase interval count + 1")
+          if (conditions.isNextIntervalInRound) {
             setCurrentInterval(currentInterval + 1);
-          } else if (isNextRestPeriod) {
-            console.log("Change to rest period")
+          } else if (conditions.isNextRestPeriod) {
             setIsResting(true);
             setCountdownType("rest");
-          } else if (isFirstRoundInterval) {
-            console.log("Reset intervals after rest")
+          } else if (conditions.isFirstRoundInterval) {
             setIsResting(false);
             setCountdownType("interval");
             setCurrentInterval(1);
             setCurrentRound(currentRound + 1);
+          } else {
+            setIsTimerRunning(false);
+            setCurrentRound(INITIAL_ROUND);
+            setCurrentInterval(INITIAL_INTERVAL);
+            setIsResting(INITIAL_IS_RESTING);
+            setCountdown(INTERVAL_TIME);
+            setCountdownType(INITIAL_COUNTDOWN_TYPE);
+            setRandomCombination(getRandomCombination(selectedLevel));
           }
         }
       }, 1000);
@@ -157,7 +182,7 @@ const App: React.FC = () => {
     currentInterval,
     isTimerRunning,
     countdownType,
-    selectedLevel
+    selectedLevel,
   ]);
 
   // useEffect for the action beep
@@ -172,7 +197,8 @@ const App: React.FC = () => {
         minActionBeepInterval;
 
       actionBeepTimer = setTimeout(() => {
-        const isActionBeepModeActive = isActionBeepRunning && !isResting && isActionBeepEnabled;
+        const isActionBeepModeActive =
+          isActionBeepRunning && !isResting && isActionBeepEnabled;
         if (isActionBeepModeActive) {
           playBeep(100, 500, 1, 1); // Modify these parameters as per your beep function
           setRandomActionBeep(); // Set the next random beep
@@ -198,7 +224,7 @@ const App: React.FC = () => {
     isResting,
     minActionBeepInterval,
     maxActionBeepInterval,
-    isActionBeepEnabled
+    isActionBeepEnabled,
   ]);
 
   // Function to toggle timer

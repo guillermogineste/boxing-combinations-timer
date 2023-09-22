@@ -9,7 +9,7 @@ const createAudioNodes = (
   frequency: number,
   volume: number,
   startTime: number,
-  duration: number
+  duration: number,
 ): AudioNodes => {
   const oscillator = audioCtx.createOscillator();
   const gainNode = audioCtx.createGain();
@@ -51,14 +51,14 @@ const playSingleBeep = (
   frequency: number,
   volume: number,
   startTime: number,
-  duration: number
+  duration: number,
 ): void => {
   const { oscillator, gainNode } = createAudioNodes(
     audioCtx,
     frequency,
     volume,
     startTime,
-    duration
+    duration,
   );
 
   // Set initial gain to 0
@@ -139,12 +139,12 @@ export const playBeep = (
   frequency: number = 1000,
   volume: number = 1,
   beepCount: number = 1,
-  timeGapBetweenBeeps: number = 100
+  timeGapBetweenBeeps: number = 100,
+  delay: number = 0,
 ): void => {
   const audioCtx = new ((window.AudioContext ||
     (window as any).webkitAudioContext) as typeof AudioContext)();
-  let startTime = audioCtx.currentTime;
-
+  let startTime = audioCtx.currentTime + delay;
   // Play beeps
   for (let i = 0; i < beepCount; i++) {
     playSingleBeep(audioCtx, frequency, volume, startTime, duration / 1000);
