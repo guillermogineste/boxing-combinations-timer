@@ -1,334 +1,330 @@
 {
   "simple": [
     {
-      "description": "Parry jab, Parry cross"
+      "description": "Parry 1, Parry 2"
     },
     {
-      "description": "Parry double jab, Parry cross"
+      "description": "Parry double 1, Parry 2"
     },
     {
-      "description": "Block L Hook to the head, Parry cross"
+      "description": "Block 3 to the head, Parry 2"
     },
     {
-      "description": "Parry jab, Block L to the liver"
+      "description": "Parry 1, Block L to the liver(7)"
     },
     {
-      "description": "Parry jab, Parry R, Block L head"
+      "description": "Parry 1, Parry 2, Block 3"
     },
     {
-      "description": "Parry jab, Block L head, Block R body"
+      "description": "Parry 1, Block 3, Block R body(8)"
     },
     {
-      "description": "Parry R, Block L body, Block R head"
+      "description": "Parry 2, Block L body(7), Block R head(4)"
     },
     {
-      "description": "Parry jab, Parry R, Block L body, Block R head"
+      "description": "Parry 1, Parry 2, Block L body(7), Block R head"
     },
     {
-      "description": "Slip jab, Roll cross, Step back"
+      "description": "Slip 1, Roll 2, Step back"
     },
     {
-      "description": "Block L uppercut, Block R uppercut, Pull back"
+      "description": "Block L upper(5), Block R upper(6), Pull back"
     },
     {
-      "description": "L Hook, Cross, Lead Uppercut"
+      "description": "3, 2, L Upper(5)"
     },
     {
-      "description": "Lead Body Hook, Lead Uppercut, L Hook"
+      "description": "L Body Hook(7), L Upper(5), 3"
     },
     {
-      "description": "Jab, Lead Uppercut, Lead Body Hook"
+      "description": "1, L Upper(5), L Body Hook(7)"
     },
     {
-      "description": "Lead Uppercut, L Hook, Cross"
+      "description": "L Upper(5), 3, 2"
     },
     {
-      "description": "Cross, Lead Uppercut, Lead Body Hook"
+      "description": "2, L Upper(5), L Body Hook(7)"
     },
     {
-      "description": "Jab, Cross"
+      "description": "1, 2"
     },
     {
-      "description": "Double jab, Cross"
+      "description": "Double 1, 2"
     },
     {
-      "description": "L Hook, Cross"
+      "description": "3, 2"
     },
     {
-      "description": "Jab, Cross, L Hook"
+      "description": "1, 2, 3"
     },
     {
-      "description": "Jab, Lead Body Hook, Cross"
+      "description": "1, L Body Hook(7), 2"
     },
     {
-      "description": "Jab, Lead Uppercut, L Hook"
+      "description": "1, L Upper(5), 3"
     },
     {
-      "description": "Cross, L Hook, Cross"
+      "description": "2, 3, 2"
     },
     {
-      "description": "Jab, Cross, Lead Uppercut"
+      "description": "1, 2, L Upper(5)"
     },
     {
-      "description": "Jab, Cross, L Hook, Cross"
+      "description": "1, 2, 3, 2"
     },
     {
-      "description": "Jab, Lead Body Hook, L Hook, Cross"
+      "description": "1, L Body Hook(7), 3, 2"
     },
     {
-      "description": "Jab, Block L head, Cross"
+      "description": "1, Block 3, 2"
     },
     {
-      "description": "Slip L, L Hook, Roll R"
+      "description": "Slip 2, 3, Roll R"
     },
     {
-      "description": "Parry L, Lead Body Hook, Step back"
+      "description": "Parry 1, L Body Hook(7), Step back"
     },
     {
-      "description": "Cross, Parry R, Lead Uppercut"
+      "description": "2, Parry R, L Upper(5)"
     },
     {
-      "description": "Block R body, L Hook, Roll L"
+      "description": "Block R body, 3, Roll L"
     },
     {
-      "description": "Block liver, R Uppercut, L Hook, Cross"
+      "description": "Block liver, R Upper(6), 3, 2"
     },
     {
-      "description": "Parry jab, Slip cross, Roll L Hook, Cross, L Hook, Cross"
+      "description": "Parry 1, Slip 2, Roll 3, 2, 3, 2"
     },
     {
-      "description": "Parry jab, Block jab, Duck cross, L Upper, R Upper, L Upper, R Upper, L Hook"
+      "description": "Parry 1, Block 1, Duck 2, L Upper(5), R Upper(6), L Upper(5), R Upper(6), 3"
     },
     {
-      "description": "R uppercut, L Hook, Hard Pivot R, Cross, L to body, Pull, Cross"
+      "description": "R upper(6), 3, Hard Pivot R, 2, L to body, Pull, 2"
     },
     {
-      "description": "Jab, Coss w/ step L, Pivot L, Cross, L Hook, Cross"
+      "description": "1, 2 w/ step L, Pivot L, 2, 3, 2"
     },
     {
-      "description": "Block liver and L Hook (same time), R Upper, L Hook, Liver, Step back"
+      "description": "Block liver and 3 (same time), R Upper(6), 3, Liver, Step back"
     },
     {
-      "description": "Feint Jab, Cross"
+      "description": "Feint 1, 2"
     },
     {
-      "description": "Jab, Feint Cross, L Hook"
+      "description": "1, Feint 2, 3"
     },
     {
-      "description": "Feint Jab, R Uppercut"
+      "description": "Feint 1, R Upper(6)"
     },
     {
-      "description": "Feint L Hook to the Body, L Hook to the Head"
+      "description": "Feint 3 to the Body, 3 to the Head"
     },
     {
-      "description": "Double Jab, Feint Cross, L Uppercut"
+      "description": "Double 1, Feint 2, L Upper(5)"
     },
     {
-      "description": "Feint Jab, L Hook to the Body"
+      "description": "Feint 1, 3 to the Body"
     },
     {
-      "description": "Jab to the Head, Feint Jab to the Body, Cross"
+      "description": "1 to the Head, Feint 1 to the Body, 2"
     },
     {
-      "description": "Cross, Feint L Hook, R Uppercut"
+      "description": "2, Feint 3, R Upper(6)"
     },
     {
-      "description": "Feint R Uppercut, L Hook"
+      "description": "Feint R Upper(6), 3"
     },
     {
-      "description": "Double Feint Jab, Cross to the body"
+      "description": "Double Feint 1, 2 to the body"
     },
     {
-      "description": "Feint L Hook, R Uppercut, L Hook"
+      "description": "Feint 3, R Upper(6), 3"
     },
     {
-      "description": "Jab, Feint L Hook, Cross, L Hook"
+      "description": "1, Feint 3, 2, 3"
     },
     {
-      "description": "Feint Jab to Body, Cross, L Uppercut"
+      "description": "Feint Body 1, 2, L Upper(5)"
     },
     {
-      "description": "Cross, Feint R Uppercut, L Hook to Body"
+      "description": "2, Feint R Upper(6), 3 to Body"
     },
     {
-      "description": "Double Jab, Feint Cross, L Hook to Body, R Uppercut"
+      "description": "Double 1, Feint 2, 3 to Body, R Upper(6)"
     },
     {
-      "description": "Jab, Step Back, Cross"
+      "description": "1, Step Back ↓, 2"
     },
     {
-      "description": "L Hook, Roll R Hook, L Jab"
+      "description": "3, Roll R Hook(4), L 1"
     },
     {
-      "description": "Double Jab, Pivot L, R Upper"
+      "description": "Double 1, Pivot L, R Upper(6)"
     },
     {
-      "description": "Cross, Sidestep R, L Hook"
+      "description": "2, Sidestep R →, 3"
     },
     {
-      "description": "Jab, Slip Jab, Cross"
+      "description": "1, Slip 1, 2"
     },
     {
-      "description": "Jab, Pivot R, L Body Hook, L Head Hook"
+      "description": "1, Pivot R, L Body Hook(7), L Head Hook"
     },
     {
-      "description": "L Hook, Pull Back, Jab"
+      "description": "3, Pull Back, 1"
     },
     {
-      "description": "Jab, Slip Cross, L Hook"
+      "description": "1, Slip 2, 3"
     },
     {
-      "description": "Double Jab, Roll L Hook, R Uppercut"
+      "description": "Double 1, Roll 3, R Upper(6)"
     },
     {
-      "description": "Jab w/ R step (back foot), Cross, Body/Head Hook"
+      "description": "1 w/ R step (back foot), 2, 3 OR 7"
     },
     {
-      "description": "Cross w/ L step (lead foot), Switch hips w/ L Hook,  Cross, Body/Head Hook"
+      "description": "2 w/ L step (lead foot), Switch hips w/ 3,  2, 3 OR 7"
     },
     {
-      "description": "Jab, Jab to Body, Cross"
+      "description": "1, Body 1, 2"
     },
     {
-      "description": "L Hook, Cross to Body, R Uppercut"
+      "description": "3, Body 2, R Upper(6)"
     },
     {
-      "description": "Jab to Body, Cross, L Hook"
+      "description": "Body 1, 2, 3"
     },
     {
-      "description": "Jab, Cross to Body, L Hook, Cross"
+      "description": "1, Body 2, 3, 2"
     },
     {
-      "description": "Jab, Jab to Body, L Hook"
+      "description": "1, Body 1, 3"
     },
     {
-      "description": "Cross to Body, L Hook, Cross"
+      "description": "Body 2, 3, 2"
     },
     {
-      "description": "Cross, Jab to Body, L Hook"
+      "description": "2, Body 1, 3"
     },
     {
-      "description": "L Hook, Jab to Body, R Uppercut"
+      "description": "3, Body 1, R Upper(6)"
     },
     {
-      "description": "Jab, Cross, Cross to Body"
+      "description": "1, 2, Body 2"
     },
     {
-      "description": "Jab to Body, L Hook, R Uppercut, Cross"
+      "description": "Body 1, 3, R Upper(6), 2"
     },
     {
-      "description": "Jab, Cross, Slip L, Roll R"
+      "description": "1, 2, Slip 1, Roll 2"
     },
     {
-      "description": "Cross, L Hook, Slip R, Roll L Hook"
+      "description": "2, 3, Slip 2, Roll 3"
     },
     {
-      "description": "L Uppercut, R Uppercut, Block L Uppercut, Block R Uppercut"
+      "description": "L Upper(5), R Upper(6), Block L Upper(5), Block R Upper(6)"
     },
     {
-      "description": "Jab, L Hook, Block Jab, Block L Hook"
+      "description": "1, 3, Block 1, Block 3"
     },
     {
       "description": "[1,2]x2 [3,4]x2, [5,6]x2"
     },
     {
-      "description": "Jab, Parry Jab, Jab, Slip Jab"
+      "description": "1, Parry 1, 1, Slip 1"
     },
     {
-      "description": "Slip Jab, R Upper, 3, 2"
+      "description": "Slip 1, R Upper(6), 3, 2"
     },
     {
-      "description": "Jab, Parry Jab, Cross, Drop to Slip Cross"
+      "description": "1, Parry 1, 2, Drop to Slip 2"
     },
     {
-      "description": "Slip Cross, L Upper, 2, 3"
+      "description": "Slip 2, L Upper(5), 2, 3"
     },
     {
-      "description": "Jab, Parry Jab, 1, 2, Roll L Hook, Roll R Hook"
+      "description": "1, Parry 1, 1, 2, Roll 3, Roll R Hook(4)"
     },
     {
-      "description": "Roll R Hook, L Upper, R Upper, 3, 2"
+      "description": "Roll R Hook(4), L Upper(5), R Upper(6), 3, 2"
     }
   ],
   "advanced": [
     {
-      "description": "Double jab, Cross, Slip R, Cross, L Hook, Cross"
+      "description": "Double 1, 2, Slip 1, 2, 3, 2"
     },
     {
-      "description": "Cross, L Hook, Step back, Cross"
+      "description": "2, 3, Step back, 2"
     },
     {
-      "description": "Jab, Slip L, L Hook, Cross"
+      "description": "1, Slip L, 3, 2"
     },
     {
-      "description": "Jab, Cross, Parry L, Block R head, L Hook, Step back"
+      "description": "1, 2, Parry L, Block R head, 3, Step back"
     },
     {
-      "description": "Block L body, Lead Body Hook, Cross, Slip R, L Hook, Roll L"
+      "description": "Block L body(7), L Body Hook(7), 2, Slip R, 3, Roll L"
     },
     {
-      "description": "Lead Uppercut, Parry R, Lead Body Hook, Block L head, Cross, Step L"
+      "description": "L Upper(5), Parry R, L Body Hook(7), Block 3, 2, Step L"
     },
     {
-      "description": "Parry L, Block R uppercut, Cross, L Hook, Slip L, Cross"
+      "description": "Parry L, Block R upper(6), 2, 3, Slip L, 2"
     },
     {
-      "description": "Block L uppercut, L Hook, Roll R, Jab, Block R body, Step R"
+      "description": "Block L upper(5), 3, Roll R, 1, Block R body, Step R"
     },
     {
-      "description": "Jab, Parry Jab, Jab, Slip Jab R Upper, 3, 2"
+      "description": "1, Parry 1, 1, Slip 1 R Upper(6), 3, 2"
     },
     {
-      "description": "Jab, Parry Jab, Cross, Drop to Slip Cross, L Upper, 2, 3"
+      "description": "1, Parry 1, 2, Drop to Slip 2, L Upper(5), 2, 3"
     },
     {
-      "description": "Jab, Parry Jab, 1, 2, Roll L Hook, Roll R Hook, L Upper, R Upper, 3, 2"
+      "description": "1, Parry 1, 1, 2, Roll 3, Roll R Hook(4), L Upper(5), R Upper(6), 3, 2"
     },
     {
-      "description": "L Hook, R Uppercut, L Body Hook, Block L Head, Pull R Uppercut, Block L Body Hook"
+      "description": "3, R Upper(6), L Body Hook(7), Block 3, Pull R Upper(6), Block L Body Hook(7)"
     },
     {
-      "description": "Slip cross w/ L step (faint), step R w/ L foot, Pivot R, 2, 3, 2"
+      "description": "Slip 2 w/ L step (faint), step R w/ L foot, Pivot R, 2, 3, 2"
     },
     {
-      "description": "Jab w/ step to R, Cross, Hook head(3) or liver(7)"
+      "description": "1 w/ step to R, 2, Hook head(3) or liver(7)"
     },
     {
-      "description": "Jab, Cross w/ step to L, Switch hips to L w/ Hook to head, Cross, Hook to head(3) or body(7)"
+      "description": "1, 2 w/ step to L, Switch hips to L w/ Hook to head, 2, L head(3) or body(7)"
     },
     {
-      "description": "Parry jab, Block Cross, Roll L Hook, Block L Liver Hook, R Upper, L Hook, Cross"
+      "description": "Parry 1, Block 2, Roll 3, Block L Liver Hook(7), R Upper(6), 3, 2"
     }
   ],
   "additive": [
     {
-      "set1": [{ "description": "Jab, Cross" }],
-      "set2": [{ "description": "Jab, Cross, Parry left, Block right" }],
+      "set1": [{ "description": "1, 2" }],
+      "set2": [{ "description": "1, 2, Parry 1, Block 2" }],
       "set3": [
         {
-          "description": "Jab, Cross, Parry left, Block right, Left Hook, Right Uppercut"
+          "description": "1, 2, Parry 1, Block 2, 3, R Upper(6)"
         }
       ]
     },
     {
-      "set1": [{ "description": "Left Hook, Right Uppercut" }],
-      "set2": [
-        { "description": "Left Hook, Right Uppercut, Slip Left, Roll Right" }
-      ],
+      "set1": [{ "description": "3, R Upper(6)" }],
+      "set2": [{ "description": "3, R Upper(6), Slip Left, Roll Right" }],
       "set3": [
         {
-          "description": "Left Hook, Right Uppercut, Slip Left, Roll Right, Jab, Cross"
+          "description": "3, R Upper(6), Slip Left, Roll Right, 1, 2"
         }
       ]
     },
     {
-      "set1": [{ "description": "Cross, Left Hook" }],
-      "set2": [
-        { "description": "Cross, Left Hook, Block left body, Parry right" }
-      ],
+      "set1": [{ "description": "2, 3" }],
+      "set2": [{ "description": "2, 3, Block left body, Parry 2" }],
       "set3": [
         {
-          "description": "Cross, Left Hook, Block left body, Parry right, Right Uppercut, Left Hook to Body"
+          "description": "2, 3, Block left body, Parry 2, R Upper(6), 3 to Body"
         }
       ]
     }

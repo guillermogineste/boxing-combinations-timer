@@ -11,10 +11,10 @@ import { getRandomCombination } from "./utils/getRandomCombination";
 import { playBeep } from "./utils/playBeep";
 
 // Constants
-const REST_TIME = 5;
+const REST_TIME = 60;
 const NUMBER_OF_ROUNDS = 3;
 const INTERVALS_PER_ROUND = 3;
-const INTERVAL_TIME = 5;
+const INTERVAL_TIME = 30;
 // Constants for initial state
 const INITIAL_ROUND = 1;
 const INITIAL_INTERVAL = 1;
