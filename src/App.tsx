@@ -8,6 +8,7 @@ import SettingsPanel from "./components/SettingsPanel/SettingsPanel";
 import { Combination, CombinationSet } from "./types";
 
 import { getRandomCombination } from "./utils/getRandomCombination";
+import { getRandomSet } from "./utils/getRandomSet";
 import { playBeep } from "./utils/playBeep";
 
 // Constants
