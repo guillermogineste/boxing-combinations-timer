@@ -248,6 +248,9 @@
     },
     {
       "description": "Roll R Hook(4), L Upper(5), R Upper(6), 3, 2"
+    },
+    {
+      "description": "Slip 1 w/ step, 2 w/ left step, 3"
     }
   ],
   "advanced": [

@@ -14,7 +14,7 @@ import { playBeep } from "./utils/playBeep";
 const REST_TIME = 60;
 const NUMBER_OF_ROUNDS = 3;
 const INTERVALS_PER_ROUND = 3;
-const INTERVAL_TIME = 30;
+const INTERVAL_TIME = 60;
 // Constants for initial state
 const INITIAL_ROUND = 1;
 const INITIAL_INTERVAL = 1;
@@ -146,6 +146,7 @@ const App: React.FC = () => {
           } else if (conditions.isNextRestPeriod) {
             setIsResting(true);
             setCountdownType("rest");
+            setCountdown(newCountdownDuration);
           } else if (conditions.isFirstRoundInterval) {
             setIsResting(false);
             setCountdownType("interval");
