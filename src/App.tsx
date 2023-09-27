@@ -11,10 +11,10 @@ import { getRandomCombination } from "./utils/getRandomCombination";
 import { playBeep } from "./utils/playBeep";
 
 // Constants
-const REST_TIME = 60;
+const REST_TIME = 20;
 const NUMBER_OF_ROUNDS = 3;
 const INTERVALS_PER_ROUND = 3;
-const INTERVAL_TIME = 60;
+const INTERVAL_TIME = 5;
 // Constants for initial state
 const INITIAL_ROUND = 1;
 const INITIAL_INTERVAL = 1;
@@ -146,7 +146,7 @@ const App: React.FC = () => {
           } else if (conditions.isNextRestPeriod) {
             setIsResting(true);
             setCountdownType("rest");
-            setCountdown(newCountdownDuration);
+            setCountdown(REST_TIME);
           } else if (conditions.isFirstRoundInterval) {
             setIsResting(false);
             setCountdownType("interval");
