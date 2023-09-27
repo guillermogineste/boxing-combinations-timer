@@ -5,7 +5,7 @@ import TimerDisplay from "./components/TimerDisplay/TimerDisplay";
 import ControlButtons from "./components/ControlButtons/ControlButtons";
 import SettingsPanel from "./components/SettingsPanel/SettingsPanel";
 
-import { Combination } from "./types";
+import { Combination, CombinationSet } from "./types";
 
 import { getRandomCombination } from "./utils/getRandomCombination";
 import { playBeep } from "./utils/playBeep";
@@ -28,6 +28,12 @@ const App: React.FC = () => {
   // State to hold the random combination
   const [randomCombination, setRandomCombination] =
     useState<Combination | null>(null);
+
+  // Additive set
+  const [isAdditiveModeEnabled, setIsAdditiveModeEnabled] = useState(false);
+  // const [currentAdditiveInterval, setCurrentAdditiveInterval] = useState(1);
+  const [currentAdditiveSet, setCurrentAdditiveSet] =
+    useState<CombinationSet | null>(null);
 
   // Countdown type
   const [countdownType, setCountdownType] = useState<"interval" | "rest">(
@@ -285,6 +291,8 @@ const App: React.FC = () => {
         setSelectedLevel={setSelectedLevel}
         isActionBeepEnabled={isActionBeepEnabled}
         setIsActionBeepEnabled={setIsActionBeepEnabled}
+        isAdditiveModeEnabled={isAdditiveModeEnabled}
+        setIsAdditiveModeEnabled={setIsAdditiveModeEnabled}
       />
     </div>
   );

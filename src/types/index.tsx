@@ -4,5 +4,11 @@ export interface Combination {
 
 export interface Combinations {
   simple: Combination[];
-  advanced: Combination[]
+  advanced: Combination[];
+}
+
+export interface CombinationSet {
+  set1: Array<{ description: string }>;
+  set2: Array<{ description: string }>;
+  set3: Array<{ description: string }>;
 }
