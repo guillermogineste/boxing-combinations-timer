@@ -244,6 +244,12 @@
       "description": "Slip 2, L Upper(5), 2, 3"
     },
     {
+      "description": "Slip 2, L Upper(5)"
+    },
+    {
+      "description": "Pull 1, 1, 2"
+    },
+    {
       "description": "1, Parry 1, 1, 2, Roll 3, Roll R Hook(4)"
     },
     {
@@ -294,7 +300,7 @@
       "description": "Slip 2 w/ L step (faint), step R w/ L foot, Pivot R, 2, 3, 2"
     },
     {
-      "description": "1 w/ step to R, 2, Hook head(3) or liver(7)"
+      "description": "1 w/ step to R, 2, L head(3) or liver(7)"
     },
     {
       "description": "1, 2 w/ step to L, Switch hips to L w/ Hook to head, 2, L head(3) or body(7)"
@@ -306,30 +312,43 @@
   "additive": [
     {
       "set1": [{ "description": "1, 2" }],
-      "set2": [{ "description": "1, 2, Parry 1, Block 2" }],
-      "set3": [
-        {
-          "description": "1, 2, Parry 1, Block 2, 3, R Upper(6)"
-        }
-      ]
+      "set2": [{ "description": "Parry 1, Block 2" }],
+      "set3": [{ "description": "3, R Upper(6)" }]
+    },
+    {
+      "set1": [{ "description": "1, 2" }],
+      "set2": [{ "description": "Slip 1, Roll 2" }],
+      "set3": [{ "description": "3, Body 2" }]
     },
     {
       "set1": [{ "description": "3, R Upper(6)" }],
-      "set2": [{ "description": "3, R Upper(6), Slip Left, Roll Right" }],
-      "set3": [
-        {
-          "description": "3, R Upper(6), Slip Left, Roll Right, 1, 2"
-        }
-      ]
+      "set2": [{ "description": "Slip 1, Roll 2" }],
+      "set3": [{ "description": "1, 2" }]
     },
     {
       "set1": [{ "description": "2, 3" }],
-      "set2": [{ "description": "2, 3, Block left body, Parry 2" }],
-      "set3": [
-        {
-          "description": "2, 3, Block left body, Parry 2, R Upper(6), 3 to Body"
-        }
-      ]
+      "set2": [{ "description": "Block left body, Parry 2" }],
+      "set3": [{ "description": "R Upper(6), 3 to Body" }]
+    },
+    {
+      "set1": [{ "description": "1, 2" }],
+      "set2": [{ "description": "Slip 1, Roll 2" }],
+      "set3": [{ "description": "3, 2" }]
+    },
+    {
+      "set1": [{ "description": "1, 1, Body 2" }],
+      "set2": [{ "description": "3, 6" }],
+      "set3": [{ "description": "Slip 2, 7" }]
+    },
+    {
+      "set1": [{ "description": "L foot step inside, Back, L foot step left" }],
+      "set2": [{ "description": "1 w/ step inside, Back, 2 w/ step left" }],
+      "set3": [{ "description": "R foot pull 2, Back, R foot slip 1" }]
+    },
+    {
+      "set1": [{ "description": "Double 1, 2" }],
+      "set2": [{ "description": "Slip 1, 2, 3" }],
+      "set3": [{ "description": "Slip 2, 3, 2" }]
     }
   ]
 }

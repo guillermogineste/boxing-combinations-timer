@@ -21,6 +21,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     <div className="settings">
       <select
         className="level-dropdown"
+        disabled={isAdditiveModeEnabled}
         onChange={(e) =>
           setSelectedLevel(e.target.value as "simple" | "advanced" | "both")
         }

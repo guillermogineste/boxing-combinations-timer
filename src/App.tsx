@@ -4,18 +4,19 @@ import DisplayCombination from "./components/DisplayCombination/DisplayCombinati
 import TimerDisplay from "./components/TimerDisplay/TimerDisplay";
 import ControlButtons from "./components/ControlButtons/ControlButtons";
 import SettingsPanel from "./components/SettingsPanel/SettingsPanel";
+import DisplayAdditiveSet from "./components/DisplayAdditiveSet/DisplayAdditiveSet";
 
-import { Combination, CombinationSet } from "./types";
+import { Combination, AdditiveSet } from "./types";
 
 import { getRandomCombination } from "./utils/getRandomCombination";
 import { getRandomSet } from "./utils/getRandomSet";
 import { playBeep } from "./utils/playBeep";
 
 // Constants
-const REST_TIME = 20;
-const NUMBER_OF_ROUNDS = 3;
+const REST_TIME = 60;
+const NUMBER_OF_ROUNDS = 12;
 const INTERVALS_PER_ROUND = 3;
-const INTERVAL_TIME = 5;
+const INTERVAL_TIME = 60;
 // Constants for initial state
 const INITIAL_ROUND = 1;
 const INITIAL_INTERVAL = 1;
@@ -27,14 +28,14 @@ const INITIAL_MAX_ACTION_BEEP_INTERVAL = 4000;
 
 const App: React.FC = () => {
   // State to hold the random combination
-  const [randomCombination, setRandomCombination] =
+  const [currentCombination, setCurrentCombination] =
     useState<Combination | null>(null);
 
   // Additive set
   const [isAdditiveModeEnabled, setIsAdditiveModeEnabled] = useState(false);
   // const [currentAdditiveInterval, setCurrentAdditiveInterval] = useState(1);
   const [currentAdditiveSet, setCurrentAdditiveSet] =
-    useState<CombinationSet | null>(null);
+    useState<AdditiveSet | null>(null);
 
   // Countdown type
   const [countdownType, setCountdownType] = useState<"interval" | "rest">(
@@ -69,12 +70,14 @@ const App: React.FC = () => {
 
   // Refresh the combination
   const refreshCombination = () => {
-    setRandomCombination(getRandomCombination(selectedLevel));
+    setCurrentCombination(getRandomCombination(selectedLevel));
+    setCurrentAdditiveSet(getRandomSet());
   };
 
   // useEffect to set the random combination when the component mounts
   useEffect(() => {
-    setRandomCombination(getRandomCombination(selectedLevel));
+    setCurrentCombination(getRandomCombination(selectedLevel));
+    setCurrentAdditiveSet(getRandomSet());
   }, [selectedLevel]);
 
   const checkConditions = ({
@@ -145,7 +148,7 @@ const App: React.FC = () => {
           setCountdown(newCountdownDuration);
 
           if (countdownType === "interval") {
-            setRandomCombination(getRandomCombination(selectedLevel));
+            setCurrentCombination(getRandomCombination(selectedLevel));
           }
 
           if (conditions.isNextIntervalInRound) {
@@ -159,14 +162,18 @@ const App: React.FC = () => {
             setCountdownType("interval");
             setCurrentInterval(1);
             setCurrentRound(currentRound + 1);
+            setCurrentAdditiveSet(getRandomSet());
+            console.log(currentAdditiveSet);
           } else {
+            // End of woekout
             setIsTimerRunning(false);
             setCurrentRound(INITIAL_ROUND);
             setCurrentInterval(INITIAL_INTERVAL);
             setIsResting(INITIAL_IS_RESTING);
             setCountdown(INTERVAL_TIME);
             setCountdownType(INITIAL_COUNTDOWN_TYPE);
-            setRandomCombination(getRandomCombination(selectedLevel));
+            setCurrentCombination(getRandomCombination(selectedLevel));
+            setCurrentAdditiveSet(getRandomSet());
           }
         }
       }, 1000);
@@ -183,6 +190,11 @@ const App: React.FC = () => {
     countdownType,
     selectedLevel,
   ]);
+
+  useEffect(() => {
+    // Whenever isAdditiveModeEnabled changes, get a new random set.
+    setCurrentAdditiveSet(getRandomSet());
+  }, [isAdditiveModeEnabled]);
 
   // useEffect for the action beep
   useEffect(() => {
@@ -239,7 +251,8 @@ const App: React.FC = () => {
     setIsResting(INITIAL_IS_RESTING); // Not resting
     setCountdown(INTERVAL_TIME); // Reset countdown to 60 seconds
     setCountdownType(INITIAL_COUNTDOWN_TYPE); // Set type to interval
-    setRandomCombination(getRandomCombination(selectedLevel)); // Fetch a new random combination
+    setCurrentCombination(getRandomCombination(selectedLevel)); // Fetch a new random combination
+    setCurrentAdditiveSet(getRandomSet()); // Fetch a new random set
   };
 
   // Function to replay the current interval
@@ -259,7 +272,6 @@ const App: React.FC = () => {
     isTimerRunning ||
     currentInterval > 1 ||
     countdown < (countdownType === "interval" ? INTERVAL_TIME : REST_TIME);
-
   return (
     <div className={`App ${isResting ? "is-rest" : "is-work"}`}>
       <ControlButtons
@@ -270,12 +282,21 @@ const App: React.FC = () => {
         shouldShowResetButton={shouldShowResetButton}
         shouldShowReplayButton={shouldShowReplayButton}
       />
-      {randomCombination ? (
-        <DisplayCombination
-          combination={randomCombination}
-          refreshCombination={refreshCombination}
-          isResting={isResting}
-        />
+      {currentCombination ? (
+        isAdditiveModeEnabled ? (
+          <DisplayAdditiveSet
+            additiveSet={currentAdditiveSet}
+            isResting={isResting}
+            currentInterval={currentInterval}
+            refreshCombination={refreshCombination}
+          />
+        ) : (
+          <DisplayCombination
+            combination={currentCombination}
+            refreshCombination={refreshCombination}
+            isResting={isResting}
+          />
+        )
       ) : (
         <p>Loading...</p>
       )}

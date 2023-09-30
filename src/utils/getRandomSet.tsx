@@ -1,8 +1,8 @@
 import combinations from "../combinations.json";
-import { CombinationSet } from "../types";
+import { AdditiveSet } from "../types";
 
-export const getRandomSet = (): CombinationSet => {
-  const list: CombinationSet[] = combinations["additive"];
+export const getRandomSet = (): AdditiveSet => {
+  const list: AdditiveSet[] = combinations["additive"];
   const randomIndex = Math.floor(Math.random() * list.length);
   return list[randomIndex];
 };

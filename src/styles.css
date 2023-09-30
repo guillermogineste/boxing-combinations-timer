@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,500;1,200;1,300;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,500;1,200;1,300;1,500;1,600&display=swap");
 @import url("./reset.css");
 
 html {
@@ -121,6 +121,16 @@ html:has(.is-rest) {
   font-weight: 500;
 }
 
+.additive-set {
+  font-weight: 300;
+  opacity: 0.75;
+}
+
+.additive-set--active {
+  font-weight: 600;
+  opacity: 1;
+}
+
 /* Control Buttons styles */
 .button {
   font-family: sans-serif;
@@ -209,6 +219,9 @@ html:has(.is-rest) {
   background: transparent;
 
   border: 2px solid white;
+}
+.level-dropdown:disabled {
+  opacity: 0.5;
 }
 .level-dropdown:hover {
   background: #650d08;
