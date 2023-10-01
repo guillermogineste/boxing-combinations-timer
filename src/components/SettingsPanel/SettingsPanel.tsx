@@ -23,8 +23,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   return (
     <div className="settings">
       <div className="selector selector--level">
-        <label htmlFor="mode-select">Difficulty</label>
+        <label htmlFor="level-select">Difficulty</label>
         <select
+          id="level-select"
           className="dropdown"
           disabled={isAdditiveModeEnabled}
           onChange={(e) =>
