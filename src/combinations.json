@@ -1,6 +1,9 @@
 {
   "simple": [
     {
+      "description": "Flick Jab 1x 2x 3x (lower angle, uppwards)"
+    },
+    {
       "description": "Parry 1, Parry 2"
     },
     {
@@ -272,6 +275,27 @@
     },
     {
       "description": "Reach w/ 2 to push around left, 7, 6"
+    },
+    {
+      "description": "1, Check Hook(3), 2"
+    },
+    {
+      "description": "2, Check Hook(3), 2"
+    },
+    {
+      "description": "1, 2, Check Hook(3)"
+    },
+    {
+      "description": "Check Hook(3), 2, 1"
+    },
+    {
+      "description": "1, Check Hook(3), L Body Hook(7)"
+    },
+    {
+      "description": "1, Check Hook(3), R Body Hook(8)"
+    },
+    {
+      "description": "1, Check Hook(3), R Hook(4)"
     }
   ],
   "advanced": [
