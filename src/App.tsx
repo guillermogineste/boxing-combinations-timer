@@ -170,7 +170,6 @@ const App: React.FC = () => {
             setCurrentInterval(1);
             setCurrentRound(currentRound + 1);
             setCurrentAdditiveSet(getRandomSet());
-            console.log(currentAdditiveSet);
           } else {
             // End of woekout
             setIsTimerRunning(false);
@@ -213,13 +212,6 @@ const App: React.FC = () => {
       const randomTime =
         Math.random() * (maxActionBeepInterval - minActionBeepInterval) +
         minActionBeepInterval;
-
-      console.log("randomTime:", randomTime);
-      console.log("minActionBeepInterval:", minActionBeepInterval);
-      console.log("maxActionBeepInterval:", maxActionBeepInterval);
-      console.log("isTimerRunning:", isTimerRunning);
-      console.log("isResting:", isResting);
-      console.log("isActionBeepEnabled:", isActionBeepEnabled);
 
       actionBeepTimer = setTimeout(() => {
         const isActionBeepModeActive =
