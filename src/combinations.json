@@ -263,6 +263,15 @@
     },
     {
       "description": "Reach w/ 2 to pull right hand, 3, 7"
+    },
+    {
+      "description": "Reach w/ 1 to push around right, 2, 3"
+    },
+    {
+      "description": "Reach w/ 1 to push around left, 2, 3"
+    },
+    {
+      "description": "Reach w/ 2 to push around left, 7, 6"
     }
   ],
   "advanced": [
