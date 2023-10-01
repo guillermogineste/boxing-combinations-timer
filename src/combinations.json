@@ -302,6 +302,21 @@
     },
     {
       "description": "4, 3, 8, 7"
+    },
+    {
+      "description": "1, 2, OverHand R"
+    },
+    {
+      "description": "1, OverHand R, 7"
+    },
+    {
+      "description": "OverHand R, 7, 3, 2"
+    },
+    {
+      "description": "1, 1, OverHand R, 7"
+    },
+    {
+      "description": "L Body Hook(7), OH, 3"
     }
   ],
   "advanced": [
