@@ -257,6 +257,12 @@
     },
     {
       "description": "Slip 1 w/ step, 2 w/ left step, 3"
+    },
+    {
+      "description": "Reach w/ 1 to pull left hand, 2, 3"
+    },
+    {
+      "description": "Reach w/ 2 to pull right hand, 3, 7"
     }
   ],
   "advanced": [
