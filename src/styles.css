@@ -197,21 +197,15 @@ html:has(.is-rest) {
 
 /* Settings Panel */
 .settings {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3vw;
   margin-top: 3vh;
 }
 
 .selector {
-  flex-grow: 0;
-  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  padding-left: 3vw;
-}
-.selector:first-of-type {
-  padding-left: 0;
 }
 .selector label {
   text-align: left;
@@ -241,28 +235,27 @@ html:has(.is-rest) {
   background: #182d6c;
 }
 
-.toggle-container {
+/* .toggle-container {
   flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-}
-.toggle {
+} */
+/* .toggle {
   width: 0px;
   border: none;
   position: relative;
   top: 3px;
   left: 4px;
   cursor: pointer;
-}
-.toggle-label {
+} */
+/* .toggle-label {
   color: white;
   padding-left: 40px;
   cursor: pointer;
   padding-top: 20px;
-}
-.toggle::after {
-  /* this is the indicator dot */
+} */
+/* .toggle::after {
   content: "";
   box-sizing: border-box;
   position: absolute;
@@ -274,12 +267,11 @@ html:has(.is-rest) {
   background: #a33934;
   border: 2px solid white;
   transition: transform 0.3s ease;
-}
-.is-rest .toggle::after {
+} */
+/* .is-rest .toggle::after {
   background: #2e4a9b;
-}
-.toggle::before {
-  /* this is the indicator background */
+} */
+/* .toggle::before {
   content: "";
   box-sizing: border-box;
   position: absolute;
@@ -291,12 +283,12 @@ html:has(.is-rest) {
   background-color: transparent;
   transition: background 0.3s ease;
   border: 2px solid white;
-}
+} */
 
-.toggle:checked::after {
+/* .toggle:checked::after {
   transform: translateX(12px);
-}
+} */
 
-.toggle:checked::before {
+/* .toggle:checked::before {
   background-color: white;
-}
+} */
