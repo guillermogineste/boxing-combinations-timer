@@ -213,7 +213,7 @@ html:has(.is-rest) {
   font-size: 0.8em;
 }
 
-.dropdown {
+/* .dropdown {
   cursor: pointer;
   padding: 12px 16px;
   font-size: 16px;
@@ -233,62 +233,4 @@ html:has(.is-rest) {
 }
 .is-rest .dropdown:hover {
   background: #182d6c;
-}
-
-/* .toggle-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-} */
-/* .toggle {
-  width: 0px;
-  border: none;
-  position: relative;
-  top: 3px;
-  left: 4px;
-  cursor: pointer;
-} */
-/* .toggle-label {
-  color: white;
-  padding-left: 40px;
-  cursor: pointer;
-  padding-top: 20px;
-} */
-/* .toggle::after {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #a33934;
-  border: 2px solid white;
-  transition: transform 0.3s ease;
-} */
-/* .is-rest .toggle::after {
-  background: #2e4a9b;
-} */
-/* .toggle::before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  left: 0;
-  top: 3px;
-  width: 26px;
-  height: 10px;
-  border-radius: 4px;
-  background-color: transparent;
-  transition: background 0.3s ease;
-  border: 2px solid white;
-} */
-
-/* .toggle:checked::after {
-  transform: translateX(12px);
-} */
-
-/* .toggle:checked::before {
-  background-color: white;
 } */
