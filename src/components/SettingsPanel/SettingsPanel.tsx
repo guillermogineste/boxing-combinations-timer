@@ -4,6 +4,9 @@ interface SettingsPanelProps {
   setSelectedLevel: React.Dispatch<
     React.SetStateAction<"simple" | "advanced" | "both">
   >;
+  setSelectedSpeed: React.Dispatch<
+    React.SetStateAction<"off" | "fast" | "medium" | "slow">
+  >;
   isActionBeepEnabled: boolean;
   setIsActionBeepEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   isAdditiveModeEnabled: boolean;
@@ -16,6 +19,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   setIsActionBeepEnabled,
   isAdditiveModeEnabled,
   setIsAdditiveModeEnabled,
+  setSelectedSpeed,
 }) => {
   const handleModeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setIsAdditiveModeEnabled(event.target.value === "Additive");
@@ -38,7 +42,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
         </select>
       </div>
       <div className="selector selector--mode">
-        <label htmlFor="mode-select">Mode</label>
+        <label htmlFor="mode-select">Combination mode</label>
         <select
           id="mode-select"
           className="dropdown"
@@ -49,8 +53,25 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           <option value="Additive">Additive</option>
         </select>
       </div>
+      <div className="selector selector--speed">
+        <label htmlFor="speed-select">Action beep</label>
+        <select
+          id="speed-select"
+          className="dropdown"
+          onChange={(e) =>
+            setSelectedSpeed(
+              e.target.value as "off" | "fast" | "medium" | "slow",
+            )
+          }
+        >
+          <option value="off">Off</option>
+          <option value="fast">Fast</option>
+          <option value="medium">Medium</option>
+          <option value="slow">Slow</option>
+        </select>
+      </div>
 
-      <div className="toggle-container">
+      {/* <div className="toggle-container">
         <input
           type="checkbox"
           id="actionBeep"
@@ -61,7 +82,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
         <label className="toggle-label" htmlFor="actionBeep">
           Reaction timer{" "}
         </label>
-      </div>
+      </div> */}
     </div>
   );
 };

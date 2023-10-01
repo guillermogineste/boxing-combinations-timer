@@ -25,6 +25,12 @@ const INITIAL_COUNTDOWN_TYPE = "interval";
 // Random intervals
 const INITIAL_MIN_ACTION_BEEP_INTERVAL = 1200;
 const INITIAL_MAX_ACTION_BEEP_INTERVAL = 4000;
+const SPEED_SETTINGS = {
+  off: { min: 1200, max: 4000 },
+  fast: { min: 900, max: 1600 },
+  medium: { min: 1200, max: 4000 },
+  slow: { min: 3000, max: 8000 },
+};
 
 const App: React.FC = () => {
   // State to hold the random combination
@@ -59,14 +65,15 @@ const App: React.FC = () => {
   // Random timer
   const [isActionBeepEnabled, setIsActionBeepEnabled] = useState(false);
   const [isActionBeepRunning, setIsActionBeepRunning] = useState(false);
-  // const [minActionBeepInterval, setMinActionBeepInterval] = useState(
-  //   INITIAL_MIN_ACTION_BEEP_INTERVAL
-  // );
-  // const [maxActionBeepInterval, setMaxActionBeepInterval] = useState(
-  //   INITIAL_MAX_ACTION_BEEP_INTERVAL
-  // );
-  const [minActionBeepInterval] = useState(INITIAL_MIN_ACTION_BEEP_INTERVAL);
-  const [maxActionBeepInterval] = useState(INITIAL_MAX_ACTION_BEEP_INTERVAL);
+  const [minActionBeepInterval, setMinActionBeepInterval] = useState(
+    INITIAL_MIN_ACTION_BEEP_INTERVAL,
+  );
+  const [maxActionBeepInterval, setMaxActionBeepInterval] = useState(
+    INITIAL_MAX_ACTION_BEEP_INTERVAL,
+  );
+  const [selectedSpeed, setSelectedSpeed] = useState<
+    "off" | "fast" | "medium" | "slow"
+  >("off");
 
   // Refresh the combination
   const refreshCombination = () => {
@@ -191,8 +198,8 @@ const App: React.FC = () => {
     selectedLevel,
   ]);
 
+  // Additive mode
   useEffect(() => {
-    // Whenever isAdditiveModeEnabled changes, get a new random set.
     setCurrentAdditiveSet(getRandomSet());
   }, [isAdditiveModeEnabled]);
 
@@ -206,6 +213,13 @@ const App: React.FC = () => {
       const randomTime =
         Math.random() * (maxActionBeepInterval - minActionBeepInterval) +
         minActionBeepInterval;
+
+      console.log("randomTime:", randomTime);
+      console.log("minActionBeepInterval:", minActionBeepInterval);
+      console.log("maxActionBeepInterval:", maxActionBeepInterval);
+      console.log("isTimerRunning:", isTimerRunning);
+      console.log("isResting:", isResting);
+      console.log("isActionBeepEnabled:", isActionBeepEnabled);
 
       actionBeepTimer = setTimeout(() => {
         const isActionBeepModeActive =
@@ -237,6 +251,18 @@ const App: React.FC = () => {
     maxActionBeepInterval,
     isActionBeepEnabled,
   ]);
+
+  useEffect(() => {
+    const speedSettings = SPEED_SETTINGS[selectedSpeed];
+    setMinActionBeepInterval(speedSettings.min);
+    setMaxActionBeepInterval(speedSettings.max);
+
+    if (selectedSpeed === "off") {
+      setIsActionBeepEnabled(false);
+    } else {
+      setIsActionBeepEnabled(true);
+    }
+  }, [selectedSpeed]);
 
   // Function to toggle timer
   const toggleTimer = () => {
@@ -311,6 +337,7 @@ const App: React.FC = () => {
       />
       <SettingsPanel
         setSelectedLevel={setSelectedLevel}
+        setSelectedSpeed={setSelectedSpeed}
         isActionBeepEnabled={isActionBeepEnabled}
         setIsActionBeepEnabled={setIsActionBeepEnabled}
         isAdditiveModeEnabled={isAdditiveModeEnabled}
