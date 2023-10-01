@@ -1,4 +1,5 @@
 import React from "react";
+import Select, { StylesConfig, Theme } from "react-select";
 
 interface SettingsPanelProps {
   setSelectedLevel: React.Dispatch<
@@ -13,6 +14,82 @@ interface SettingsPanelProps {
   setIsAdditiveModeEnabled: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+interface OptionType {
+  value: string;
+  label: string;
+}
+
+const levelOptions = [
+  { value: "simple", label: "Simple" },
+  { value: "advanced", label: "Advanced" },
+  { value: "both", label: "Both" },
+];
+
+const speedOptions = [
+  { value: "off", label: "Off" },
+  { value: "fast", label: "Fast" },
+  { value: "medium", label: "Medium" },
+  { value: "slow", label: "Slow" },
+];
+
+const modeOptions = [
+  { value: "Random", label: "Random" },
+  { value: "Additive", label: "Additive" },
+];
+
+const customStyles: StylesConfig<OptionType, false> = {
+  control: (provided, state) => ({
+    ...provided,
+    color: "white",
+    cursor: "pointer",
+    padding: "4px 4px",
+    fontSize: "16px",
+    borderRadius: "4px",
+    fontFamily: '"IBM Plex Mono", monospace',
+    fontWeight: "500",
+    background: "transparent",
+    border: "2px solid white",
+    "&:hover": {
+      backgroundColor: "#650d08",
+    },
+    opacity: state.isDisabled ? 0.5 : 1,
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: "white",
+    textAlign: "left",
+  }),
+  menu: (provided) => ({
+    ...provided,
+    borderRadius: "4px",
+    fontWeight: "500",
+    background: "#a33934",
+    border: "2px solid white",
+    textAlign: "left",
+  }),
+  indicatorSeparator: (provided) => ({
+    ...provided,
+    display: "none",
+  }),
+  dropdownIndicator: (provided) => ({
+    ...provided,
+    color: "white",
+    "&:hover": {
+      color: "white",
+    },
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    padding: "16px",
+    color: "white",
+    backgroundColor: state.isSelected ? "#650d08" : "transparent",
+    "&:hover": {
+      backgroundColor: "#650d08",
+      color: "#fff",
+    },
+  }),
+};
+
 const SettingsPanel: React.FC<SettingsPanelProps> = ({
   setSelectedLevel,
   isActionBeepEnabled,
@@ -21,68 +98,69 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   setIsAdditiveModeEnabled,
   setSelectedSpeed,
 }) => {
-  const handleModeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setIsAdditiveModeEnabled(event.target.value === "Additive");
+  const handleModeChange = (selectedOption: OptionType | null) => {
+    if (selectedOption) {
+      setIsAdditiveModeEnabled(selectedOption.value === "Additive");
+    }
   };
   return (
     <div className="settings">
       <div className="selector selector--level">
         <label htmlFor="level-select">Difficulty</label>
-        <select
+        <Select
           id="level-select"
+          options={levelOptions}
           className="dropdown"
-          disabled={isAdditiveModeEnabled}
-          onChange={(e) =>
-            setSelectedLevel(e.target.value as "simple" | "advanced" | "both")
-          }
-        >
-          <option value="simple">Simple</option>
-          <option value="advanced">Advanced</option>
-          <option value="both">Both</option>
-        </select>
+          styles={customStyles}
+          isSearchable={false}
+          isDisabled={isAdditiveModeEnabled}
+          defaultValue={levelOptions[0]}
+          onChange={(selectedOption: OptionType | null) => {
+            if (selectedOption) {
+              setSelectedLevel(
+                selectedOption.value as "simple" | "advanced" | "both",
+              );
+            }
+          }}
+        />
       </div>
       <div className="selector selector--mode">
         <label htmlFor="mode-select">Combination mode</label>
-        <select
+        <Select
           id="mode-select"
+          options={modeOptions}
           className="dropdown"
-          value={isAdditiveModeEnabled ? "Additive" : "Random"}
-          onChange={handleModeChange}
-        >
-          <option value="Random">Random</option>
-          <option value="Additive">Additive</option>
-        </select>
+          styles={customStyles}
+          isSearchable={false}
+          value={modeOptions.find(
+            (option) =>
+              option.value === (isAdditiveModeEnabled ? "Additive" : "Random"),
+          )}
+          onChange={(selectedOption: OptionType | null) => {
+            if (selectedOption) {
+              setIsAdditiveModeEnabled(selectedOption.value === "Additive");
+            }
+          }}
+        />
       </div>
       <div className="selector selector--speed">
         <label htmlFor="speed-select">Action beep</label>
-        <select
+        <Select
           id="speed-select"
+          options={speedOptions}
+          defaultValue={speedOptions[0]}
           className="dropdown"
-          onChange={(e) =>
-            setSelectedSpeed(
-              e.target.value as "off" | "fast" | "medium" | "slow",
-            )
-          }
-        >
-          <option value="off">Off</option>
-          <option value="fast">Fast</option>
-          <option value="medium">Medium</option>
-          <option value="slow">Slow</option>
-        </select>
-      </div>
-
-      {/* <div className="toggle-container">
-        <input
-          type="checkbox"
-          id="actionBeep"
-          className="toggle"
-          checked={isActionBeepEnabled}
-          onChange={(e) => setIsActionBeepEnabled(e.target.checked)}
+          styles={customStyles}
+          isSearchable={false}
+          onChange={(selectedOption: OptionType | null) => {
+            if (selectedOption) {
+              setSelectedSpeed(
+                selectedOption.value as "off" | "fast" | "medium" | "slow",
+              );
+            }
+          }}
         />
-        <label className="toggle-label" htmlFor="actionBeep">
-          Reaction timer{" "}
-        </label>
-      </div> */}
+      </div>
     </div>
   );
 };
