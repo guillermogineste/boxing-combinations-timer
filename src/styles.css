@@ -188,10 +188,6 @@ html:has(.is-rest) {
 .is-rest .button--toggle:hover {
   background-color: #081d5d;
 }
-
-/* .button--reset {
-  margin-right: 0;
-} */
 .button.button--refresh {
   font-size: 0.8em;
   padding: 8px 12px;
@@ -204,11 +200,26 @@ html:has(.is-rest) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-top: 32px; */
   margin-top: 3vh;
 }
 
-.level-dropdown {
+.selector {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3vw;
+}
+.selector:first-of-type {
+  padding-left: 0;
+}
+.selector label {
+  text-align: left;
+  padding-bottom: 8px;
+  font-size: 0.8em;
+}
+
+.dropdown {
   cursor: pointer;
   padding: 12px 16px;
   font-size: 16px;
@@ -220,18 +231,21 @@ html:has(.is-rest) {
 
   border: 2px solid white;
 }
-.level-dropdown:disabled {
+.dropdown:disabled {
   opacity: 0.5;
 }
-.level-dropdown:hover {
+.dropdown:hover {
   background: #650d08;
 }
-.is-rest .level-dropdown:hover {
+.is-rest .dropdown:hover {
   background: #182d6c;
 }
 
 .toggle-container {
+  flex-grow: 1;
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .toggle {
   width: 0px;
@@ -245,6 +259,7 @@ html:has(.is-rest) {
   color: white;
   padding-left: 40px;
   cursor: pointer;
+  padding-top: 20px;
 }
 .toggle::after {
   /* this is the indicator dot */
