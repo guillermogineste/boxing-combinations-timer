@@ -367,6 +367,15 @@
     },
     {
       "description": "Parry 1, Block 2, Roll 3, Block L Liver Hook(7), R Upper(6), 3, 2"
+    },
+    {
+      "description": "1, Slip to L w/ L step, 7, Slip 6, Pivot"
+    },
+    {
+      "description": "1, 2 w/ L step, 7, Slip 6, Pivot"
+    },
+    {
+      "description": "1, 2, 3 w/ L step, 7, Slip 6, Pivot"
     }
   ],
   "additive": [
@@ -409,6 +418,11 @@
       "set1": [{ "description": "Double 1, 2" }],
       "set2": [{ "description": "Slip 1, 2, 3" }],
       "set3": [{ "description": "Slip 2, 3, 2" }]
+    },
+    {
+      "set1": [{ "description": "1, 1, 2" }],
+      "set2": [{ "description": "Pull 2, 3" }],
+      "set3": [{ "description": "Roll 2, 7, 3" }]
     }
   ]
 }
