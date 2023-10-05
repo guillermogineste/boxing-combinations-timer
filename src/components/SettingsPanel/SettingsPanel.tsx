@@ -83,6 +83,7 @@ const customStyles: StylesConfig<OptionType, false> = {
     padding: "16px",
     color: "white",
     backgroundColor: state.isSelected ? "#650d08" : "transparent",
+    cursor: "pointer",
     "&:hover": {
       backgroundColor: "#650d08",
       color: "#fff",
