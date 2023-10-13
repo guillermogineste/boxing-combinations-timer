@@ -16,6 +16,9 @@
       "description": "Parry 1, Parry 2"
     },
     {
+      "description": "Double 1 (1st light, 2nd hard)"
+    },
+    {
       "description": "Parry double 1, Parry 2"
     },
     {
@@ -385,6 +388,18 @@
     },
     {
       "description": "1, 2, 3 w/ L step, 7, Slip 6, Pivot"
+    },
+    {
+      "description": "2 X Body, 3 X Head"
+    },
+    {
+      "description": "3 X Body, 2 X Head"
+    },
+    {
+      "description": "2 X Head, 3 X Body"
+    },
+    {
+      "description": "3 X Head, 2 X Body"
     }
   ],
   "additive": [
