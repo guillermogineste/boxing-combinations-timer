@@ -37,6 +37,11 @@ const App: React.FC = () => {
   const [currentCombination, setCurrentCombination] =
     useState<Combination | null>(null);
 
+  const speak = (text: string) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(utterance);
+  };
+
   // Additive set
   const [isAdditiveModeEnabled, setIsAdditiveModeEnabled] = useState(false);
   // const [currentAdditiveInterval, setCurrentAdditiveInterval] = useState(1);
@@ -243,6 +248,36 @@ const App: React.FC = () => {
     maxActionBeepInterval,
     isActionBeepEnabled,
   ]);
+
+  useEffect(() => {
+    if (currentCombination && !isAdditiveModeEnabled) {
+      speak(currentCombination.description);
+    }
+  }, [currentCombination, isAdditiveModeEnabled]);
+
+  useEffect(() => {
+    if (currentAdditiveSet && isAdditiveModeEnabled) {
+      let descriptions: AdditiveSet["set1"] = [];
+
+      if (currentInterval >= 1) {
+        descriptions = descriptions.concat(currentAdditiveSet.set1);
+      }
+
+      if (currentInterval >= 2) {
+        descriptions = descriptions.concat(currentAdditiveSet.set2);
+      }
+
+      if (currentInterval >= 3) {
+        descriptions = descriptions.concat(currentAdditiveSet.set3);
+      }
+
+      const combinedDescriptions = descriptions
+        .map((item) => item.description)
+        .join(", ");
+
+      speak(combinedDescriptions);
+    }
+  }, [currentAdditiveSet, currentInterval, isAdditiveModeEnabled]);
 
   useEffect(() => {
     const speedSettings = SPEED_SETTINGS[selectedSpeed];
