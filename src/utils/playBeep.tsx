@@ -26,26 +26,6 @@ const createAudioNodes = (
   return { oscillator, gainNode };
 };
 
-// Helper function to play a single beep
-// const playSingleBeep = (
-//   audioCtx: AudioContext,
-//   frequency: number,
-//   volume: number,
-//   startTime: number,
-//   duration: number
-// ): void => {
-//   const { oscillator } = createAudioNodes(
-//     audioCtx,
-//     frequency,
-//     volume,
-//     startTime,
-//     duration
-//   );
-
-//   oscillator.start(startTime);
-//   oscillator.stop(startTime + duration);
-// };
-
 const playSingleBeep = (
   audioCtx: AudioContext,
   frequency: number,
@@ -77,50 +57,6 @@ const playSingleBeep = (
   gainNode.gain.setValueAtTime(volume, startTime + duration - 0.005);
   gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
 };
-
-// const playSingleBeep = (
-//   audioCtx: AudioContext,
-//   frequency: number,
-//   volume: number,
-//   startTime: number,
-//   duration: number
-// ): void => {
-//   const { oscillator, gainNode } = createAudioNodes(
-//     audioCtx,
-//     frequency,
-//     volume,
-//     startTime,
-//     duration
-//   );
-
-//   // Create and configure a second oscillator
-//   const secondFrequency = frequency * Math.pow(2, 7 / 12);
-//   const { oscillator: secondOscillator } = createAudioNodes(
-//     audioCtx,
-//     secondFrequency,
-//     volume,
-//     startTime,
-//     duration
-//   );
-
-//   // Set initial gain to 0 for both
-//   gainNode.gain.setValueAtTime(0, startTime);
-
-//   // 5ms ease-in (fade-in)
-//   gainNode.gain.linearRampToValueAtTime(volume, startTime + 0.005);
-
-//   // Start both oscillators
-//   oscillator.start(startTime);
-//   secondOscillator.start(startTime);
-
-//   // Schedule the stop time for both oscillators
-//   oscillator.stop(startTime + duration);
-//   secondOscillator.stop(startTime + duration);
-
-//   // 5ms ease-out (fade-out) before stopping
-//   gainNode.gain.setValueAtTime(volume, startTime + duration - 0.005);
-//   gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
-// };
 
 /**
  * playBeep - Plays a beep sound using the Web Audio API.

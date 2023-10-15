@@ -140,15 +140,15 @@ const App: React.FC = () => {
         currentRound,
       });
       if (conditions.isStartOfFirstRound) {
-        playBeep(1200, 650, 0.9, 1);
+        playBeep(1200, 650, 0.05, 1);
       }
       timer = setTimeout(() => {
         if (countdown > 0) {
           setCountdown(countdown - 1);
-          conditions.isEndOfAnInterval && playBeep(700, 650, 0.9, 1);
-          conditions.isEndOfRestPeriod && playBeep(1200, 650, 0.9, 1);
-          conditions.isEndOfWorkout && playBeep(800, 700, 1, 2, 100, 1);
-          conditions.isAlmostEndOfRound && playBeep(500, 700, 0.9, 1, 400);
+          conditions.isEndOfAnInterval && playBeep(700, 650, 0.05, 1);
+          conditions.isEndOfRestPeriod && playBeep(1200, 650, 0.05, 1);
+          conditions.isEndOfWorkout && playBeep(800, 700, 0.06, 2, 100, 1);
+          conditions.isAlmostEndOfRound && playBeep(500, 700, 0.045, 1, 400);
         } else {
           const newCountdownDuration =
             countdownType === "interval" ? INTERVAL_TIME : REST_TIME;
@@ -217,7 +217,7 @@ const App: React.FC = () => {
         const isActionBeepModeActive =
           isActionBeepRunning && !isResting && isActionBeepEnabled;
         if (isActionBeepModeActive) {
-          playBeep(100, 500, 1, 1); // Modify these parameters as per your beep function
+          playBeep(100, 500, 0.065, 1); // Modify these parameters as per your beep function
           setRandomActionBeep(); // Set the next random beep
         }
       }, randomTime);
