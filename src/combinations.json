@@ -332,6 +332,21 @@
     },
     {
       "description": "1, Pull, 2, Pull, 2, Pull loading left, 1"
+    },
+    {
+      "description": "1 Body (Push), 2, 1 Body (Push), 5, 1 Body (Push), 2"
+    },
+    {
+      "description": "1, Step R 45º, 2 5 2"
+    },
+    {
+      "description": "2, Step L 45º, 3 2 3"
+    },
+    {
+      "description": "1 w/ right foot step, Pivot R w/ 2 (SP 1)"
+    },
+    {
+      "description": "2 w/ left step, Pivot L w/ 1"
     }
   ],
   "advanced": [
@@ -450,6 +465,11 @@
       "set1": [{ "description": "1, 1, 2" }],
       "set2": [{ "description": "Pull 2, 3" }],
       "set3": [{ "description": "Roll 2, 7, 3" }]
+    },
+    {
+      "set1": [{ "description": "1, Step Right 45º, 2 5 2" }],
+      "set2": [{ "description": "1 1 Forward, Step back 2" }],
+      "set3": [{ "description": "Step Left 45º, 3 2 3" }]
     }
   ]
 }
