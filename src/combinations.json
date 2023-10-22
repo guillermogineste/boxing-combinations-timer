@@ -347,6 +347,27 @@
     },
     {
       "description": "2 w/ left step, Pivot L w/ 1"
+    },
+    {
+      "description": "3 w/ Roll 4 X 4, 4 w/ Roll 3 X 2"
+    },
+    {
+      "description": "3 w/ Roll 4 X 4, 4 w/ Roll 3 X 2"
+    },
+    {
+      "description": "1 1 2, Check Slip (dropping), Back Step, 2 3 2"
+    },
+    {
+      "description": "Roll 4 Stepping In, 3 2, Roll 3 Stepping Back, 2 3 2"
+    },
+    {
+      "description": "Pivot L, 1 2 1, Pivot R, 3 2 3"
+    },
+    {
+      "description": "1 1 Forward, Step Back 2"
+    },
+    {
+      "description": "2, 6, 2"
     }
   ],
   "advanced": [
@@ -470,6 +491,11 @@
       "set1": [{ "description": "1, Step Right 45º, 2 5 2" }],
       "set2": [{ "description": "1 1 Forward, Step back 2" }],
       "set3": [{ "description": "Step Left 45º, 3 2 3" }]
+    },
+    {
+      "set1": [{ "description": "1 1 Forward, Step Back 2" }],
+      "set2": [{ "description": "2, 6, 2" }],
+      "set3": [{ "description": "3, 2" }]
     }
   ]
 }
