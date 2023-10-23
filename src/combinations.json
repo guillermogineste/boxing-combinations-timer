@@ -368,6 +368,12 @@
     },
     {
       "description": "2, 6, 2"
+    },
+    {
+      "description": "5 w/ L Step"
+    },
+    {
+      "description": "6 w/ R Step"
     }
   ],
   "advanced": [
