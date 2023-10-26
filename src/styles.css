@@ -53,7 +53,7 @@ html:has(.is-rest) {
   border-radius: 8px;
   outline: 2px solid #650d08;
   border: 6px solid black;
-  max-width: 720px;
+  max-width: 1024px;
   max-height: 90vh;
   width: 90vw;
   transition: all 200ms;

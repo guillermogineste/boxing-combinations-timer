@@ -163,10 +163,10 @@
       "description": "Feint Body 1, 2, L Upper(5)"
     },
     {
-      "description": "2, Feint R Upper(6), 3 to Body"
+      "description": "2, Feint R Upper(6), 7"
     },
     {
-      "description": "Double 1, Feint 2, 3 to Body, R Upper(6)"
+      "description": "Double 1, Feint 2, 7, R Upper(6)"
     },
     {
       "description": "1, Step Back ↓, 2"
@@ -469,7 +469,7 @@
     {
       "set1": [{ "description": "2, 3" }],
       "set2": [{ "description": "Block left body, Parry 2" }],
-      "set3": [{ "description": "R Upper(6), 3 to Body" }]
+      "set3": [{ "description": "R Upper(6), 7" }]
     },
     {
       "set1": [{ "description": "1, 2" }],
