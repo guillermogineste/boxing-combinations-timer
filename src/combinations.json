@@ -374,6 +374,69 @@
     },
     {
       "description": "6 w/ R Step"
+    },
+    {
+      "description": "1, Slip 2, 7 3 wit no loading, use weight"
+    },
+    {
+      "description": "1, Step L to slip 2, 3 2, Step R to slip 1, 2"
+    },
+    {
+      "description": "Loaded 3 w/ dash forward (skate), 2, 3"
+    },
+    {
+      "description": "1 2, slip 1, Roll 2, Double 3 w/ 2x L steps"
+    },
+    {
+      "description": "Loop: 3, Drop to roll 3, 4, Drop to roll 4"
+    },
+    {
+      "description": "Defend on outside, evade"
+    },
+    {
+      "description": "Defend on the inside"
+    },
+    {
+      "description": "1 2 3, Drop from 3 to roll 3"
+    },
+    {
+      "description": "1, 2, 3, 6"
+    },
+    {
+      "description": "1, 2, 7"
+    },
+    {
+      "description": "1, 2, 3"
+    },
+    {
+      "description": "Roll 4, 3, 2"
+    },
+    {
+      "description": "Roll 3, 2, 3"
+    },
+    {
+      "description": "Body 1, Faint body 1, 2"
+    },
+    {
+      "description": "3x 1 Body 1, Body 2, L step 3, L step 3"
+    },
+    {
+      "description": "1, 1, Faint 1, Angle right, 1 2"
+    },
+    {
+      "description": "3, 2 Going left, 2, 3 Going right"
+    },
+    {
+      "description": ""
+    },
+    {
+      "description": ""
+    },
+    {
+      "description": ""
+    },
+    {
+      "description": ""
     }
   ],
   "advanced": [
@@ -448,6 +511,18 @@
     },
     {
       "description": "3 X Head, 2 X Body"
+    },
+    {
+      "description": "Parry 1, Forearm block 2, Absorb 3, 3 2"
+    },
+    {
+      "description": "Parry 1, Forearm block 2, Roll 3, 2 3"
+    },
+    {
+      "description": "1, 2 w/ L step to slip 2"
+    },
+    {
+      "description": ""
     }
   ],
   "additive": [
@@ -505,6 +580,36 @@
       "set1": [{ "description": "1 1 Forward, Step Back 2" }],
       "set2": [{ "description": "2, 6, 2" }],
       "set3": [{ "description": "3, 2" }]
+    },
+    {
+      "set1": [{ "description": "1, 2, 3, 6" }],
+      "set2": [{ "description": "1, 2, 7" }],
+      "set3": [{ "description": "1, 2, 3" }]
+    },
+    {
+      "set1": [{ "description": "1, 2, 3" }],
+      "set2": [{ "description": "Roll 4, 3, 2" }],
+      "set3": [{ "description": "Roll 3, 2, 3" }]
+    },
+    {
+      "set1": [{ "description": "Slip inside, Pull" }],
+      "set2": [{ "description": "2, 3" }],
+      "set3": [{ "description": "3, 7" }]
+    },
+    {
+      "set1": [{ "description": "1 2, Roll 3, 6 3" }],
+      "set2": [{ "description": "Roll 3, Roll 4 w/ 6" }],
+      "set3": [{ "description": "2, 3" }]
+    },
+    {
+      "set1": [{ "description": "Parry 1, Forearm block 2, Absorb 3, 3 2" }],
+      "set2": [{ "description": "Parry 1, Forearm block 2, Roll 3, 2 3" }],
+      "set3": [{ "description": "Parry 1, Forearm block 2, Block 3, 2 3" }]
+    },
+    {
+      "set1": [{ "description": "1 1 2, Slip 1 w/ diagonal step, Switch 5 2 5 2" }],
+      "set2": [{ "description": "1 1 2, Slip 1 w/ step and pivot R, 6 3 6 3" }],
+      "set3": [{ "description": "1 1 2, Roll 3 w/ step 2 3 2 3" }]
     }
   ]
 }
