@@ -100,7 +100,7 @@ html:has(.is-rest) {
 /* Countdown timer */
 .countdown {
   /* font-size: 7em; */
-  font-size: clamp(4em, 5vw, 5em);
+  font-size: clamp(4em, 6.6vw, 7.4em);
   font-family: "IBM Plex Mono", monospace;
   font-weight: 300;
   color: white;
@@ -126,7 +126,7 @@ html:has(.is-rest) {
 }
 
 .additive-set {
-  font-size: clamp(1em, 3vw, 2.1em);
+  font-size: clamp(1.3em, 3.4vw, 2.7em);
   font-weight: 300;
   opacity: 0.75;
 }
