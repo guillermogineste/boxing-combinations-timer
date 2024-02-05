@@ -53,10 +53,14 @@ html:has(.is-rest) {
   border-radius: 8px;
   outline: 2px solid #650d08;
   border: 6px solid black;
-  max-width: 1024px;
+  max-width: 1280px;
   max-height: 90vh;
+  height: 1024px;
   width: 90vw;
   transition: all 200ms;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Background Modes */
@@ -122,6 +126,7 @@ html:has(.is-rest) {
 }
 
 .additive-set {
+  font-size: clamp(1em, 3vw, 2.1em);
   font-weight: 300;
   opacity: 0.75;
 }
