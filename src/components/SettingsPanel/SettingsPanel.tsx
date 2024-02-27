@@ -12,6 +12,8 @@ interface SettingsPanelProps {
   setIsActionBeepEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   isAdditiveModeEnabled: boolean;
   setIsAdditiveModeEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+  numberOfRounds: number;
+  setNumberOfRounds: React.Dispatch<React.SetStateAction<number>>;
 }
 
 interface OptionType {
@@ -98,6 +100,8 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   isAdditiveModeEnabled,
   setIsAdditiveModeEnabled,
   setSelectedSpeed,
+  numberOfRounds,
+  setNumberOfRounds
 }) => {
   const handleModeChange = (selectedOption: OptionType | null) => {
     if (selectedOption) {
@@ -106,6 +110,17 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   };
   return (
     <div className="settings">
+      <div className="selector selector--rounds">
+        <label htmlFor="rounds-input">Rounds</label>
+        <input
+          id="rounds-input"
+          type="number"
+          value={numberOfRounds}
+          onChange={(e) => setNumberOfRounds(Number(e.target.value))}
+          min="1"
+          className="rounds-input"
+        />
+    </div>
       <div className="selector selector--level">
         <label htmlFor="level-select">Difficulty</label>
         <Select

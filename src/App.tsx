@@ -33,6 +33,9 @@ const SPEED_SETTINGS = {
 };
 
 const App: React.FC = () => {
+  // Number of rounds
+  const [numberOfRounds, setNumberOfRounds] = useState(NUMBER_OF_ROUNDS);
+
   // State to hold the random combination
   const [currentCombination, setCurrentCombination] =
     useState<Combination | null>(null);
@@ -109,7 +112,7 @@ const App: React.FC = () => {
     isEndOfRestPeriod:
       countdown === 1 &&
       countdownType === "rest" &&
-      currentRound !== NUMBER_OF_ROUNDS,
+      currentRound !== numberOfRounds,
     isAlmostEndOfRound:
       countdown <= 3 &&
       countdownType === "interval" &&
@@ -118,15 +121,15 @@ const App: React.FC = () => {
       countdown === 1 &&
       countdownType === "interval" &&
       currentInterval === INTERVALS_PER_ROUND &&
-      currentRound === NUMBER_OF_ROUNDS,
+      currentRound === numberOfRounds,
     isNextIntervalInRound:
       currentInterval < INTERVALS_PER_ROUND && countdownType === "interval",
     isNextRestPeriod:
       currentInterval === INTERVALS_PER_ROUND &&
       countdownType === "interval" &&
-      currentRound !== NUMBER_OF_ROUNDS,
+      currentRound !== numberOfRounds,
     isFirstRoundInterval:
-      countdownType === "rest" && currentRound < NUMBER_OF_ROUNDS,
+      countdownType === "rest" && currentRound < numberOfRounds,
   });
 
   // useEffect for the timer
@@ -321,7 +324,7 @@ const App: React.FC = () => {
 
       <TimerDisplay
         currentRound={currentRound}
-        numberOfRounds={NUMBER_OF_ROUNDS}
+        numberOfRounds={numberOfRounds}
         currentInterval={currentInterval}
         intervalsPerRound={INTERVALS_PER_ROUND}
         isResting={isResting}
@@ -334,6 +337,8 @@ const App: React.FC = () => {
         setIsActionBeepEnabled={setIsActionBeepEnabled}
         isAdditiveModeEnabled={isAdditiveModeEnabled}
         setIsAdditiveModeEnabled={setIsAdditiveModeEnabled}
+        numberOfRounds={numberOfRounds}
+        setNumberOfRounds={setNumberOfRounds}
       />
     </div>
   );
