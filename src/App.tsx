@@ -35,7 +35,7 @@ const SPEED_SETTINGS = {
 const App: React.FC = () => {
   // Number of rounds
   const [numberOfRounds, setNumberOfRounds] = useState(NUMBER_OF_ROUNDS);
-
+  const [totalWorkoutDuration, setTotalWorkoutDuration] = useState(numberOfRounds * INTERVAL_TIME * INTERVALS_PER_ROUND + (numberOfRounds - 1) * REST_TIME);
   // State to hold the random combination
   const [currentCombination, setCurrentCombination] =
     useState<Combination | null>(null);
@@ -89,6 +89,11 @@ const App: React.FC = () => {
     setCurrentCombination(getRandomCombination(selectedLevel));
     setCurrentAdditiveSet(getRandomSet());
   }, [selectedLevel]);
+
+  useEffect(() => {
+    const totalDuration = numberOfRounds * INTERVAL_TIME * INTERVALS_PER_ROUND + (numberOfRounds - 1) * REST_TIME;
+    setTotalWorkoutDuration(totalDuration);
+  }, [numberOfRounds]);
 
   const checkConditions = ({
     countdown,
@@ -339,6 +344,7 @@ const App: React.FC = () => {
         setIsAdditiveModeEnabled={setIsAdditiveModeEnabled}
         numberOfRounds={numberOfRounds}
         setNumberOfRounds={setNumberOfRounds}
+        totalWorkoutDuration={totalWorkoutDuration}
       />
     </div>
   );

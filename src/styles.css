@@ -217,9 +217,25 @@ html:has(.is-rest) {
   padding-bottom: 8px;
   font-size: 0.8em;
 }
+.sufix-input {
+  display: flex;
+  flex-direction: row;
+  
+}
+.sufix-input .sufix {
+  border: 2px solid white;
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(256,256,256, 0.1);
+  cursor: default;
+}
 
 .rounds-input {
-  border-radius: 4px;
+  border-radius: 4px 0 0 4px;
   border: 2px solid white;
   padding: 12px 16px;
   font-size: 16px;

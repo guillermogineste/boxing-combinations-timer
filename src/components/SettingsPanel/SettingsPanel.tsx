@@ -13,6 +13,7 @@ interface SettingsPanelProps {
   isAdditiveModeEnabled: boolean;
   setIsAdditiveModeEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   numberOfRounds: number;
+  totalWorkoutDuration: number;
   setNumberOfRounds: React.Dispatch<React.SetStateAction<number>>;
 }
 
@@ -101,7 +102,8 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   setIsAdditiveModeEnabled,
   setSelectedSpeed,
   numberOfRounds,
-  setNumberOfRounds
+  setNumberOfRounds,
+  totalWorkoutDuration
 }) => {
   const handleModeChange = (selectedOption: OptionType | null) => {
     if (selectedOption) {
@@ -112,14 +114,17 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     <div className="settings">
       <div className="selector selector--rounds">
         <label htmlFor="rounds-input">Rounds</label>
-        <input
-          id="rounds-input"
-          type="number"
-          value={numberOfRounds}
-          onChange={(e) => setNumberOfRounds(Number(e.target.value))}
-          min="1"
-          className="rounds-input"
-        />
+        <div className="sufix-input">
+          <input
+            id="rounds-input"
+            type="number"
+            value={numberOfRounds}
+            onChange={(e) => setNumberOfRounds(Number(e.target.value))}
+            min="1"
+            className="rounds-input"
+          />
+          <span className="sufix">{Math.floor(totalWorkoutDuration / 60)} min</span>
+        </div>
     </div>
       <div className="selector selector--level">
         <label htmlFor="level-select">Difficulty</label>
