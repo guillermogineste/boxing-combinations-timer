@@ -65,6 +65,9 @@ const App: React.FC = () => {
     "simple" | "advanced" | "both"
   >("simple");
 
+  // Track stance
+  const [selectedStance, setSelectedStance] = useState<"orthodox" | "southpaw" | "both">("both");
+
   // Random timer
   const [isActionBeepEnabled, setIsActionBeepEnabled] = useState(false);
   const [isActionBeepRunning, setIsActionBeepRunning] = useState(false);
@@ -80,15 +83,16 @@ const App: React.FC = () => {
 
   // Refresh the combination
   const refreshCombination = () => {
-    setCurrentCombination(getRandomCombination(selectedLevel));
-    setCurrentAdditiveSet(getRandomSet());
+    console.log(`Selected stance: ${selectedStance}`);
+    setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
+    setCurrentAdditiveSet(getRandomSet(selectedStance));
   };
 
   // useEffect to set the random combination when the component mounts
   useEffect(() => {
-    setCurrentCombination(getRandomCombination(selectedLevel));
-    setCurrentAdditiveSet(getRandomSet());
-  }, [selectedLevel]);
+    setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
+    setCurrentAdditiveSet(getRandomSet(selectedStance));
+  }, [selectedLevel, selectedStance]);
 
   useEffect(() => {
     const totalDuration = numberOfRounds * INTERVAL_TIME * INTERVALS_PER_ROUND + (numberOfRounds - 1) * REST_TIME;
@@ -163,7 +167,7 @@ const App: React.FC = () => {
           setCountdown(newCountdownDuration);
 
           if (countdownType === "interval") {
-            setCurrentCombination(getRandomCombination(selectedLevel));
+            setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
           }
 
           if (conditions.isNextIntervalInRound) {
@@ -177,7 +181,7 @@ const App: React.FC = () => {
             setCountdownType("interval");
             setCurrentInterval(1);
             setCurrentRound(currentRound + 1);
-            setCurrentAdditiveSet(getRandomSet());
+            setCurrentAdditiveSet(getRandomSet(selectedStance));
           } else {
             // End of woekout
             setIsTimerRunning(false);
@@ -186,8 +190,8 @@ const App: React.FC = () => {
             setIsResting(INITIAL_IS_RESTING);
             setCountdown(INTERVAL_TIME);
             setCountdownType(INITIAL_COUNTDOWN_TYPE);
-            setCurrentCombination(getRandomCombination(selectedLevel));
-            setCurrentAdditiveSet(getRandomSet());
+            setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
+            setCurrentAdditiveSet(getRandomSet(selectedStance));
           }
         }
       }, 1000);
@@ -207,7 +211,7 @@ const App: React.FC = () => {
 
   // Additive mode
   useEffect(() => {
-    setCurrentAdditiveSet(getRandomSet());
+    setCurrentAdditiveSet(getRandomSet(selectedStance));
   }, [isAdditiveModeEnabled]);
 
   // useEffect for the action beep
@@ -277,8 +281,8 @@ const App: React.FC = () => {
     setIsResting(INITIAL_IS_RESTING); // Not resting
     setCountdown(INTERVAL_TIME); // Reset countdown to 60 seconds
     setCountdownType(INITIAL_COUNTDOWN_TYPE); // Set type to interval
-    setCurrentCombination(getRandomCombination(selectedLevel)); // Fetch a new random combination
-    setCurrentAdditiveSet(getRandomSet()); // Fetch a new random set
+    setCurrentCombination(getRandomCombination(selectedLevel, selectedStance)); // Fetch a new random combination
+    setCurrentAdditiveSet(getRandomSet(selectedStance)); // Fetch a new random set
   };
 
   // Function to replay the current interval
@@ -345,6 +349,8 @@ const App: React.FC = () => {
         numberOfRounds={numberOfRounds}
         setNumberOfRounds={setNumberOfRounds}
         totalWorkoutDuration={totalWorkoutDuration}
+        selectedStance={selectedStance}
+        setSelectedStance={setSelectedStance}
       />
     </div>
   );

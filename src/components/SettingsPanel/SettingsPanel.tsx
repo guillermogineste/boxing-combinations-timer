@@ -15,6 +15,8 @@ interface SettingsPanelProps {
   numberOfRounds: number;
   totalWorkoutDuration: number;
   setNumberOfRounds: React.Dispatch<React.SetStateAction<number>>;
+  selectedStance: "orthodox" | "southpaw" | "both";
+  setSelectedStance: (stance: "orthodox" | "southpaw" | "both") => void;
 }
 
 interface OptionType {
@@ -94,6 +96,12 @@ const customStyles: StylesConfig<OptionType, false> = {
   }),
 };
 
+const stanceOptions = [
+  { value: "orthodox", label: "Orthodox" },
+  { value: "southpaw", label: "Southpaw" },
+  { value: "both", label: "Both" }
+];
+
 const SettingsPanel: React.FC<SettingsPanelProps> = ({
   setSelectedLevel,
   isActionBeepEnabled,
@@ -103,7 +111,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   setSelectedSpeed,
   numberOfRounds,
   setNumberOfRounds,
-  totalWorkoutDuration
+  totalWorkoutDuration,
+  selectedStance,
+  setSelectedStance,
 }) => {
   const handleModeChange = (selectedOption: OptionType | null) => {
     if (selectedOption) {
@@ -126,7 +136,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           <span className="sufix">{Math.floor(totalWorkoutDuration / 60)} min</span>
         </div>
     </div>
-      <div className="selector selector--level">
+      {/* <div className="selector selector--level">
         <label htmlFor="level-select">Difficulty</label>
         <Select
           id="level-select"
@@ -141,6 +151,22 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               setSelectedLevel(
                 selectedOption.value as "simple" | "advanced" | "both",
               );
+            }
+          }}
+        />
+      </div> */}
+      <div className="selector selector--stance">
+        <label htmlFor="stance-select">Stance</label>
+        <Select
+          id="stance-select"
+          options={stanceOptions}
+          className="dropdown"
+          styles={customStyles}
+          isSearchable={false}
+          value={stanceOptions.find(option => option.value === selectedStance)}
+          onChange={(selectedOption: OptionType | null) => {
+            if (selectedOption) {
+              setSelectedStance(selectedOption.value as "orthodox" | "southpaw" | "both");
             }
           }}
         />
