@@ -17,8 +17,6 @@ export const getRandomCombination = (
   if (stance !== "both") {
     list = list.filter(combination => combination.stance.includes(stance));
   }
-  console.log (list)
-  // console.log(`Filtered list for stance ${stance}:`, list);
 
   const randomIndex = Math.floor(Math.random() * list.length);
   return list[randomIndex];
