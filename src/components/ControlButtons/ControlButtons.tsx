@@ -3,8 +3,12 @@ interface ControlButtonsProps {
   resetTimer: () => void;
   replayInterval: () => void;
   isTimerRunning: boolean;
-  shouldShowResetButton: boolean;
-  shouldShowReplayButton: boolean;
+  currentRound: number;
+  currentInterval: number;
+  countdown: number;
+  countdownType: "interval" | "rest";
+  intervalTime: number;
+  restTime: number;
 }
 
 const ControlButtons: React.FC<ControlButtonsProps> = ({
@@ -12,9 +16,25 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
   resetTimer,
   replayInterval,
   isTimerRunning,
-  shouldShowResetButton,
-  shouldShowReplayButton
+  currentRound,
+  currentInterval,
+  countdown,
+  countdownType,
+  intervalTime,
+  restTime
 }) => {
+  // Determine if the Reset button should be displayed
+  const shouldShowResetButton =
+    isTimerRunning ||
+    currentRound > 1 ||
+    currentInterval > 1 ||
+    countdown < (countdownType === "interval" ? intervalTime : restTime);
+
+  // Determine if the Replay button should be displayed
+  const shouldShowReplayButton =
+    isTimerRunning ||
+    currentInterval > 1 ||
+    countdown < (countdownType === "interval" ? intervalTime : restTime);
   return (
     <div className="buttons">
       {shouldShowReplayButton && (

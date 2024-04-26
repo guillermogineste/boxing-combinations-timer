@@ -6,6 +6,7 @@ interface DisplayAdditiveSetProps {
   refreshCombination: () => void;
   isResting: boolean;
   currentInterval: number;
+  isTimerRunning: boolean;
 }
 
 const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
@@ -13,6 +14,7 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
   refreshCombination,
   isResting,
   currentInterval,
+  isTimerRunning
 }) => {
   if (!additiveSet) {
     return <div>No data available</div>;
@@ -36,7 +38,9 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
   );
 
   return (
-    <div className="display-combination">
+    <div className={`display-combination display-combination--${
+      isTimerRunning === true ? "running" : "paused"
+    }`}>
       {!isResting &&
         setsArray
           .slice(0, currentInterval)

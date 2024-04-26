@@ -8,12 +8,14 @@ interface DisplayCombinationProps {
   combination: Combination;
   refreshCombination: () => void;
   isResting: boolean;
+  isTimerRunning: boolean;
 }
 
 const DisplayCombination: React.FC<DisplayCombinationProps> = ({
   combination,
   refreshCombination,
-  isResting
+  isResting,
+  isTimerRunning
 }) => {
   let displayText = combination.description;
 
@@ -22,7 +24,9 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
   }
 
   return (
-    <div className="display-combination">
+    <div className={`display-combination display-combination--${
+      isTimerRunning === true ? "running" : "paused"
+    }`}>
       <h1 className="heading heading--1 combination">{displayText}</h1>
       {!isResting && (
         <button className="button button--refresh" onClick={refreshCombination}>
