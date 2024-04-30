@@ -85,7 +85,16 @@ html:has(.is-rest) {
 }
 .heading--2 {
   /* font-size: 1.2em; */
-  font-size: clamp(1em, 2.5vw, 1.2em);
+  font-size: clamp(1.2em, 3vw, 2em);
+}
+.heading--2 {
+  /* font-size: 1.2em; */
+  font-size: clamp(1em, 2vw, 2.2em);
+}
+.heading--2 sup {
+  font-size: 0.6em;
+  vertical-align: super;
+  line-height: 1;
 }
 
 .timer-display {
@@ -150,14 +159,17 @@ html:has(.is-rest) {
   justify-content: center;
 }
 
+
 .button {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
   font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
   padding: 0 16px;
+  gap: 4px;
   font-size: 1em;
   cursor: pointer;
   border: none;
@@ -166,6 +178,7 @@ html:has(.is-rest) {
   border-radius: 4px;
   border: 2px solid white;
   color: white;
+  /* box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 1); */
 }
 .button:last-of-type {
   margin-right: 0;
@@ -175,6 +188,12 @@ html:has(.is-rest) {
 }
 .is-rest .button:hover {
   background: #182d6c;
+}
+
+.button svg {
+  fill: white;
+  width: 24px;
+  height: 24px;
 }
 
 .button--toggle,
@@ -198,17 +217,23 @@ html:has(.is-rest) {
 }
 .button.button--refresh {
   font-size: 0.8em;
-  padding: 8px 12px;
+  padding: 12px 12px;
   align-self: flex-start;
   margin: 8px auto;
+}
+
+.button--full-screen {
+  width: 48px;
+  height: 48px;
 }
 
 /* Settings Panel */
 .settings {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr) auto;
   grid-gap: 3vw;
   margin-top: 3vh;
+  align-items: end;
 }
 
 .selector {
@@ -229,12 +254,15 @@ html:has(.is-rest) {
   border: 2px solid white;
   border-left: 0;
   border-radius: 0 4px 4px 0;
-  width: 60%;
+  width: 70%;
+  padding-left: 8px;
+  padding-right: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(256,256,256, 0.1);
   cursor: default;
+  font-size: 0.8em;
 }
 
 .rounds-input {

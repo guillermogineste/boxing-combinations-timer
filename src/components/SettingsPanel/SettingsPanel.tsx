@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Select, { StylesConfig, Theme } from "react-select";
+
+import { ReactComponent as ExitFullScreenIcon } from "../../icons/fullscreen_exit.svg";
+import { ReactComponent as FullScreenIcon } from "../../icons/fullscreen.svg";
 
 interface SettingsPanelProps {
   setSelectedLevel: React.Dispatch<
@@ -115,11 +118,39 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   selectedStance,
   setSelectedStance,
 }) => {
-  const handleModeChange = (selectedOption: OptionType | null) => {
-    if (selectedOption) {
-      setIsAdditiveModeEnabled(selectedOption.value === "Additive");
+
+  const [isFullScreen, setIsFullScreen] = useState(!!document.fullscreenElement);
+
+  useEffect(() => {
+    const handleFullScreenChange = () => {
+      setIsFullScreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullScreenChange);
+    };
+  }, []);
+
+
+  // const handleModeChange = (selectedOption: OptionType | null) => {
+  //   if (selectedOption) {
+  //     setIsAdditiveModeEnabled(selectedOption.value === "Additive");
+  //   }
+  // };
+
+  const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen(); 
+      }
     }
   };
+
+
   return (
     <div className="settings">
       <div className="selector selector--rounds">
@@ -208,6 +239,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           }}
         />
       </div>
+      <button className="button button--full-screen" onClick={toggleFullScreen}>
+    {isFullScreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
+  </button>
     </div>
   );
 };

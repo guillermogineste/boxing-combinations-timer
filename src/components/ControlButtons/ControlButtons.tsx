@@ -1,3 +1,8 @@
+import { ReactComponent as PlayIcon } from "../../icons/play_arrow.svg";
+import { ReactComponent as PauseIcon } from "../../icons/pause.svg";
+import { ReactComponent as ReplayIcon } from "../../icons/replay.svg";
+import { ReactComponent as StopIcon } from "../../icons/stop.svg";
+
 interface ControlButtonsProps {
   toggleTimer: () => void;
   resetTimer: () => void;
@@ -39,15 +44,18 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
     <div className="buttons">
       {shouldShowReplayButton && (
         <button className="button button--replay" onClick={replayInterval}>
-          ⏮ Replay
+          <ReplayIcon /><span>Replay</span>
         </button>
       )}
       <button className="button button--toggle" onClick={toggleTimer}>
-        {isTimerRunning ? "⏸ Pause" : "⏵ Start"}
+        {isTimerRunning ?
+          (<><PauseIcon /><span>Pause</span></>) :
+          (<><PlayIcon /><span>Play</span></>)
+        }
       </button>
       {shouldShowResetButton && (
         <button className="button button--reset" onClick={resetTimer}>
-          ⏹ Finish
+          <StopIcon /><span>Stop</span>
         </button>
       )}
     </div>

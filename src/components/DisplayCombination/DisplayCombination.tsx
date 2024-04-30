@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactComponent as SyncIcon } from "../../icons/sync.svg";
 
 interface Combination {
   description: string;
@@ -30,7 +31,7 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
       <h1 className="heading heading--1 combination">{displayText}</h1>
       {!isResting && (
         <button className="button button--refresh" onClick={refreshCombination}>
-          Refresh
+          <SyncIcon />
         </button>
       )}
     </div>

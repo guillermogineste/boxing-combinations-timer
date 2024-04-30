@@ -1,5 +1,6 @@
 import React from "react";
 import { AdditiveSet } from "../../types";
+import { ReactComponent as SyncIcon } from "../../icons/sync.svg";
 
 interface DisplayAdditiveSetProps {
   additiveSet: AdditiveSet | null;
@@ -48,8 +49,8 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
       {isResting && <h1 className={`heading heading--1`}>Rest</h1>}
       {!isResting && (
         <button className="button button--refresh" onClick={refreshCombination}>
-          Refresh
-        </button>
+        <SyncIcon />
+      </button>
       )}
     </div>
   );
