@@ -52,7 +52,7 @@ const customStyles: StylesConfig<OptionType, false> = {
     cursor: "pointer",
     padding: "4px 4px",
     fontSize: "16px",
-    borderRadius: "4px",
+    borderRadius: "6px",
     fontFamily: '"IBM Plex Mono", monospace',
     fontWeight: "500",
     background: "transparent",
@@ -69,7 +69,7 @@ const customStyles: StylesConfig<OptionType, false> = {
   }),
   menu: (provided) => ({
     ...provided,
-    borderRadius: "4px",
+    borderRadius: "6px",
     fontWeight: "500",
     background: "#a33934",
     border: "2px solid white",

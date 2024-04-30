@@ -106,6 +106,22 @@ html:has(.is-rest) {
   margin: 1vh 0;
 }
 
+.interval-icons {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+.interval-icons svg{
+  width: 32px;
+  height: 32px;
+  fill: white;
+}
+
+.timer-display.is-resting .heading, 
+.timer-display.is-resting .interval-icons{
+ opacity: 0.4;
+}
+
 /* Countdown timer */
 .countdown {
   /* font-size: 7em; */
@@ -175,7 +191,7 @@ html:has(.is-rest) {
   border: none;
   /* margin-right: 16px; */
   margin-right: 3vw;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 2px solid white;
   color: white;
   /* box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 1); */
@@ -216,10 +232,16 @@ html:has(.is-rest) {
   background-color: #081d5d;
 }
 .button.button--refresh {
-  font-size: 0.8em;
+  /* font-size: 0.8em; */
   padding: 12px 12px;
   align-self: flex-start;
   margin: 8px auto;
+  border: none;
+}
+.button.button--refresh svg {
+  fill: white;
+  width: 24px;
+  height: 24px;
 }
 
 .button--full-screen {

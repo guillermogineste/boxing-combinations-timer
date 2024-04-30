@@ -1,4 +1,6 @@
 import React from "react";
+import { ReactComponent as DotIcon } from "../../icons/dot.svg";
+import { ReactComponent as DotIconFilled } from "../../icons/dot-filled.svg";
 
 interface TimerDisplayProps {
   currentRound: number;
@@ -23,6 +25,8 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({
     return [n, (s[(v - 20) % 10] || s[v] || s[0])];
   };
 
+  const intervals = new Array(intervalsPerRound).fill(null);
+
   return (
     <div className={`timer-display ${isResting ? "is-resting" : "is-working"}`}>
       <span className="countdown">{countdown}</span>
@@ -30,9 +34,11 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({
       <h2 className="heading heading--2 round-info">
         — {getOrdinalSuffix(currentRound)[0]}<sup>{getOrdinalSuffix(currentRound)[1]}</sup> —
       </h2>
-      <h2 className="heading heading--3 interval-info">
-        {currentInterval} of {intervalsPerRound}
-      </h2>
+      <div className="interval-icons">
+        {intervals.map((_, index) => 
+          index < currentInterval ? <DotIconFilled key={index} /> : <DotIcon key={index} />
+        )}
+      </div>
     </div>
   );
 };

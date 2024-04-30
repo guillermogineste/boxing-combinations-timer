@@ -26,6 +26,38 @@ const createAudioNodes = (
   return { oscillator, gainNode };
 };
 
+// const playSingleBeep = (
+//   audioCtx: AudioContext,
+//   frequency: number,
+//   volume: number,
+//   startTime: number,
+//   duration: number,
+// ): void => {
+//   const { oscillator, gainNode } = createAudioNodes(
+//     audioCtx,
+//     frequency,
+//     volume,
+//     startTime,
+//     duration,
+//   );
+
+//   // Set initial gain to 0
+//   gainNode.gain.setValueAtTime(0, startTime);
+
+//   // 5ms ease-in (fade-in)
+//   gainNode.gain.linearRampToValueAtTime(volume, startTime + 0.005);
+
+//   // Start the tone
+//   oscillator.start(startTime);
+
+//   // Schedule the stop time for the oscillator
+//   oscillator.stop(startTime + duration);
+
+//   // 5ms ease-out (fade-out) before stopping
+//   gainNode.gain.setValueAtTime(volume, startTime + duration - 0.005);
+//   gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
+// };
+
 const playSingleBeep = (
   audioCtx: AudioContext,
   frequency: number,
@@ -44,18 +76,20 @@ const playSingleBeep = (
   // Set initial gain to 0
   gainNode.gain.setValueAtTime(0, startTime);
 
-  // 5ms ease-in (fade-in)
-  gainNode.gain.linearRampToValueAtTime(volume, startTime + 0.005);
+  // Attack
+  gainNode.gain.linearRampToValueAtTime(volume, startTime + 0.001); // 1ms
+
+  // Decay and Sustain
+  gainNode.gain.linearRampToValueAtTime(volume * 0.8, startTime + 0.001); // 1ms
+
+  // Release
+  gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
 
   // Start the tone
   oscillator.start(startTime);
 
   // Schedule the stop time for the oscillator
   oscillator.stop(startTime + duration);
-
-  // 5ms ease-out (fade-out) before stopping
-  gainNode.gain.setValueAtTime(volume, startTime + duration - 0.005);
-  gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
 };
 
 /**
