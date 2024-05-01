@@ -1,5 +1,7 @@
 import React from "react";
 import { ReactComponent as SyncIcon } from "../../icons/sync.svg";
+import { ReactComponent as StanceOrthodoxIcon } from "../../icons/stance-orthodox.svg";
+import { ReactComponent as StanceSouthpawIcon } from "../../icons/stance-southpaw.svg";
 import { Tooltip } from "@chakra-ui/react";
 
 interface Combination {
