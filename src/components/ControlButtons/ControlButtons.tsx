@@ -28,6 +28,8 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
   intervalTime,
   restTime
 }) => {
+
+
   // Determine if the Reset button should be displayed
   const shouldShowResetButton =
     isTimerRunning ||

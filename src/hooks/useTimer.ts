@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getRandomCombination } from "../utils/getRandomCombination";
-import { getRandomSet } from "../utils/getRandomSet";
+import { getRandomCombination, resetUsedCombinations } from "../utils/getRandomCombination";
+import { getRandomSet, resetUsedSets } from "../utils/getRandomSet";
 import { playBeep } from "../utils/playBeep";
 import {
     REST_TIME,
@@ -56,6 +56,8 @@ export const useTimer = (
         setCountdownType(INITIAL_COUNTDOWN_TYPE); // Set type to interval
         setCurrentCombination(getRandomCombination(selectedLevel, selectedStance)); // Fetch a new random combination
         setCurrentAdditiveSet(getRandomSet(selectedStance)); // Fetch a new random set
+        resetUsedCombinations();
+        resetUsedSets();
     };
 
     // Function to replay the current interval
@@ -78,7 +80,7 @@ export const useTimer = (
         isStartOfFirstRound:
             currentRound === 1 &&
             currentInterval === 1 &&
-            countdown === INTERVAL_TIME,
+            countdown === intervalTime,
         isEndOfAnInterval:
             countdown === 1 &&
             countdownType === "interval" &&
@@ -131,7 +133,7 @@ export const useTimer = (
                     conditions.isAlmostEndOfRound && playBeep(500, 700, 0.045, 1, 400);
                 } else {
                     const newCountdownDuration =
-                        countdownType === "interval" ? INTERVAL_TIME : REST_TIME;
+                        countdownType === "interval" ? intervalTime : restTime;
                     setCountdown(newCountdownDuration);
 
                     if (countdownType === "interval") {
@@ -143,7 +145,7 @@ export const useTimer = (
                     } else if (conditions.isNextRestPeriod) {
                         setIsResting(true);
                         setCountdownType("rest");
-                        setCountdown(REST_TIME);
+                        setCountdown(restTime);
                     } else if (conditions.isFirstRoundInterval) {
                         setIsResting(false);
                         setCountdownType("interval");
@@ -156,10 +158,12 @@ export const useTimer = (
                         setCurrentRound(INITIAL_ROUND);
                         setCurrentInterval(INITIAL_INTERVAL);
                         setIsResting(INITIAL_IS_RESTING);
-                        setCountdown(INTERVAL_TIME);
+                        setCountdown(intervalTime);
                         setCountdownType(INITIAL_COUNTDOWN_TYPE);
                         setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
                         setCurrentAdditiveSet(getRandomSet(selectedStance));
+                        resetUsedCombinations();
+                        resetUsedSets();
                     }
                 }
             }, 1000);

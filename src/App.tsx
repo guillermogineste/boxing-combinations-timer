@@ -15,30 +15,20 @@ import { playBeep } from "./utils/playBeep";
 import { useTimer } from './hooks/useTimer';
 import { useActionBeep } from './hooks/useActionBeep';
 
+import { ChakraProvider } from "@chakra-ui/react";
+
+import { theme } from './theme';
+
 import {
-  REST_TIME,
   NUMBER_OF_ROUNDS,
   INTERVALS_PER_ROUND,
-  INTERVAL_TIME,
-  INITIAL_ROUND,
-  INITIAL_INTERVAL,
-  INITIAL_IS_RESTING,
-  INITIAL_COUNTDOWN_TYPE,
-  DEBUG_MODE
 } from './constants';
 
-// let intervalTime = INTERVAL_TIME
-// let restTime = REST_TIME
-
-// if (DEBUG_MODE) {
-//   intervalTime = 4;
-//   restTime = 4;
-// }
 
 const App: React.FC = () => {
   // Number of rounds
   const [numberOfRounds, setNumberOfRounds] = useState(NUMBER_OF_ROUNDS);
-  
+
   // State to hold the random combination
   const [currentCombination, setCurrentCombination] =
     useState<Combination | null>(null);
@@ -59,16 +49,16 @@ const App: React.FC = () => {
   const [selectedLevel, setSelectedLevel] = useState<
     "simple" | "advanced" | "both"
   >("simple");
-  
+
   // Track stance
   const [selectedStance, setSelectedStance] = useState<"orthodox" | "southpaw" | "both">("orthodox");
-  
+
   // useEffect to set the random combination when the component mounts
   useEffect(() => {
     setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
     setCurrentAdditiveSet(getRandomSet(selectedStance));
   }, [selectedLevel, selectedStance]);
-  
+
   // Additive mode
   useEffect(() => {
     setCurrentAdditiveSet(getRandomSet(selectedStance));
@@ -104,65 +94,66 @@ const App: React.FC = () => {
     setSelectedSpeed
   } = useActionBeep(isTimerRunning, isResting);
 
-  
-  
   return (
-    <div className={`App ${isResting ? "is-rest" : "is-work"}`}>
-      <ControlButtons
-        toggleTimer={toggleTimer}
-        resetTimer={resetTimer}
-        replayInterval={replayInterval}
-        isTimerRunning={isTimerRunning}
-        currentRound={currentRound}
-        currentInterval={currentInterval}
-        countdown={countdown}
-        countdownType={countdownType}
-        intervalTime={intervalTime}
-        restTime={restTime}
-      />
-      {currentCombination ? (
-        isAdditiveModeEnabled ? (
-          <DisplayAdditiveSet
-            additiveSet={currentAdditiveSet}
-            isResting={isResting}
-            currentInterval={currentInterval}
-            refreshCombination={refreshCombination}
-            isTimerRunning={isTimerRunning}
-          />
+    <ChakraProvider theme={theme}>
+      <div className={`App ${isResting ? "is-rest" : "is-work"}`}>
+        <ControlButtons
+          toggleTimer={toggleTimer}
+          resetTimer={resetTimer}
+          replayInterval={replayInterval}
+          isTimerRunning={isTimerRunning}
+          currentRound={currentRound}
+          currentInterval={currentInterval}
+          countdown={countdown}
+          countdownType={countdownType}
+          intervalTime={intervalTime}
+          restTime={restTime}
+        />
+        {currentCombination ? (
+          isAdditiveModeEnabled ? (
+            <DisplayAdditiveSet
+              additiveSet={currentAdditiveSet}
+              isResting={isResting}
+              currentInterval={currentInterval}
+              refreshCombination={refreshCombination}
+              isTimerRunning={isTimerRunning}
+            />
+          ) : (
+            <DisplayCombination
+              combination={currentCombination}
+              refreshCombination={refreshCombination}
+              isResting={isResting}
+              isTimerRunning={isTimerRunning}
+            />
+          )
         ) : (
-          <DisplayCombination
-            combination={currentCombination}
-            refreshCombination={refreshCombination}
-            isResting={isResting}
-            isTimerRunning={isTimerRunning}
-          />
-        )
-      ) : (
-        <p>Loading...</p>
-      )}
+          <p>Loading...</p>
+        )}
 
-      <TimerDisplay
-        currentRound={currentRound}
-        numberOfRounds={numberOfRounds}
-        currentInterval={currentInterval}
-        intervalsPerRound={INTERVALS_PER_ROUND}
-        isResting={isResting}
-        countdown={countdown}
-      />
-      <SettingsPanel
-        setSelectedLevel={setSelectedLevel}
-        setSelectedSpeed={setSelectedSpeed}
-        isActionBeepEnabled={isActionBeepEnabled}
-        setIsActionBeepEnabled={setIsActionBeepEnabled}
-        isAdditiveModeEnabled={isAdditiveModeEnabled}
-        setIsAdditiveModeEnabled={setIsAdditiveModeEnabled}
-        numberOfRounds={numberOfRounds}
-        setNumberOfRounds={setNumberOfRounds}
-        totalWorkoutDuration={totalWorkoutDuration}
-        selectedStance={selectedStance}
-        setSelectedStance={setSelectedStance}
-      />
-    </div>
+        <TimerDisplay
+          currentRound={currentRound}
+          numberOfRounds={numberOfRounds}
+          currentInterval={currentInterval}
+          intervalsPerRound={INTERVALS_PER_ROUND}
+          isResting={isResting}
+          countdown={countdown}
+        />
+        <SettingsPanel
+          setSelectedLevel={setSelectedLevel}
+          setSelectedSpeed={setSelectedSpeed}
+          isActionBeepEnabled={isActionBeepEnabled}
+          setIsActionBeepEnabled={setIsActionBeepEnabled}
+          isAdditiveModeEnabled={isAdditiveModeEnabled}
+          setIsAdditiveModeEnabled={setIsAdditiveModeEnabled}
+          numberOfRounds={numberOfRounds}
+          setNumberOfRounds={setNumberOfRounds}
+          totalWorkoutDuration={totalWorkoutDuration}
+          selectedStance={selectedStance}
+          setSelectedStance={setSelectedStance}
+          isResting={isResting}
+        />
+      </div>
+    </ChakraProvider>
   );
 };
 

@@ -44,7 +44,6 @@ html:has(.is-rest) {
 .App {
   font-family: "IBM Plex Mono", monospace;
   text-align: center;
-  /* padding: 56px; */
   padding-left: clamp(56px, 10vw, 80px);
   padding-right: clamp(56px, 10vw, 80px);
   padding-top: clamp(56px, 8vh, 80px);

@@ -1,12 +1,13 @@
 import combinations from "../combinations.json";
 import { Combination } from "../types";
 
+let usedCombinations: Combination[] = [];
+
 export const getRandomCombination = (
   type: "simple" | "advanced" | "both",
   stance: "orthodox" | "southpaw" | "both"
 ): Combination => {
   let list: Combination[] = [];
-  
 
   if (type === "both") {
     list = [...combinations.simple, ...combinations.advanced];
@@ -18,6 +19,18 @@ export const getRandomCombination = (
     list = list.filter(combination => combination.stance.includes(stance));
   }
 
-  const randomIndex = Math.floor(Math.random() * list.length);
-  return list[randomIndex];
+  let randomIndex = Math.floor(Math.random() * list.length);
+  let selectedCombination = list[randomIndex];
+
+  while (usedCombinations.includes(selectedCombination)) {
+    randomIndex = Math.floor(Math.random() * list.length);
+    selectedCombination = list[randomIndex];
+  }
+
+  usedCombinations.push(selectedCombination);
+  return selectedCombination;
+};
+
+export const resetUsedCombinations = () => {
+  usedCombinations = [];
 };

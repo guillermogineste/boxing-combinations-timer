@@ -4,6 +4,8 @@ import Select, { StylesConfig, Theme } from "react-select";
 import { ReactComponent as ExitFullScreenIcon } from "../../icons/fullscreen_exit.svg";
 import { ReactComponent as FullScreenIcon } from "../../icons/fullscreen.svg";
 
+import { Tooltip } from "@chakra-ui/react";
+
 interface SettingsPanelProps {
   setSelectedLevel: React.Dispatch<
     React.SetStateAction<"simple" | "advanced" | "both">
@@ -20,6 +22,7 @@ interface SettingsPanelProps {
   setNumberOfRounds: React.Dispatch<React.SetStateAction<number>>;
   selectedStance: "orthodox" | "southpaw" | "both";
   setSelectedStance: (stance: "orthodox" | "southpaw" | "both") => void;
+  isResting: boolean;
 }
 
 interface OptionType {
@@ -117,7 +120,10 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   totalWorkoutDuration,
   selectedStance,
   setSelectedStance,
+  isResting
 }) => {
+
+  const tooltipBg = isResting ? "#182d6c" : "#650d08";
 
   const [isFullScreen, setIsFullScreen] = useState(!!document.fullscreenElement);
 
@@ -133,19 +139,12 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     };
   }, []);
 
-
-  // const handleModeChange = (selectedOption: OptionType | null) => {
-  //   if (selectedOption) {
-  //     setIsAdditiveModeEnabled(selectedOption.value === "Additive");
-  //   }
-  // };
-
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
     } else {
       if (document.exitFullscreen) {
-        document.exitFullscreen(); 
+        document.exitFullscreen();
       }
     }
   };
@@ -166,7 +165,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           />
           <span className="sufix">{Math.floor(totalWorkoutDuration / 60)} min</span>
         </div>
-    </div>
+      </div>
       {/* <div className="selector selector--level">
         <label htmlFor="level-select">Difficulty</label>
         <Select
@@ -239,9 +238,11 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           }}
         />
       </div>
-      <button className="button button--full-screen" onClick={toggleFullScreen}>
-    {isFullScreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
-  </button>
+      <Tooltip label={isFullScreen ? "Exit full screen" : "Full screen"} bg={tooltipBg} px="3" py="2" placement='top'>
+        <button className="button button--full-screen" onClick={toggleFullScreen}>
+          {isFullScreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
+        </button>
+      </Tooltip>
     </div>
   );
 };
