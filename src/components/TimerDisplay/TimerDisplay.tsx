@@ -2,6 +2,8 @@ import React from "react";
 import { ReactComponent as DotIcon } from "../../icons/dot.svg";
 import { ReactComponent as DotIconFilled } from "../../icons/dot-filled.svg";
 
+import { VStack } from "@chakra-ui/react";
+
 interface TimerDisplayProps {
   currentRound: number;
   currentInterval: number;
@@ -28,7 +30,7 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({
   const intervals = new Array(intervalsPerRound).fill(null);
 
   return (
-    <div className={`timer-display ${isResting ? "is-resting" : "is-working"}`}>
+    <VStack className={`timer-display ${isResting ? "is-resting" : "is-working"}`}>
       <span className="countdown">{countdown}</span>
       {/* <h2 className="status">{isResting ? "Resting" : "Working"}</h2> */}
       <h2 className="heading heading--2 round-info">
@@ -39,7 +41,7 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({
           index < currentInterval ? <DotIconFilled key={index} /> : <DotIcon key={index} />
         )}
       </div>
-    </div>
+    </VStack>
   );
 };
 

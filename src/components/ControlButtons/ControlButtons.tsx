@@ -3,6 +3,8 @@ import { ReactComponent as PauseIcon } from "../../icons/pause.svg";
 import { ReactComponent as ReplayIcon } from "../../icons/replay.svg";
 import { ReactComponent as StopIcon } from "../../icons/stop.svg";
 
+import { HStack } from "@chakra-ui/react";
+
 interface ControlButtonsProps {
   toggleTimer: () => void;
   resetTimer: () => void;
@@ -43,7 +45,7 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
     currentInterval > 1 ||
     countdown < (countdownType === "interval" ? intervalTime : restTime);
   return (
-    <div className="buttons">
+    <HStack justifyContent={"center"} gap={"3vw"}>
       {shouldShowReplayButton && (
         <button className="button button--replay" onClick={replayInterval}>
           <ReplayIcon /><span>Replay</span>
@@ -60,7 +62,7 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
           <StopIcon /><span>Stop</span>
         </button>
       )}
-    </div>
+    </HStack>
   );
 };
 

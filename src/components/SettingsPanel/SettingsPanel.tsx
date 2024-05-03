@@ -3,8 +3,10 @@ import Select, { StylesConfig, Theme } from "react-select";
 
 import { ReactComponent as ExitFullScreenIcon } from "../../icons/fullscreen_exit.svg";
 import { ReactComponent as FullScreenIcon } from "../../icons/fullscreen.svg";
+import { ReactComponent as ExpandIcon } from "../../icons/expand.svg";
+import { ReactComponent as CollapseIcon } from "../../icons/collapse.svg";
 
-import { Tooltip } from "@chakra-ui/react";
+import { Tooltip, HStack, Grid } from "@chakra-ui/react";
 
 interface SettingsPanelProps {
   setSelectedLevel: React.Dispatch<
@@ -126,6 +128,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   const tooltipBg = isResting ? "#182d6c" : "#650d08";
 
   const [isFullScreen, setIsFullScreen] = useState(!!document.fullscreenElement);
+  const [isSettingsCollapsed, setIsSettingsCollapsed] = useState(false);
 
   useEffect(() => {
     const handleFullScreenChange = () => {
@@ -149,24 +152,30 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     }
   };
 
+  const toggleSettings = () => {
+    setIsSettingsCollapsed(!isSettingsCollapsed);
+  };
+
 
   return (
-    <div className="settings">
-      <div className="selector selector--rounds">
-        <label htmlFor="rounds-input">Rounds</label>
-        <div className="sufix-input">
-          <input
-            id="rounds-input"
-            type="number"
-            value={numberOfRounds}
-            onChange={(e) => setNumberOfRounds(Number(e.target.value))}
-            min="1"
-            className="rounds-input"
-          />
-          <span className="sufix">{Math.floor(totalWorkoutDuration / 60)} min</span>
-        </div>
-      </div>
-      {/* <div className="selector selector--level">
+    <HStack className="settings-container" gridTemplateColumns={"1fr auto"} gap={"3vw"} alignItems={"end"} width={"100%"}>
+      <HStack className="settings-panel" alignItems={"end"} justifyContent={"flex-start"} flex={"1"}>
+        <Grid className={`settings ${isSettingsCollapsed ? "settings--collapsed" : ""}`} gridTemplateColumns={"repeat(4, 1fr)"} gap={"3vw"}>
+          <div className="selector selector--rounds">
+            <label htmlFor="rounds-input">Rounds</label>
+            <div className="sufix-input">
+              <input
+                id="rounds-input"
+                type="number"
+                value={numberOfRounds}
+                onChange={(e) => setNumberOfRounds(Number(e.target.value))}
+                min="1"
+                className="rounds-input"
+              />
+              <span className="sufix">{Math.floor(totalWorkoutDuration / 60)} min</span>
+            </div>
+          </div>
+          {/* <div className="selector selector--level">
         <label htmlFor="level-select">Difficulty</label>
         <Select
           id="level-select"
@@ -185,65 +194,74 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           }}
         />
       </div> */}
-      <div className="selector selector--stance">
-        <label htmlFor="stance-select">Stance</label>
-        <Select
-          id="stance-select"
-          options={stanceOptions}
-          className="dropdown"
-          styles={customStyles}
-          isSearchable={false}
-          value={stanceOptions.find(option => option.value === selectedStance)}
-          onChange={(selectedOption: OptionType | null) => {
-            if (selectedOption) {
-              setSelectedStance(selectedOption.value as "orthodox" | "southpaw" | "both");
-            }
-          }}
-        />
-      </div>
-      <div className="selector selector--mode">
-        <label htmlFor="mode-select">Combination mode</label>
-        <Select
-          id="mode-select"
-          options={modeOptions}
-          className="dropdown"
-          styles={customStyles}
-          isSearchable={false}
-          value={modeOptions.find(
-            (option) =>
-              option.value === (isAdditiveModeEnabled ? "Additive" : "Random"),
-          )}
-          onChange={(selectedOption: OptionType | null) => {
-            if (selectedOption) {
-              setIsAdditiveModeEnabled(selectedOption.value === "Additive");
-            }
-          }}
-        />
-      </div>
-      <div className="selector selector--speed">
-        <label htmlFor="speed-select">Action beep</label>
-        <Select
-          id="speed-select"
-          options={speedOptions}
-          defaultValue={speedOptions[0]}
-          className="dropdown"
-          styles={customStyles}
-          isSearchable={false}
-          onChange={(selectedOption: OptionType | null) => {
-            if (selectedOption) {
-              setSelectedSpeed(
-                selectedOption.value as "off" | "fast" | "medium" | "slow",
-              );
-            }
-          }}
-        />
-      </div>
+          <div className="selector selector--stance">
+            <label htmlFor="stance-select">Stance</label>
+            <Select
+              id="stance-select"
+              options={stanceOptions}
+              className="dropdown"
+              styles={customStyles}
+              isSearchable={false}
+              value={stanceOptions.find(option => option.value === selectedStance)}
+              onChange={(selectedOption: OptionType | null) => {
+                if (selectedOption) {
+                  setSelectedStance(selectedOption.value as "orthodox" | "southpaw" | "both");
+                }
+              }}
+            />
+          </div>
+          <div className="selector selector--mode">
+            <label htmlFor="mode-select">Combination mode</label>
+            <Select
+              id="mode-select"
+              options={modeOptions}
+              className="dropdown"
+              styles={customStyles}
+              isSearchable={false}
+              value={modeOptions.find(
+                (option) =>
+                  option.value === (isAdditiveModeEnabled ? "Additive" : "Random"),
+              )}
+              onChange={(selectedOption: OptionType | null) => {
+                if (selectedOption) {
+                  setIsAdditiveModeEnabled(selectedOption.value === "Additive");
+                }
+              }}
+            />
+          </div>
+          <div className="selector selector--speed">
+            <label htmlFor="speed-select">Action beep</label>
+            <Select
+              id="speed-select"
+              options={speedOptions}
+              defaultValue={speedOptions[0]}
+              className="dropdown"
+              styles={customStyles}
+              isSearchable={false}
+              onChange={(selectedOption: OptionType | null) => {
+                if (selectedOption) {
+                  setSelectedSpeed(
+                    selectedOption.value as "off" | "fast" | "medium" | "slow",
+                  );
+                }
+              }}
+            />
+          </div>
+        </Grid>
+
+        <Tooltip label={isSettingsCollapsed ? "Expand settings" : "Collapse settings"} bg={tooltipBg} px="3" py="2" placement='top'>
+          <button className="button button--expand" onClick={toggleSettings}>
+            {isSettingsCollapsed ? <ExpandIcon /> : <CollapseIcon />}
+          </button>
+        </Tooltip>
+      </HStack>
+
       <Tooltip label={isFullScreen ? "Exit full screen" : "Full screen"} bg={tooltipBg} px="3" py="2" placement='top'>
         <button className="button button--full-screen" onClick={toggleFullScreen}>
           {isFullScreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
         </button>
       </Tooltip>
-    </div>
+    </HStack>
   );
 };
 

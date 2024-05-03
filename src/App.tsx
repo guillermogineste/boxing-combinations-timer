@@ -15,7 +15,7 @@ import { playBeep } from "./utils/playBeep";
 import { useTimer } from './hooks/useTimer';
 import { useActionBeep } from './hooks/useActionBeep';
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, VStack } from "@chakra-ui/react";
 
 import { theme } from './theme';
 
@@ -96,7 +96,7 @@ const App: React.FC = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <div className={`App ${isResting ? "is-rest" : "is-work"}`}>
+      <VStack justifyContent={"space-between"} className={`app ${isResting ? "is-rest" : "is-work"}`}>
         <ControlButtons
           toggleTimer={toggleTimer}
           resetTimer={resetTimer}
@@ -152,7 +152,7 @@ const App: React.FC = () => {
           setSelectedStance={setSelectedStance}
           isResting={isResting}
         />
-      </div>
+      </VStack>
     </ChakraProvider>
   );
 };

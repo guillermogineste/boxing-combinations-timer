@@ -1,7 +1,7 @@
 import React from "react";
 import { AdditiveSet } from "../../types";
 import { ReactComponent as SyncIcon } from "../../icons/sync.svg";
-import { Tooltip } from "@chakra-ui/react";
+import { Tooltip, VStack } from "@chakra-ui/react";
 
 interface DisplayAdditiveSetProps {
   additiveSet: AdditiveSet | null;
@@ -41,7 +41,7 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
   );
 
   return (
-    <div className={`display-combination display-combination--${isTimerRunning === true ? "running" : "paused"
+    <VStack className={`display-combination--${isTimerRunning === true ? "running" : "paused"
       }`}>
       {!isResting &&
         setsArray
@@ -55,7 +55,7 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
           </button>
         </Tooltip>
       )}
-    </div>
+    </VStack>
   );
 };
 

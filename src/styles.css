@@ -41,8 +41,7 @@ html:has(.is-rest) {
 }
 
 /* App Container */
-.App {
-  font-family: "IBM Plex Mono", monospace;
+.app {
   text-align: center;
   padding-left: clamp(56px, 10vw, 80px);
   padding-right: clamp(56px, 10vw, 80px);
@@ -57,9 +56,9 @@ html:has(.is-rest) {
   height: 1024px;
   width: 90vw;
   transition: all 200ms;
-  display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
 }
 
 /* Background Modes */
@@ -96,10 +95,10 @@ html:has(.is-rest) {
   line-height: 1;
 }
 
-.timer-display {
+/* .timer-display {
   text-align: center;
   padding-bottom: 2vh;
-}
+} */
 .round-info,
 .interval-info {
   margin: 1vh 0;
@@ -134,8 +133,8 @@ html:has(.is-rest) {
   line-height: normal;
 }
 
-.display-combination {
-  /* min-height: 260px; */
+/* .display-combination {
+  min-height: 260px;
   height: clamp(100px, 25vh, 260px);
 
   display: flex;
@@ -143,7 +142,7 @@ html:has(.is-rest) {
   justify-content: center;
   align-content: center;
   align-items: center;
-}
+} */
 .display-combination--paused .heading{
   opacity: .4;
 }
@@ -164,15 +163,15 @@ html:has(.is-rest) {
 }
 
 /* Control Buttons styles */
-.button {
+/* .button {
   font-family: sans-serif;
   font-family: "IBM Plex Mono", monospace;
-}
+} */
 
-.buttons {
+/* .buttons {
   display: flex;
   justify-content: center;
-}
+} */
 
 
 .button {
@@ -189,15 +188,15 @@ html:has(.is-rest) {
   cursor: pointer;
   border: none;
   /* margin-right: 16px; */
-  margin-right: 3vw;
+  /* margin-right: 3vw; */
   border-radius: 6px;
   border: 2px solid white;
   color: white;
   /* box-shadow: 0px 0px 0px 4px rgba(0, 0, 0, 1); */
 }
-.button:last-of-type {
+/* .button:last-of-type {
   margin-right: 0;
-}
+} */
 .button:hover {
   background: #650d08;
 }
@@ -243,18 +242,36 @@ html:has(.is-rest) {
   height: 24px;
 }
 
+.button.button--expand {
+  /* font-size: 0.8em; */
+  padding: 12px 12px;
+  border: none;
+}
+.button.button--expand svg {
+  fill: white;
+  width: 24px;
+  height: 24px;
+}
+
 .button--full-screen {
   width: 48px;
   height: 48px;
 }
 
 /* Settings Panel */
-.settings {
+/* .settings {
   display: grid;
   grid-template-columns: repeat(4, 1fr) auto;
   grid-gap: 3vw;
   margin-top: 3vh;
   align-items: end;
+} */
+.settings-container {
+  height: 76px;
+}
+.settings--collapsed {
+  width: 0;
+  overflow: hidden;
 }
 
 .selector {
@@ -289,7 +306,7 @@ html:has(.is-rest) {
 .rounds-input {
   border-radius: 4px 0 0 4px;
   border: 2px solid white;
-  padding: 12px 16px;
+  padding: 10px 16px;
   font-size: 16px;
   width: 100%;
   text-align: left;

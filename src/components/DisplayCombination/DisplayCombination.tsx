@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactComponent as SyncIcon } from "../../icons/sync.svg";
-import { Tooltip } from "@chakra-ui/react";
+import { Tooltip, VStack } from "@chakra-ui/react";
 
 interface Combination {
   description: string;
@@ -28,7 +28,7 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
   const tooltipBg = isResting ? "#182d6c" : "#650d08";
 
   return (
-    <div className={`display-combination display-combination--${
+    <VStack className={`display-combination--${
       isTimerRunning === true ? "running" : "paused"
     }`}>
       <h1 className="heading heading--1 combination">{displayText}</h1>
@@ -39,7 +39,7 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
           </button>
         </Tooltip>
       )}
-    </div>
+    </VStack>
   );
 };
 
