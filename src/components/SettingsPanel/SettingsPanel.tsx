@@ -5,8 +5,10 @@ import { ReactComponent as ExitFullScreenIcon } from "../../icons/fullscreen_exi
 import { ReactComponent as FullScreenIcon } from "../../icons/fullscreen.svg";
 import { ReactComponent as ExpandIcon } from "../../icons/expand.svg";
 import { ReactComponent as CollapseIcon } from "../../icons/collapse.svg";
+import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
 
-import { Tooltip, HStack, Grid } from "@chakra-ui/react";
+import { Tooltip, HStack, Grid, FormControl, FormLabel, InputGroup, Input, InputRightAddon } from "@chakra-ui/react";
+import { Select as ChakraSelect } from "@chakra-ui/react";
 
 interface SettingsPanelProps {
   setSelectedLevel: React.Dispatch<
@@ -47,63 +49,63 @@ const speedOptions = [
 ];
 
 const modeOptions = [
-  { value: "Random", label: "Single interval" },
-  { value: "Additive", label: "Additive round" },
+  { value: "Random", label: "Single" },
+  { value: "Additive", label: "Additive" },
 ];
 
-const customStyles: StylesConfig<OptionType, false> = {
-  control: (provided, state) => ({
-    ...provided,
-    color: "white",
-    cursor: "pointer",
-    padding: "4px 4px",
-    fontSize: "16px",
-    borderRadius: "6px",
-    fontFamily: '"IBM Plex Mono", monospace',
-    fontWeight: "500",
-    background: "transparent",
-    border: "2px solid white",
-    "&:hover": {
-      backgroundColor: "#650d08",
-    },
-    opacity: state.isDisabled ? 0.5 : 1,
-  }),
-  singleValue: (provided) => ({
-    ...provided,
-    color: "white",
-    textAlign: "left",
-  }),
-  menu: (provided) => ({
-    ...provided,
-    borderRadius: "6px",
-    fontWeight: "500",
-    background: "#a33934",
-    border: "2px solid white",
-    textAlign: "left",
-  }),
-  indicatorSeparator: (provided) => ({
-    ...provided,
-    display: "none",
-  }),
-  dropdownIndicator: (provided) => ({
-    ...provided,
-    color: "white",
-    "&:hover": {
-      color: "white",
-    },
-  }),
-  option: (provided, state) => ({
-    ...provided,
-    padding: "16px",
-    color: "white",
-    backgroundColor: state.isSelected ? "#650d08" : "transparent",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: "#650d08",
-      color: "#fff",
-    },
-  }),
-};
+// const customStyles: StylesConfig<OptionType, false> = {
+//   control: (provided, state) => ({
+//     ...provided,
+//     color: "white",
+//     cursor: "pointer",
+//     padding: "4px 4px",
+//     fontSize: "16px",
+//     borderRadius: "6px",
+//     fontFamily: '"IBM Plex Mono", monospace',
+//     fontWeight: "500",
+//     background: "transparent",
+//     border: "2px solid white",
+//     "&:hover": {
+//       backgroundColor: "#650d08",
+//     },
+//     opacity: state.isDisabled ? 0.5 : 1,
+//   }),
+//   singleValue: (provided) => ({
+//     ...provided,
+//     color: "white",
+//     textAlign: "left",
+//   }),
+//   menu: (provided) => ({
+//     ...provided,
+//     borderRadius: "6px",
+//     fontWeight: "500",
+//     background: "#a33934",
+//     border: "2px solid white",
+//     textAlign: "left",
+//   }),
+//   indicatorSeparator: (provided) => ({
+//     ...provided,
+//     display: "none",
+//   }),
+//   dropdownIndicator: (provided) => ({
+//     ...provided,
+//     color: "white",
+//     "&:hover": {
+//       color: "white",
+//     },
+//   }),
+//   option: (provided, state) => ({
+//     ...provided,
+//     padding: "16px",
+//     color: "white",
+//     backgroundColor: state.isSelected ? "#650d08" : "transparent",
+//     cursor: "pointer",
+//     "&:hover": {
+//       backgroundColor: "#650d08",
+//       color: "#fff",
+//     },
+//   }),
+// };
 
 const stanceOptions = [
   { value: "orthodox", label: "Orthodox" },
@@ -142,7 +144,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
         setIsSettingsCollapsed(true);
       }, 2000); // 2 seconds delay
     }
-  
+
     return () => {
       clearTimeout(timeoutId);
     };
@@ -187,7 +189,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     <HStack className="settings-container" gridTemplateColumns={"1fr auto"} gap={"3vw"} alignItems={"end"} width={"100%"}>
       <HStack className="settings-panel" alignItems={"end"} justifyContent={"flex-start"} flex={"1"}>
         <Grid className={`settings ${isSettingsCollapsed ? "settings--collapsed" : ""}`} gridTemplateColumns={"repeat(4, 1fr)"} gap={"3vw"}>
-          <div className="selector selector--rounds">
+          {/* <div className="selector selector--rounds">
             <label htmlFor="rounds-input">Rounds</label>
             <div className="sufix-input">
               <input
@@ -200,7 +202,29 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               />
               <span className="sufix">{Math.floor(totalWorkoutDuration / 60)} min</span>
             </div>
-          </div>
+          </div> */}
+          <FormControl>
+            <FormLabel htmlFor="rounds-input">Rounds</FormLabel>
+            <InputGroup size="lg">
+              <Input
+                id="rounds-input"
+                type="number"
+                value={numberOfRounds}
+                onChange={(e) => setNumberOfRounds(Number(e.target.value))}
+                min="1"
+                placeholder="mysite"
+                border={"2px solid white"}
+              />
+              <InputRightAddon
+                bg={"rgba(256,256,256, 0.1)"}
+                border={"2px solid white"}
+                borderLeft={0}
+                fontSize={"sm"}
+                children={`${Math.floor(totalWorkoutDuration / 60)} min`}
+                cursor={"default"}
+              />
+            </InputGroup>
+          </FormControl>
           {/* <div className="selector selector--level">
         <label htmlFor="level-select">Difficulty</label>
         <Select
@@ -220,7 +244,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           }}
         />
       </div> */}
-          <div className="selector selector--stance">
+          {/* <div className="selector selector--stance">
             <label htmlFor="stance-select">Stance</label>
             <Select
               id="stance-select"
@@ -235,8 +259,27 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 }
               }}
             />
-          </div>
-          <div className="selector selector--mode">
+          </div> */}
+          <FormControl>
+            <FormLabel htmlFor="stance-select">Stance</FormLabel>
+            <ChakraSelect
+              id="stance-select"
+              placeholder="Select stance"
+              value={selectedStance}
+              onChange={(e) => {
+                setSelectedStance(e.target.value as "orthodox" | "southpaw" | "both");
+              }}
+              size='lg'
+              border={"2px solid white"}
+            >
+              {stanceOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </ChakraSelect>
+          </FormControl>
+          {/* <div className="selector selector--mode">
             <label htmlFor="mode-select">Mode</label>
             <Select
               id="mode-select"
@@ -254,8 +297,27 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 }
               }}
             />
-          </div>
-          <div className="selector selector--speed">
+          </div> */}
+          <FormControl>
+            <FormLabel htmlFor="mode-select">Mode</FormLabel>
+            <ChakraSelect
+              id="mode-select"
+              placeholder="Select mode"
+              value={isAdditiveModeEnabled ? "Additive" : "Random"}
+              onChange={(e) => {
+                setIsAdditiveModeEnabled(e.target.value === "Additive");
+              }}
+              size='lg'
+              border={"2px solid white"}
+            >
+              {modeOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </ChakraSelect>
+          </FormControl>
+          {/* <div className="selector selector--speed">
             <label htmlFor="speed-select">Action beep</label>
             <Select
               id="speed-select"
@@ -272,12 +334,31 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 }
               }}
             />
-          </div>
+          </div> */}
+          <FormControl>
+            <FormLabel htmlFor="speed-select">Action beep</FormLabel>
+            <ChakraSelect
+              id="speed-select"
+              placeholder="Select speed"
+              defaultValue="off"
+              onChange={(e) => {
+                setSelectedSpeed(e.target.value as "off" | "fast" | "medium" | "slow");
+              }}
+              size='lg'
+              border={"2px solid white"}
+            >
+              {speedOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </ChakraSelect>
+          </FormControl>
         </Grid>
 
         <Tooltip label={isSettingsCollapsed ? "Expand settings" : "Collapse settings"} bg={tooltipBg} px="3" py="2" placement='top'>
           <button className="button button--expand" onClick={toggleSettings}>
-            {isSettingsCollapsed ? <ExpandIcon /> : <CollapseIcon />}
+            {isSettingsCollapsed ? <SettingsIcon /> : <CollapseIcon />}
           </button>
         </Tooltip>
       </HStack>
