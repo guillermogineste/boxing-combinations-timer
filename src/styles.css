@@ -266,12 +266,21 @@ html:has(.is-rest) {
   margin-top: 3vh;
   align-items: end;
 } */
+.settings {
+  transition: width 300ms ease-in-out, opacity 200ms ease-in-out;
+  width: 100%;
+  overflow: hidden;
+  opacity: 1;
+}
+.settings > * {
+  min-width: 128px;
+}
 .settings-container {
   height: 76px;
 }
 .settings--collapsed {
   width: 0;
-  overflow: hidden;
+  opacity: 0;
 }
 
 .selector {

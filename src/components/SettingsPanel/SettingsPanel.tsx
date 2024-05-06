@@ -25,6 +25,7 @@ interface SettingsPanelProps {
   selectedStance: "orthodox" | "southpaw" | "both";
   setSelectedStance: (stance: "orthodox" | "southpaw" | "both") => void;
   isResting: boolean;
+  isTimerRunning: boolean;
 }
 
 interface OptionType {
@@ -122,13 +123,41 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   totalWorkoutDuration,
   selectedStance,
   setSelectedStance,
-  isResting
+  isResting,
+  isTimerRunning
 }) => {
 
   const tooltipBg = isResting ? "#182d6c" : "#650d08";
 
   const [isFullScreen, setIsFullScreen] = useState(!!document.fullscreenElement);
   const [isSettingsCollapsed, setIsSettingsCollapsed] = useState(false);
+
+
+  const [lastToggle, setLastToggle] = useState(Date.now());
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    if (isTimerRunning && Date.now() - lastToggle > 2000) {
+      timeoutId = setTimeout(() => {
+        setIsSettingsCollapsed(true);
+      }, 2000); // 2 seconds delay
+    }
+  
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [isTimerRunning, lastToggle]);
+
+  useEffect(() => {
+    if (!isTimerRunning) {
+      setIsSettingsCollapsed(false);
+    }
+  }, [isTimerRunning]);
+
+  const toggleSettings = () => {
+    setIsSettingsCollapsed(!isSettingsCollapsed);
+    setLastToggle(Date.now());
+  };
 
   useEffect(() => {
     const handleFullScreenChange = () => {
@@ -142,6 +171,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     };
   }, []);
 
+
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -150,10 +180,6 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
         document.exitFullscreen();
       }
     }
-  };
-
-  const toggleSettings = () => {
-    setIsSettingsCollapsed(!isSettingsCollapsed);
   };
 
 

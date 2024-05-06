@@ -151,6 +151,7 @@ const App: React.FC = () => {
           selectedStance={selectedStance}
           setSelectedStance={setSelectedStance}
           isResting={isResting}
+          isTimerRunning={isTimerRunning}
         />
       </VStack>
     </ChakraProvider>
