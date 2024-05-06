@@ -259,13 +259,6 @@ html:has(.is-rest) {
 }
 
 /* Settings Panel */
-/* .settings {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) auto;
-  grid-gap: 3vw;
-  margin-top: 3vh;
-  align-items: end;
-} */
 .settings {
   transition: width 300ms ease-in-out, opacity 200ms ease-in-out;
   width: 100%;

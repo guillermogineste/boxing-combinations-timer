@@ -47,8 +47,8 @@ const speedOptions = [
 ];
 
 const modeOptions = [
-  { value: "Random", label: "Random" },
-  { value: "Additive", label: "Additive" },
+  { value: "Random", label: "Single interval" },
+  { value: "Additive", label: "Additive round" },
 ];
 
 const customStyles: StylesConfig<OptionType, false> = {
@@ -237,7 +237,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
             />
           </div>
           <div className="selector selector--mode">
-            <label htmlFor="mode-select">Combination mode</label>
+            <label htmlFor="mode-select">Mode</label>
             <Select
               id="mode-select"
               options={modeOptions}
