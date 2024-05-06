@@ -264,7 +264,6 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
             <FormLabel htmlFor="stance-select">Stance</FormLabel>
             <ChakraSelect
               id="stance-select"
-              placeholder="Select stance"
               value={selectedStance}
               onChange={(e) => {
                 setSelectedStance(e.target.value as "orthodox" | "southpaw" | "both");
@@ -302,7 +301,6 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
             <FormLabel htmlFor="mode-select">Mode</FormLabel>
             <ChakraSelect
               id="mode-select"
-              placeholder="Select mode"
               value={isAdditiveModeEnabled ? "Additive" : "Random"}
               onChange={(e) => {
                 setIsAdditiveModeEnabled(e.target.value === "Additive");
@@ -339,7 +337,6 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
             <FormLabel htmlFor="speed-select">Action beep</FormLabel>
             <ChakraSelect
               id="speed-select"
-              placeholder="Select speed"
               defaultValue="off"
               onChange={(e) => {
                 setSelectedSpeed(e.target.value as "off" | "fast" | "medium" | "slow");
