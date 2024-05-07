@@ -1101,7 +1101,8 @@
         }
       ],
       "stance": [
-        "orthodox"
+        "orthodox",
+        "southpaw"
       ]
     },
     {
@@ -1141,7 +1142,8 @@
         }
       ],
       "stance": [
-        "orthodox"
+        "orthodox",
+        "southpaw"
       ]
     },
     {
@@ -1181,7 +1183,8 @@
         }
       ],
       "stance": [
-        "orthodox"
+        "orthodox",
+        "southpaw"
       ]
     },
     {
@@ -1201,7 +1204,8 @@
         }
       ],
       "stance": [
-        "orthodox"
+        "orthodox",
+        "southpaw"
       ]
     },
     {
@@ -1221,7 +1225,8 @@
         }
       ],
       "stance": [
-        "orthodox"
+        "orthodox",
+        "southpaw"
       ]
     },
     {
@@ -1261,7 +1266,8 @@
         }
       ],
       "stance": [
-        "orthodox"
+        "orthodox",
+        "southpaw"
       ]
     },
     {
@@ -1301,7 +1307,8 @@
         }
       ],
       "stance": [
-        "orthodox"
+        "orthodox",
+        "southpaw"
       ]
     },
     {
@@ -1321,7 +1328,8 @@
         }
       ],
       "stance": [
-        "orthodox"
+        "orthodox",
+        "southpaw"
       ]
     },
     {
@@ -1341,7 +1349,8 @@
         }
       ],
       "stance": [
-        "orthodox"
+        "orthodox",
+        "southpaw"
       ]
     },
     {
@@ -1422,6 +1431,27 @@
       ],
       "stance": [
         "orthodox"
+      ]
+    },
+    {
+      "set1": [
+        {
+          "description": "Only footwork"
+        }
+      ],
+      "set2": [
+        {
+          "description": "Add head movement"
+        }
+      ],
+      "set3": [
+        {
+          "description": "Add jab"
+        }
+      ],
+      "stance": [
+        "orthodox",
+        "southpaw"
       ]
     }
   ]

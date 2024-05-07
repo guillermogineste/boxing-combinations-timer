@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Select, { StylesConfig, Theme } from "react-select";
+// import Select, { StylesConfig, Theme } from "react-select";
 
 import { ReactComponent as ExitFullScreenIcon } from "../../icons/fullscreen_exit.svg";
 import { ReactComponent as FullScreenIcon } from "../../icons/fullscreen.svg";
@@ -7,8 +7,7 @@ import { ReactComponent as ExpandIcon } from "../../icons/expand.svg";
 import { ReactComponent as CollapseIcon } from "../../icons/collapse.svg";
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
 
-import { Tooltip, HStack, Grid, FormControl, FormLabel, InputGroup, Input, InputRightAddon } from "@chakra-ui/react";
-import { Select as ChakraSelect } from "@chakra-ui/react";
+import { Tooltip, HStack, Grid, FormControl, FormLabel, InputGroup, Input, InputRightAddon, Select } from "@chakra-ui/react";
 
 interface SettingsPanelProps {
   setSelectedLevel: React.Dispatch<
@@ -52,60 +51,6 @@ const modeOptions = [
   { value: "Random", label: "Single" },
   { value: "Additive", label: "Additive" },
 ];
-
-// const customStyles: StylesConfig<OptionType, false> = {
-//   control: (provided, state) => ({
-//     ...provided,
-//     color: "white",
-//     cursor: "pointer",
-//     padding: "4px 4px",
-//     fontSize: "16px",
-//     borderRadius: "6px",
-//     fontFamily: '"IBM Plex Mono", monospace',
-//     fontWeight: "500",
-//     background: "transparent",
-//     border: "2px solid white",
-//     "&:hover": {
-//       backgroundColor: "#650d08",
-//     },
-//     opacity: state.isDisabled ? 0.5 : 1,
-//   }),
-//   singleValue: (provided) => ({
-//     ...provided,
-//     color: "white",
-//     textAlign: "left",
-//   }),
-//   menu: (provided) => ({
-//     ...provided,
-//     borderRadius: "6px",
-//     fontWeight: "500",
-//     background: "#a33934",
-//     border: "2px solid white",
-//     textAlign: "left",
-//   }),
-//   indicatorSeparator: (provided) => ({
-//     ...provided,
-//     display: "none",
-//   }),
-//   dropdownIndicator: (provided) => ({
-//     ...provided,
-//     color: "white",
-//     "&:hover": {
-//       color: "white",
-//     },
-//   }),
-//   option: (provided, state) => ({
-//     ...provided,
-//     padding: "16px",
-//     color: "white",
-//     backgroundColor: state.isSelected ? "#650d08" : "transparent",
-//     cursor: "pointer",
-//     "&:hover": {
-//       backgroundColor: "#650d08",
-//       color: "#fff",
-//     },
-//   }),
-// };
 
 const stanceOptions = [
   { value: "orthodox", label: "Orthodox" },
@@ -213,7 +158,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           </FormControl>
           <FormControl>
             <FormLabel htmlFor="stance-select">Stance</FormLabel>
-            <ChakraSelect
+            <Select
               id="stance-select"
               value={selectedStance}
               onChange={(e) => {
@@ -227,11 +172,11 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   {option.label}
                 </option>
               ))}
-            </ChakraSelect>
+            </Select>
           </FormControl>
           <FormControl>
             <FormLabel htmlFor="mode-select">Mode</FormLabel>
-            <ChakraSelect
+            <Select
               id="mode-select"
               value={isAdditiveModeEnabled ? "Additive" : "Random"}
               onChange={(e) => {
@@ -245,11 +190,11 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   {option.label}
                 </option>
               ))}
-            </ChakraSelect>
+            </Select>
           </FormControl>
           <FormControl>
             <FormLabel htmlFor="speed-select">Action beep</FormLabel>
-            <ChakraSelect
+            <Select
               id="speed-select"
               defaultValue="off"
               onChange={(e) => {
@@ -263,7 +208,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                   {option.label}
                 </option>
               ))}
-            </ChakraSelect>
+            </Select>
           </FormControl>
         </Grid>
 
