@@ -22,6 +22,8 @@ export const useTimer = (
     selectedStance: "both" | "orthodox" | "southpaw",
     numberOfRounds: number) => {
 
+    const noSleep = new NoSleep();
+
     let intervalTime = INTERVAL_TIME;
     let restTime = REST_TIME;
 
@@ -44,6 +46,11 @@ export const useTimer = (
 
     const toggleTimer = () => {
         setIsTimerRunning(!isTimerRunning);
+        if (!isTimerRunning) {
+            noSleep.enable();
+        } else {
+            noSleep.disable();
+        }
     };
 
     // Function to reset the timer
