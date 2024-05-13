@@ -101,7 +101,7 @@ html:has(.is-rest) {
 } */
 .round-info,
 .interval-info {
-  margin: 1vh 0;
+  margin: 0 0;
 }
 
 .interval-icons {
@@ -175,7 +175,6 @@ html:has(.is-rest) {
   font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
   padding: 0 16px;
-  gap: 4px;
   font-size: 1em;
   cursor: pointer;
   border: none;
@@ -202,13 +201,37 @@ html:has(.is-rest) {
   height: 24px;
 }
 
+.button--inactive {
+  opacity: .5;
+}
+
 .button--toggle,
 .button--reset,
 .button--replay {
-  width: 100px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   background: transparent;
+  border-radius: 50%;
+  
 }
+.button--toggle span,
+.button--reset span,
+.button--replay span {
+  height: 0;
+  line-height: 28px;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 80ms ease-in-out, opacity 200ms ease-in-out;
+  
+}
+.button--toggle:hover span,
+.button--reset:hover span,
+.button--replay:hover span {
+  height: 28px;
+  opacity: 1;
+  line-height: 28px;
+}
+
 .button--toggle {
   background: #650d08;
 }
@@ -221,6 +244,11 @@ html:has(.is-rest) {
 .is-rest .button--toggle:hover {
   background-color: #081d5d;
 }
+
+.button--inactive {
+  opacity: .6;
+}
+
 .button.button--refresh {
   /* font-size: 0.8em; */
   padding: 12px 12px;

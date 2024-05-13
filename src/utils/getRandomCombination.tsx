@@ -23,9 +23,13 @@ export const getRandomCombination = (
   let selectedCombination = list[randomIndex];
 
   while (usedCombinations.includes(selectedCombination)) {
+    if (usedCombinations.length === list.length) {
+        resetUsedCombinations();
+        break;
+    }
     randomIndex = Math.floor(Math.random() * list.length);
     selectedCombination = list[randomIndex];
-  }
+}
 
   usedCombinations.push(selectedCombination);
   return selectedCombination;

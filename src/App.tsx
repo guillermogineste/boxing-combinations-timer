@@ -15,7 +15,7 @@ import { playBeep } from "./utils/playBeep";
 import { useTimer } from './hooks/useTimer';
 import { useActionBeep } from './hooks/useActionBeep';
 
-import { ChakraProvider, VStack } from "@chakra-ui/react";
+import { ChakraProvider, VStack, Center } from "@chakra-ui/react";
 
 import { theme } from './theme';
 
@@ -96,64 +96,102 @@ const App: React.FC = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <VStack justifyContent={"space-between"} className={`app ${isResting ? "is-rest" : "is-work"}`}>
-        <ControlButtons
-          toggleTimer={toggleTimer}
-          resetTimer={resetTimer}
-          replayInterval={replayInterval}
-          isTimerRunning={isTimerRunning}
-          currentRound={currentRound}
-          currentInterval={currentInterval}
-          countdown={countdown}
-          countdownType={countdownType}
-          intervalTime={intervalTime}
-          restTime={restTime}
-        />
-        {currentCombination ? (
-          isAdditiveModeEnabled ? (
-            <DisplayAdditiveSet
-              additiveSet={currentAdditiveSet}
-              isResting={isResting}
-              currentInterval={currentInterval}
-              refreshCombination={refreshCombination}
-              isTimerRunning={isTimerRunning}
-            />
-          ) : (
-            <DisplayCombination
-              combination={currentCombination}
-              refreshCombination={refreshCombination}
-              isResting={isResting}
-              isTimerRunning={isTimerRunning}
-            />
-          )
-        ) : (
-          <p>Loading...</p>
-        )}
+      <Center
+        w="100vw"
+        h="100vh"
+      >
+        <VStack
+          justifyContent={"space-between"}
+          paddingTop={"120px"}
+          position={"relative"}
+          w={"90vw"}
+          maxW={"1280px"}
+          // h={"80vh"}
+          _before={{
+            // Round shape behind timer
+            content: '""',
+            display: "block",
+            position: "absolute",
+            width: "376px",
+            height: "270px",
+            zIndex: "30",
+            top: "0",
+            outline:"2px solid",
+            outlineColor: "app.background",
+            border: "8px solid black",
+            bg: isResting ? "app.restBackground" : "app.workBackground",
+            borderRadius: "50vw 50vw 8px 8px"
+          }}
+        >
+          <ControlButtons
+            toggleTimer={toggleTimer}
+            resetTimer={resetTimer}
+            replayInterval={replayInterval}
+            isTimerRunning={isTimerRunning}
+            currentRound={currentRound}
+            currentInterval={currentInterval}
+            countdown={countdown}
+            countdownType={countdownType}
+            intervalTime={intervalTime}
+            restTime={restTime}
+            isResting={isResting}
+          />
+          <VStack
+            bg={isResting ? "app.restBackground" : "app.workBackground"}
+            p={"160px 60px 60px 60px"}
+            borderRadius={"clamp(100px, 17vw, 260px) clamp(100px, 17vw, 260px) 40px 40px"}
+            outline={"2px solid"} outlineColor={"app.background"}
+            border={"8px solid black"}
+            w={"100%"}
+            justifyContent={"space-between"}
+          >
+            {currentCombination ? (
+              isAdditiveModeEnabled ? (
+                <DisplayAdditiveSet
+                  additiveSet={currentAdditiveSet}
+                  isResting={isResting}
+                  currentInterval={currentInterval}
+                  refreshCombination={refreshCombination}
+                  isTimerRunning={isTimerRunning}
+                />
+              ) : (
+                <DisplayCombination
+                  combination={currentCombination}
+                  refreshCombination={refreshCombination}
+                  isResting={isResting}
+                  isTimerRunning={isTimerRunning}
+                />
+              )
+            ) : (
+              <p>Loading...</p>
+            )}
 
-        <TimerDisplay
-          currentRound={currentRound}
-          numberOfRounds={numberOfRounds}
-          currentInterval={currentInterval}
-          intervalsPerRound={INTERVALS_PER_ROUND}
-          isResting={isResting}
-          countdown={countdown}
-        />
-        <SettingsPanel
-          setSelectedLevel={setSelectedLevel}
-          setSelectedSpeed={setSelectedSpeed}
-          isActionBeepEnabled={isActionBeepEnabled}
-          setIsActionBeepEnabled={setIsActionBeepEnabled}
-          isAdditiveModeEnabled={isAdditiveModeEnabled}
-          setIsAdditiveModeEnabled={setIsAdditiveModeEnabled}
-          numberOfRounds={numberOfRounds}
-          setNumberOfRounds={setNumberOfRounds}
-          totalWorkoutDuration={totalWorkoutDuration}
-          selectedStance={selectedStance}
-          setSelectedStance={setSelectedStance}
-          isResting={isResting}
-          isTimerRunning={isTimerRunning}
-        />
-      </VStack>
+            <TimerDisplay
+              currentRound={currentRound}
+              numberOfRounds={numberOfRounds}
+              currentInterval={currentInterval}
+              intervalsPerRound={INTERVALS_PER_ROUND}
+              isResting={isResting}
+              countdown={countdown}
+            />
+            <SettingsPanel
+              setSelectedLevel={setSelectedLevel}
+              setSelectedSpeed={setSelectedSpeed}
+              isActionBeepEnabled={isActionBeepEnabled}
+              setIsActionBeepEnabled={setIsActionBeepEnabled}
+              isAdditiveModeEnabled={isAdditiveModeEnabled}
+              setIsAdditiveModeEnabled={setIsAdditiveModeEnabled}
+              numberOfRounds={numberOfRounds}
+              setNumberOfRounds={setNumberOfRounds}
+              totalWorkoutDuration={totalWorkoutDuration}
+              selectedStance={selectedStance}
+              setSelectedStance={setSelectedStance}
+              isResting={isResting}
+              isTimerRunning={isTimerRunning}
+            />
+          </VStack>
+        </VStack>
+      </Center>
     </ChakraProvider>
   );
 };

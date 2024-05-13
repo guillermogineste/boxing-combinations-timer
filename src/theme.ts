@@ -14,6 +14,20 @@ export const theme = extendTheme({
     body: '"IBM Plex Mono", monospace',
     heading: '"IBM Plex Mono", monospace',
   },
+  colors: {
+    brand: {
+      100: "#f7fafc",
+      900: "#1a202c",
+    },
+    app: {
+      background: "#650d08",
+      restBackground: "#182d6c",
+      workBackground: "#a33934",
+      border: "#000000",
+      hover: "#470703",
+      restHover: "#081d5d",
+    },
+  },
   components: {
     Select: {
       baseStyle: {

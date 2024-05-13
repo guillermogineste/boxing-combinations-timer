@@ -28,9 +28,13 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
   const tooltipBg = isResting ? "#182d6c" : "#650d08";
 
   return (
-    <VStack className={`display-combination--${
+    <VStack 
+    className={`display-combination--${
       isTimerRunning === true ? "running" : "paused"
-    }`}>
+    }`}
+    minHeight={"210px"}
+    justifyContent={"center"}
+    >
       <h1 className="heading heading--1 combination">{displayText}</h1>
       {!isResting && (
         <Tooltip label="Refresh combination" bg={tooltipBg} px="3" py="2">

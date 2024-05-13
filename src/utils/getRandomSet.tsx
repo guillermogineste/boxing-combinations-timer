@@ -14,9 +14,13 @@ export const getRandomSet = (stance: "orthodox" | "southpaw" | "both"): Additive
   let selectedSet = list[randomIndex];
 
   while (usedSets.includes(selectedSet)) {
+    if (usedSets.length === list.length) {
+        resetUsedSets();
+        break;
+    }
     randomIndex = Math.floor(Math.random() * list.length);
     selectedSet = list[randomIndex];
-  }
+}
 
   usedSets.push(selectedSet);
   return selectedSet;
