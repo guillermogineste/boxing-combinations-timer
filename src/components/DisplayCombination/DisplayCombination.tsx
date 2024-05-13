@@ -32,7 +32,7 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
     className={`display-combination--${
       isTimerRunning === true ? "running" : "paused"
     }`}
-    minHeight={"210px"}
+    minHeight={"230px"}
     justifyContent={"center"}
     >
       <h1 className="heading heading--1 combination">{displayText}</h1>

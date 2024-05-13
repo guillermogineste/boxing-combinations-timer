@@ -99,6 +99,7 @@ const App: React.FC = () => {
       <Center
         w="100vw"
         h="100vh"
+        className={isResting ? "is-rest resting-bg" : " is-work active-bg"}
       >
         <VStack
           justifyContent={"space-between"}
@@ -117,7 +118,7 @@ const App: React.FC = () => {
             zIndex: "30",
             top: "0",
             outline:"2px solid",
-            outlineColor: "app.background",
+            outlineColor: isResting ? "app.restBackground" : "app.background",
             border: "8px solid black",
             bg: isResting ? "app.restBackground" : "app.workBackground",
             borderRadius: "50vw 50vw 8px 8px"
@@ -140,7 +141,7 @@ const App: React.FC = () => {
             bg={isResting ? "app.restBackground" : "app.workBackground"}
             p={"160px 60px 60px 60px"}
             borderRadius={"clamp(100px, 17vw, 260px) clamp(100px, 17vw, 260px) 40px 40px"}
-            outline={"2px solid"} outlineColor={"app.background"}
+            outline={"2px solid"} outlineColor={isResting ? "app.restBackground" : "app.background"}
             border={"8px solid black"}
             w={"100%"}
             justifyContent={"space-between"}

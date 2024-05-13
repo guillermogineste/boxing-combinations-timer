@@ -2,39 +2,6 @@
 @import url("./reset.css");
 
 html {
-  background: radial-gradient(#650d08 10%, transparent 10%),
-    linear-gradient(
-      45deg,
-      transparent 49.5%,
-      #650d08 49.5% 50.5%,
-      transparent 50.5%
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 49.5%,
-      #650d08 49.5% 50.5%,
-      transparent 50.5%
-    );
-  background-size: 5em 5em;
-  background-color: #000000;
-  opacity: 1;
-  color: white;
-}
-html:has(.is-rest) {
-  background: radial-gradient(#182d6c 10%, transparent 10%),
-    linear-gradient(
-      45deg,
-      transparent 49.5%,
-      #182d6c 49.5% 50.5%,
-      transparent 50.5%
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 49.5%,
-      #182d6c 49.5% 50.5%,
-      transparent 50.5%
-    );
-  background-size: 5em 5em;
   background-color: #000000;
   opacity: 1;
   color: white;
@@ -61,14 +28,47 @@ html:has(.is-rest) {
   /* justify-content: space-between; */
 }
 
+.resting-bg {
+  background: radial-gradient(#182d6c 10%, transparent 10%),
+    linear-gradient(
+      45deg,
+      transparent 49.5%,
+      #182d6c 49.5% 50.5%,
+      transparent 50.5%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 49.5%,
+      #182d6c 49.5% 50.5%,
+      transparent 50.5%
+    );
+  background-size: 5em 5em;
+}
+.active-bg {
+  background: radial-gradient(#650d08 10%, transparent 10%),
+    linear-gradient(
+      45deg,
+      transparent 49.5%,
+      #650d08 49.5% 50.5%,
+      transparent 50.5%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 49.5%,
+      #650d08 49.5% 50.5%,
+      transparent 50.5%
+    );
+  background-size: 5em 5em;
+}
+
 /* Background Modes */
-.is-rest {
+/* .is-rest {
   background-color: #2e4a9b;
   outline: 2px solid #182d6c;
 }
 .is-work {
   background: #a33934;
-}
+} */
 
 /* Typography */
 .heading {
