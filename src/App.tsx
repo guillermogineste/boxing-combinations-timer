@@ -5,20 +5,13 @@ import TimerDisplay from "./components/TimerDisplay/TimerDisplay";
 import ControlButtons from "./components/ControlButtons/ControlButtons";
 import SettingsPanel from "./components/SettingsPanel/SettingsPanel";
 import DisplayAdditiveSet from "./components/DisplayAdditiveSet/DisplayAdditiveSet";
-
 import { Combination, AdditiveSet } from "./types";
-
 import { getRandomCombination } from "./utils/getRandomCombination";
 import { getRandomSet } from "./utils/getRandomSet";
-import { playBeep } from "./utils/playBeep";
-
 import { useTimer } from './hooks/useTimer';
 import { useActionBeep } from './hooks/useActionBeep';
-
 import { ChakraProvider, VStack, Center } from "@chakra-ui/react";
-
 import { theme } from './theme';
-
 import {
   NUMBER_OF_ROUNDS,
   INTERVALS_PER_ROUND,
