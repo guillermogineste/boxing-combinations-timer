@@ -32,18 +32,9 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({
   return (
     <VStack 
     className={`timer-display ${isResting ? "is-resting" : "is-working"}`}
-    mb={"clamp(24px, 3vw, 400px)"}
-    mt={"clamp(24px, 2vw, 100px)"}
+    mt={"clamp(0, 1vh, 100px)"}
     >
-      <h2 className="heading heading--2 round-info">
-        — {getOrdinalSuffix(currentRound)[0]}<sup>{getOrdinalSuffix(currentRound)[1]}</sup> —
-      </h2>
       <span className="countdown">{countdown}</span>
-      <div className="interval-icons">
-        {intervals.map((_, index) => 
-          index < currentInterval ? <DotIconFilled key={index} /> : <DotIcon key={index} />
-        )}
-      </div>
     </VStack>
   );
 };

@@ -22,7 +22,7 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
   let displayText = combination.description;
 
   if (isResting) {
-    displayText = "Rest";
+    displayText = "~ Rest ~";
   }
 
   const tooltipBg = isResting ? "#182d6c" : "#650d08";
@@ -32,7 +32,7 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
     className={`display-combination--${
       isTimerRunning === true ? "running" : "paused"
     }`}
-    minHeight={"230px"}
+    minHeight={"clamp(200px, 25vh, 300px)"}
     justifyContent={"center"}
     >
       <h1 className="heading heading--1 combination">{displayText}</h1>

@@ -11,8 +11,8 @@ export const theme = extendTheme({
     }),
   },
   fonts: {
-    body: '"IBM Plex Mono", monospace',
-    heading: '"IBM Plex Mono", monospace',
+    body: '"logic-monospace", mono',
+    heading: '"logic-monospace", mono',
   },
   colors: {
     brand: {
@@ -37,7 +37,7 @@ export const theme = extendTheme({
           alignItems: "center",
           fontSize: "16px",
           borderRadius: "6px",
-          fontFamily: '"IBM Plex Mono", monospace',
+          fontFamily: '"logic-monospace", mono',
           fontWeight: "500",
           background: "transparent",
           border: "2px solid white",

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 import DisplayCombination from "./components/DisplayCombination/DisplayCombination";
 import TimerDisplay from "./components/TimerDisplay/TimerDisplay";
+import ProgressBar from "./components/ProgressBar/ProgressBar";
 import ControlButtons from "./components/ControlButtons/ControlButtons";
 import SettingsPanel from "./components/SettingsPanel/SettingsPanel";
 import DisplayAdditiveSet from "./components/DisplayAdditiveSet/DisplayAdditiveSet";
@@ -132,9 +133,10 @@ const App: React.FC = () => {
           />
           <VStack
             bg={isResting ? "app.restBackground" : "app.workBackground"}
-            p={"160px 60px 60px 60px"}
+            p={"clamp(140px, 2.1vw, 160px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px)"}
             borderRadius={"clamp(100px, 17vw, 260px) clamp(100px, 17vw, 260px) 40px 40px"}
-            outline={"2px solid"} outlineColor={isResting ? "app.restBackground" : "app.background"}
+            outline={"2px solid"} 
+            outlineColor={isResting ? "app.restBackground" : "app.background"}
             border={"8px solid black"}
             w={"100%"}
             justifyContent={"space-between"}
@@ -167,6 +169,13 @@ const App: React.FC = () => {
               intervalsPerRound={INTERVALS_PER_ROUND}
               isResting={isResting}
               countdown={countdown}
+            />
+            <ProgressBar
+              currentRound={currentRound}
+              numberOfRounds={numberOfRounds}
+              currentInterval={currentInterval}
+              intervalsPerRound={INTERVALS_PER_ROUND}
+              isResting={isResting}
             />
             <SettingsPanel
               setSelectedLevel={setSelectedLevel}

@@ -1,5 +1,83 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,500;1,200;1,300;1,500;1,600&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,500;1,200;1,300;1,500;1,600&display=swap"); */
 @import url("./reset.css");
+
+:root {
+  --primary-bg-color: #650d08;
+  --quadrant-bg-color: #a33934;
+  --active-color: #f63c20;
+  --action-bar-bg-color: #a33934;
+  --button-text-color: white;
+  --button-border-color: white;
+  --button-background-color: transparent;
+  --button-hover-color: lightgray;
+  --segment-bg-color: lightsalmon;
+  --segment-rest-past-color: rgb(180, 88, 190);
+  --segment-rest-future-color: rgb(121, 55, 129);
+  --segment-rest-current-color: rgba(41, 83, 208);
+  --segment-round-past-color: rgb(219, 51, 42);
+  --segment-round-future-color: rgb(156, 30, 30);
+  --segment-round-current-color: rgb(156, 30, 30);
+  --segment-current-span-bg: rgb(219, 51, 42);
+  --aim-dot-bg-color: white;
+}
+
+/* Theme for timer-not-started with rest segment */
+/* .timer-not-started.rest {
+  --primary-bg-color: #182d6c;
+  --quadrant-bg-color: rgba(32, 59, 141, 0.381);
+  --action-bar-bg-color: rgb(32, 59, 141);
+  --segment-rest-past-color: rgb(53, 103, 255);
+  --segment-current-span-bg: rgb(53, 103, 255);
+  --segment-rest-future-color: rgb(11, 43, 141);
+  --segment-rest-current-color: rgb(11, 43, 141);
+  --segment-round-future-color: rgb(69, 40, 95);
+  --segment-round-past-color: rgb(141, 75, 142);
+} */
+
+/* Theme for timer-started with rest segment */
+/* .timer-started.rest {
+  --primary-bg-color: #182d6c;
+  --quadrant-bg-color: rgba(32, 59, 141, 0.381);
+  --action-bar-bg-color: rgb(32, 59, 141);
+  --segment-rest-past-color: rgb(53, 103, 255);
+  --segment-current-span-bg: rgb(53, 103, 255);
+  --segment-rest-future-color: rgb(11, 43, 141);
+  --segment-rest-current-color: rgb(11, 43, 141);
+  --segment-round-future-color: rgb(69, 40, 95);
+  --segment-round-past-color: rgb(141, 75, 142);
+} */
+
+/* Theme for timer-paused with rest segment */
+/* .timer-paused.rest {
+  --primary-bg-color: #182d6c;
+  --quadrant-bg-color: rgba(32, 59, 141, 0.381);
+  --action-bar-bg-color: rgb(32, 59, 141);
+  --segment-rest-past-color: rgb(53, 103, 255);
+  --segment-current-span-bg: rgb(53, 103, 255);
+  --segment-rest-future-color: rgb(11, 43, 141);
+  --segment-rest-current-color: rgb(11, 43, 141);
+  --segment-round-future-color: rgb(69, 40, 95);
+  --segment-round-past-color: rgb(141, 75, 142);
+} */
+
+/* Theme for timer-not-started with round segment */
+.timer-not-started.round {
+  /* --theme-primary-bg-color: #d8e2f2; */
+  /* ... other variables specific to this theme ... */
+}
+
+/* Theme for timer-started with round segment */
+.timer-started.round {
+  /* --theme-primary-bg-color: #e2d8f2; */
+  /* ... other variables specific to this theme ... */
+}
+
+/* Theme for timer-paused with round segment */
+.timer-paused.round {
+  /* --theme-primary-bg-color: #e2f2d8; */
+  /* ... other variables specific to this theme ... */
+}
+
 
 html {
   background-color: #000000;
@@ -16,7 +94,7 @@ html {
   padding-bottom: clamp(56px, 8vh, 80px);
   margin: 4vh auto;
   border-radius: 8px;
-  outline: 2px solid #650d08;
+  outline: 2px solid var(--primary-bg-color);
   border: 6px solid black;
   max-width: 1280px;
   max-height: 90vh;
@@ -45,17 +123,17 @@ html {
   background-size: 5em 5em;
 }
 .active-bg {
-  background: radial-gradient(#650d08 10%, transparent 10%),
+  background: radial-gradient(var(--primary-bg-color) 10%, transparent 10%),
     linear-gradient(
       45deg,
       transparent 49.5%,
-      #650d08 49.5% 50.5%,
+      var(--primary-bg-color) 49.5% 50.5%,
       transparent 50.5%
     ),
     linear-gradient(
       -45deg,
       transparent 49.5%,
-      #650d08 49.5% 50.5%,
+      var(--primary-bg-color) 49.5% 50.5%,
       transparent 50.5%
     );
   background-size: 5em 5em;
@@ -75,17 +153,22 @@ html {
   margin: 0;
   padding: 0;
   font-weight: 500;
+  font-family: "logic-monoscript", mono;
+  font-weight: 500;
+  font-style: normal;
+  word-spacing: -5px;
 }
 
 .heading--1 {
   /* font-size: 2.4em; */
-  font-size: clamp(1.4em, 5vw, 3.6em);
+  font-size: clamp(2em, 4vw, 4.5em);
+  line-height: clamp(1.2em, 2.5vw, 3em);;
 }
 .heading--2 {
   /* font-size: 1.2em; */
-  font-size: clamp(1.2em, 3vw, 2em);
+  font-size: clamp(1em, 2.5vw, 1.8em);
 }
-.heading--2 {
+.heading--3 {
   /* font-size: 1.2em; */
   font-size: clamp(1em, 2vw, 2.2em);
 }
@@ -123,14 +206,15 @@ html {
 /* Countdown timer */
 .countdown {
   /* font-size: 7em; */
-  font-size: clamp(4em, 6.6vw, 7.4em);
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 300;
+  font-size: clamp(3em, 4.5vw, 6em);
+  font-family: "logic-monospace", mono;
+  font-weight: 400;
+  font-style: normal;
   color: white;
   padding: 0;
   margin: 0;
-  font-style: italic;
   line-height: normal;
+  letter-spacing: -4px;
 }
 
 .display-combination--paused .heading{
@@ -171,9 +255,9 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "logic-monospace", mono;
   font-weight: 500;
+  font-style: normal;
   padding: 0 16px;
   font-size: 1em;
   cursor: pointer;
@@ -189,7 +273,7 @@ html {
   margin-right: 0;
 } */
 .button:hover {
-  background: #650d08;
+  background: var(--primary-bg-color);
 }
 .is-rest .button:hover {
   background: #182d6c;
@@ -233,7 +317,7 @@ html {
 }
 
 .button--toggle {
-  background: #650d08;
+  background: var(--primary-bg-color);
 }
 .button--toggle:hover {
   background: #470703;
@@ -335,14 +419,119 @@ html {
   -moz-appearance: textfield;
   appearance: textfield;
   margin: 0;
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: "500";
+  font-family: "logic-monospace", mono;
+  font-weight: 500;
 }
 .rounds-input:hover {
-  background: #650d08;
+  background: var(--primary-bg-color);
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
       -webkit-appearance: none; 
       margin: 0; 
 }
+
+/* .progress-bar {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  height: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 300ms ease-in-out;
+} */
+
+/* .progress-bar.pre-round {
+  opacity: 0.3;
+} */
+/* .progress-bar .segment.current span {
+  opacity: 0;
+} */
+
+/* .segment {
+  height: 100%;
+  position: relative;
+  background: var(--segment-bg-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.segment.rest.past {
+  background-color: var(--segment-rest-past-color);
+}
+.segment.rest.future {
+  background-color: var(--segment-rest-future-color);
+}
+.segment.rest.current {
+  background: var(--segment-rest-current-color);
+}
+
+.segment.round.past {
+  background-color: var(--segment-round-past-color);
+}
+.segment.round.future {
+  background-color: var(--segment-round-future-color);
+}
+.segment.round.current {
+  background: var(--segment-round-current-color);
+}
+.segment.current span {
+  opacity: 1;
+  background: var(--segment-current-span-bg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: width 1s linear;
+} */
+
+
+.progress-bar .round {}
+
+.progress-bar .round--current {
+  
+}
+
+.progress-bar .interval {
+  border: 2px solid white;
+  height: 20px;
+  width: 24px;
+}
+
+.progress-bar .interval--current {
+  background-color: white;
+}
+
+.progress-bar .interval--1 {
+  border-radius: 24px 0 0 24px;
+  border-right: 0;
+}
+
+.progress-bar .interval--2 {
+  border-radius: 0;
+}
+.progress-bar .interval--3 {
+  border-radius: 0 24px 24px 0;
+  border-left: 0;
+}
+
+.progress-bar .rest {
+  border: 2px solid white;
+  border-radius: 24px;
+  height: 20px;
+  width: 20px;
+}
+
+.progress-bar .rest--current {
+  background-color: white;
+}
+
+.progress-bar .interval--past {
+  opacity: .4;
+  background-color: white;
+}
+.progress-bar .rest--past {
+  opacity: .4;
+  background-color: white;
+}
+

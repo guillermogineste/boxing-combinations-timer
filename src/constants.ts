@@ -1,5 +1,5 @@
 export const REST_TIME = 60;
-export const NUMBER_OF_ROUNDS = 12;
+export const NUMBER_OF_ROUNDS = 5;
 export const INTERVALS_PER_ROUND = 3;
 export const INTERVAL_TIME = 60;
 export const INITIAL_ROUND = 1;

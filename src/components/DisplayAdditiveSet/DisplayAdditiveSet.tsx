@@ -47,7 +47,7 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
         setsArray
           .slice(0, currentInterval)
           .map((set, index) => renderSet(set, index))}
-      {isResting && <h1 className={`heading heading--1`}>Rest</h1>}
+      {isResting && <h1 className={`heading heading--1`}>~ Rest ~</h1>}
       {!isResting && (
         <Tooltip label="Refresh combination" bg={tooltipBg} px="3" py="2">
           <button className="button button--refresh" onClick={refreshCombination}>

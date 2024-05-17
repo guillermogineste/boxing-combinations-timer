@@ -133,7 +133,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   return (
     <HStack className="settings-container" gridTemplateColumns={"1fr auto"} gap={"3vw"} alignItems={"end"} width={"100%"}>
       <HStack className="settings-panel" alignItems={"end"} justifyContent={"flex-start"} flex={"1"}>
-        <Grid className={`settings ${isSettingsCollapsed ? "settings--collapsed" : ""}`} gridTemplateColumns={"repeat(4, 1fr)"} gap={"3vw"}>
+        <Grid className={`settings ${isSettingsCollapsed ? "settings--collapsed" : ""}`} gridTemplateColumns={"auto repeat(3, 1fr)"} gap={"2vw"}>
           <FormControl>
             <FormLabel htmlFor="rounds-input">Rounds</FormLabel>
             <InputGroup size="lg">
@@ -145,6 +145,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 min="1"
                 placeholder="mysite"
                 border={"2px solid white"}
+                maxW={"64px"}
               />
               <InputRightAddon
                 bg={"rgba(256,256,256, 0.1)"}
