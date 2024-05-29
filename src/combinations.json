@@ -917,9 +917,7 @@
       "stance": [
         "southpaw"
       ]
-    }
-  ],
-  "advanced": [
+    },
     {
       "description": "Double 1, 2, Slip 1, 2, 3, 2",
       "stance": [
@@ -938,6 +936,116 @@
         "orthodox"
       ]
     },
+    {
+      "description": "3 X Head, 2 X Body",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "1, 2 w/ L step to slip 2",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "1 w/ step to R, 2, 3 or 7",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "2 X Body, 3 X Head",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "3 X Body, 2 X Head",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "2 X Head, 3 X Body",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "3 X Head, 2 X Body",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "1, Slip 1 w/ angle R, 2, Slip 1 w/ angle R, 2",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Pendulum step. 1 Forward, 3 Back, Slip 1 w/ angle right, 2, 3",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Check Hook(3), 4, Pivot L",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "1, Check Hook(3), Roll under 3 x 2",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "2 2, Slip 2 w/ step, 3",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "1 w/ step inside, 4, Roll 4, 2",
+      "stance": [
+        "southpaw"
+      ]
+    },
+    {
+      "description": "2 w/ step outside, Pivot R, 4, 2, 8",
+      "stance": [
+        "southpaw"
+      ]
+    },
+    {
+      "description": "Philly Shell. Slip 1, Pivot R",
+      "stance": [
+        "southpaw"
+      ]
+    },
+    {
+      "description": "Philly Shell. Slip 1, Pivot L",
+      "stance": [
+        "southpaw"
+      ]
+    },
+    {
+      "description": "Philly Shell. Block 2 w/ back hand, Block 3 w/ lead shoulder, Pivot L inside and under lead arm 6 3 6",
+      "stance": [
+        "southpaw"
+      ]
+    },
+    {
+      "description": "Block 2 w/ back hand, Block 3 w/ lead shoulder",
+      "stance": [
+        "southpaw"
+      ]
+    }
+  ],
+  "advanced": [
     {
       "description": "1, 2, Parry L, Block R head, 3, Step back",
       "stance": [
@@ -999,12 +1107,6 @@
       ]
     },
     {
-      "description": "1 w/ step to R, 2, 3 or 7",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
       "description": "1, 2 w/ step to L, Switch hips to L w/ Hook to head, 2, 3 or 7",
       "stance": [
         "orthodox"
@@ -1012,12 +1114,6 @@
     },
     {
       "description": "Parry 1, Block 2, Roll 3, Block 7, 6, 3, 2",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "3 X Head, 2 X Body",
       "stance": [
         "orthodox"
       ]
@@ -1041,30 +1137,6 @@
       ]
     },
     {
-      "description": "2 X Body, 3 X Head",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "3 X Body, 2 X Head",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "2 X Head, 3 X Body",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "3 X Head, 2 X Body",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
       "description": "Parry 1, Forearm block 2, Absorb 3, 3 2",
       "stance": [
         "orthodox"
@@ -1072,12 +1144,6 @@
     },
     {
       "description": "Parry 1, Forearm block 2, Roll 3, 2 3",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "1, 2 w/ L step to slip 2",
       "stance": [
         "orthodox"
       ]
@@ -1243,6 +1309,26 @@
       "set3": [
         {
           "description": "Slip 2, 3, 2"
+        }
+      ],
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "set1": [
+        {
+          "description": "1, Slip 1"
+        }
+      ],
+      "set2": [
+        {
+          "description": "2, 3"
+        }
+      ],
+      "set3": [
+        {
+          "description": "Slip 2, Pivot L, 2"
         }
       ],
       "stance": [
