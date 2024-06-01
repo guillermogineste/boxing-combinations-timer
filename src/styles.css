@@ -172,11 +172,6 @@ html {
   /* font-size: 1.2em; */
   font-size: clamp(1em, 2vw, 2.2em);
 }
-.heading--2 sup {
-  font-size: 0.6em;
-  vertical-align: super;
-  line-height: 1;
-}
 
 /* .timer-display {
   text-align: center;
@@ -390,26 +385,6 @@ html {
   font-size: 0.8em;
   font-weight: 500;
 }
-/* .sufix-input {
-  display: flex;
-  flex-direction: row;
-  
-}
-.sufix-input .sufix {
-  border: 2px solid white;
-  border-left: 0;
-  border-radius: 0 4px 4px 0;
-  width: 70%;
-  padding-left: 8px;
-  padding-right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(256,256,256, 0.1);
-  cursor: default;
-  font-size: 0.8em;
-  font-weight: 500;
-} */
 
 .rounds-input {
   border-radius: 4px 0 0 4px;
@@ -431,67 +406,6 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
       -webkit-appearance: none; 
       margin: 0; 
-}
-
-/* .progress-bar {
-  display: grid;
-  gap: 4px;
-  width: 100%;
-  height: 16px;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 300ms ease-in-out;
-} */
-
-/* .progress-bar.pre-round {
-  opacity: 0.3;
-} */
-/* .progress-bar .segment.current span {
-  opacity: 0;
-} */
-
-/* .segment {
-  height: 100%;
-  position: relative;
-  background: var(--segment-bg-color);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.segment.rest.past {
-  background-color: var(--segment-rest-past-color);
-}
-.segment.rest.future {
-  background-color: var(--segment-rest-future-color);
-}
-.segment.rest.current {
-  background: var(--segment-rest-current-color);
-}
-
-.segment.round.past {
-  background-color: var(--segment-round-past-color);
-}
-.segment.round.future {
-  background-color: var(--segment-round-future-color);
-}
-.segment.round.current {
-  background: var(--segment-round-current-color);
-}
-.segment.current span {
-  opacity: 1;
-  background: var(--segment-current-span-bg);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  transition: width 1s linear;
-} */
-
-
-.progress-bar .round {}
-
-.progress-bar .round--current {
-  
 }
 
 .progress-bar .interval {
@@ -536,4 +450,3 @@ input[type=number]::-webkit-outer-spin-button {
   opacity: .4;
   background-color: white;
 }
-

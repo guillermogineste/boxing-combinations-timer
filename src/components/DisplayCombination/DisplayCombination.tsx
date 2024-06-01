@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactComponent as SyncIcon } from "../../icons/sync.svg";
-import { Tooltip, VStack } from "@chakra-ui/react";
+import { Tooltip, VStack, Heading } from "@chakra-ui/react";
+import { useTheme } from "@chakra-ui/react";
 
 interface Combination {
   description: string;
@@ -19,14 +20,10 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
   isResting,
   isTimerRunning
 }) => {
-  let displayText = combination.description;
-
-  if (isResting) {
-    displayText = "~ Rest ~";
-  }
-
+  const theme = useTheme();
+  let displayText = isResting ? "~ Rest ~" : combination.description;
   const tooltipBg = isResting ? "#182d6c" : "#650d08";
-
+  
   return (
     <VStack 
     className={`display-combination--${
@@ -35,7 +32,14 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
     minHeight={"clamp(200px, 23vh, 300px)"}
     justifyContent={"center"}
     >
-      <h1 className="heading heading--1 combination">{displayText}</h1>
+      <Heading 
+        opacity={theme.resting[String(isTimerRunning)]} 
+        as='h1'
+        size="2x"
+        className="heading heading--1 combination"
+      >
+          {displayText}
+      </Heading>
       {!isResting && (
         <Tooltip label="Refresh combination" bg={tooltipBg} px="3" py="2">
           <button className="button button--refresh" onClick={refreshCombination}>

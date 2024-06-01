@@ -28,6 +28,10 @@ export const theme = extendTheme({
       restHover: "#081d5d",
     },
   },
+  resting: {
+    true: "1",
+    false: "0.4",
+  },
   components: {
     Select: {
       baseStyle: {
@@ -47,6 +51,28 @@ export const theme = extendTheme({
           _disabled: {
             opacity: 0.5,
           },
+        },
+      },
+    },
+    Heading: {
+      baseStyle: {
+        fontFamily: '"logic-monoscript", mono',
+        fontWeight: "500",
+        fontStyle: "normal",
+        wordSpacing: "-5px",
+        margin: "0",
+        padding: "0",
+      },
+      sizes: {
+        "2xl": {
+          fontSize: ["2em", "4vw", "4.5em"],
+          lineHeight: ["1.2em", "2.5vw", "3em"],
+        },
+        "xl": {
+          fontSize: ["1em", "2.5vw", "1.8em"],
+        },
+        "lg": {
+          fontSize: ["1em", "2vw", "2.2em"],
         },
       },
     },

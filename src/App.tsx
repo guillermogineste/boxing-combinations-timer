@@ -170,6 +170,7 @@ const App: React.FC = () => {
             <FocusItemDisplay
               focusItem={currentFocusItem}
               isResting={isResting}
+              isTimerRunning={isTimerRunning}
             />
 
             <TimerDisplay
