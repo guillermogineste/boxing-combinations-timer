@@ -146,6 +146,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 placeholder="mysite"
                 border={"2px solid white"}
                 maxW={"64px"}
+                fontWeight={"500"}
               />
               <InputRightAddon
                 bg={"rgba(256,256,256, 0.1)"}
@@ -154,6 +155,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                 fontSize={"sm"}
                 children={`${Math.floor(totalWorkoutDuration / 60)} min`}
                 cursor={"default"}
+                fontWeight={"500"}
               />
             </InputGroup>
           </FormControl>

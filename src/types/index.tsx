@@ -14,3 +14,7 @@ export interface AdditiveSet {
   set3: Array<{ description: string }>;
   stance: string[];
 }
+
+export interface FocusItem {
+  description: string;
+}

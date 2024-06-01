@@ -13,14 +13,17 @@ import {
     NUMBER_OF_ROUNDS,
     DEBUG_MODE
 } from '../constants';
-import { Combination, AdditiveSet } from "../types";
+import { Combination, AdditiveSet, FocusItem } from "../types";
+import { getRandomFocusItem } from "../utils/getRandomFocusItem";
 
 export const useTimer = (
     setCurrentCombination: (combination: Combination | null) => void,
     setCurrentAdditiveSet: (set: AdditiveSet | null) => void,
     selectedLevel: "simple" | "advanced" | "both",
     selectedStance: "both" | "orthodox" | "southpaw",
-    numberOfRounds: number) => {
+    numberOfRounds: number,
+    setCurrentFocusItem: (focusItem: FocusItem | null) => void
+) => {
 
     const noSleep = new NoSleep();
 
@@ -63,6 +66,7 @@ export const useTimer = (
         setCountdownType(INITIAL_COUNTDOWN_TYPE); // Set type to interval
         setCurrentCombination(getRandomCombination(selectedLevel, selectedStance)); // Fetch a new random combination
         setCurrentAdditiveSet(getRandomSet(selectedStance)); // Fetch a new random set
+        setCurrentFocusItem(getRandomFocusItem());
         resetUsedCombinations();
         resetUsedSets();
     };
@@ -128,6 +132,7 @@ export const useTimer = (
                 currentInterval,
                 currentRound,
             });
+
             if (conditions.isStartOfFirstRound) {
                 playBeep(1200, 650, 0.08, 1);
             }
@@ -159,6 +164,7 @@ export const useTimer = (
                         setCurrentInterval(1);
                         setCurrentRound(currentRound + 1);
                         setCurrentAdditiveSet(getRandomSet(selectedStance));
+                        setCurrentFocusItem(getRandomFocusItem());
                     } else {
                         // End of workout
                         setIsTimerRunning(false);
@@ -169,6 +175,7 @@ export const useTimer = (
                         setCountdownType(INITIAL_COUNTDOWN_TYPE);
                         setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
                         setCurrentAdditiveSet(getRandomSet(selectedStance));
+                        setCurrentFocusItem(getRandomFocusItem());
                         resetUsedCombinations();
                         resetUsedSets();
                     }
@@ -190,6 +197,7 @@ export const useTimer = (
 
     return {
         currentRound,
+        setCurrentFocusItem,
         setCurrentRound,
         currentInterval,
         setCurrentInterval,

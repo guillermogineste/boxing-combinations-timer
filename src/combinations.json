@@ -1540,5 +1540,52 @@
         "southpaw"
       ]
     }
+  ],
+  "focus": [
+    {
+      "description": "Light on your feet, move around"
+    },
+    {
+      "description": "Keep right hand up"
+    },
+    {
+      "description": "Taller opponent"
+    },
+    {
+      "description": "Shorter opponent"
+    },
+    {
+      "description": "Project shoulders, specially on cross"
+    },
+    {
+      "description": "Retract hands fast"
+    },
+    {
+      "description": "Focus on good bladed stance"
+    },
+    {
+      "description": "Pendulum step"
+    },
+    {
+      "description": "Relax"
+    },
+    {
+      "description": "Full power"
+    },
+    {
+      "description": "Jab between combinations"
+    },
+    {
+      "description": "Circle before combination"
+    },
+    {
+      "description": "Elbows close to the body"
+    },
+    {
+      "description": "Defense after punch or combination"
+    },
+    {
+      "description": "Getting in with the jab"
+    }
   ]
 }

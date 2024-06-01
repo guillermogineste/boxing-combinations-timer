@@ -46,7 +46,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
                 const isPastRound = round < currentRound;
                 const isLastRound = round === numberOfRounds;
                 return (
-                    <WrapItem>
+                    <WrapItem key={roundIndex}>
                         <HStack gap={0} key={`round-${round}`} flexGrow={1} className={`round ${isCurrentRound ? 'round--current' : ''} ${isPastRound ? 'round--past' : ''}`}>
                             {renderIntervals(round)}
                             {!isLastRound && (

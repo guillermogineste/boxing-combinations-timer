@@ -388,8 +388,9 @@ html {
   /* text-align: left; */
   padding-bottom: 8px;
   font-size: 0.8em;
+  font-weight: 500;
 }
-.sufix-input {
+/* .sufix-input {
   display: flex;
   flex-direction: row;
   
@@ -407,7 +408,8 @@ html {
   background: rgba(256,256,256, 0.1);
   cursor: default;
   font-size: 0.8em;
-}
+  font-weight: 500;
+} */
 
 .rounds-input {
   border-radius: 4px 0 0 4px;

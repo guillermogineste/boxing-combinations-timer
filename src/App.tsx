@@ -6,9 +6,11 @@ import ProgressBar from "./components/ProgressBar/ProgressBar";
 import ControlButtons from "./components/ControlButtons/ControlButtons";
 import SettingsPanel from "./components/SettingsPanel/SettingsPanel";
 import DisplayAdditiveSet from "./components/DisplayAdditiveSet/DisplayAdditiveSet";
-import { Combination, AdditiveSet } from "./types";
+import FocusItemDisplay from "./components/FocusItemDisplay/FocusItemDisplay";
+import { Combination, AdditiveSet, FocusItem } from "./types";
 import { getRandomCombination } from "./utils/getRandomCombination";
 import { getRandomSet } from "./utils/getRandomSet";
+import { getRandomFocusItem } from "./utils/getRandomFocusItem";
 import { useTimer } from './hooks/useTimer';
 import { useActionBeep } from './hooks/useActionBeep';
 import { ChakraProvider, VStack, Center } from "@chakra-ui/react";
@@ -51,6 +53,7 @@ const App: React.FC = () => {
   useEffect(() => {
     setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
     setCurrentAdditiveSet(getRandomSet(selectedStance));
+    setCurrentFocusItem(getRandomFocusItem());
   }, [selectedLevel, selectedStance]);
 
   // Additive mode
@@ -58,6 +61,8 @@ const App: React.FC = () => {
     setCurrentAdditiveSet(getRandomSet(selectedStance));
   }, [isAdditiveModeEnabled]);
 
+  // Focus
+  const [currentFocusItem, setCurrentFocusItem] = useState<FocusItem | null>(null);
 
   const {
     currentRound,
@@ -78,7 +83,7 @@ const App: React.FC = () => {
     intervalTime,
     restTime,
     totalWorkoutDuration
-  } = useTimer(setCurrentCombination, setCurrentAdditiveSet, selectedLevel, selectedStance, numberOfRounds);
+  } = useTimer(setCurrentCombination, setCurrentAdditiveSet, selectedLevel, selectedStance, numberOfRounds, setCurrentFocusItem);
 
 
   const {
@@ -111,7 +116,7 @@ const App: React.FC = () => {
             height: "270px",
             zIndex: "30",
             top: "0",
-            outline:"2px solid",
+            outline: "2px solid",
             outlineColor: isResting ? "app.restBackground" : "app.background",
             border: "8px solid black",
             bg: isResting ? "app.restBackground" : "app.workBackground",
@@ -135,7 +140,7 @@ const App: React.FC = () => {
             bg={isResting ? "app.restBackground" : "app.workBackground"}
             p={"clamp(140px, 2.1vw, 160px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px)"}
             borderRadius={"clamp(100px, 17vw, 260px) clamp(100px, 17vw, 260px) 40px 40px"}
-            outline={"2px solid"} 
+            outline={"2px solid"}
             outlineColor={isResting ? "app.restBackground" : "app.background"}
             border={"8px solid black"}
             w={"100%"}
@@ -161,6 +166,11 @@ const App: React.FC = () => {
             ) : (
               <p>Loading...</p>
             )}
+
+            <FocusItemDisplay
+              focusItem={currentFocusItem}
+              isResting={isResting}
+            />
 
             <TimerDisplay
               currentRound={currentRound}
