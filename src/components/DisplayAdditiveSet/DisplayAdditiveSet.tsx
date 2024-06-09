@@ -1,7 +1,8 @@
 import React from "react";
 import { AdditiveSet } from "../../types";
 import { ReactComponent as SyncIcon } from "../../icons/sync.svg";
-import { Tooltip, VStack } from "@chakra-ui/react";
+import { Tooltip, VStack, Heading, useTheme } from "@chakra-ui/react";
+
 
 interface DisplayAdditiveSetProps {
   additiveSet: AdditiveSet | null;
@@ -26,16 +27,19 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
 
   const setsArray = [additiveSet.set1, additiveSet.set2, additiveSet.set3];
 
+  const theme = useTheme();
+
   const renderSet = (set: Array<{ description: string }>, index: number) => (
     <div key={index}>
       {set.map((item, idx) => (
-        <h1
-          className={`heading heading--1 additive-set ${currentInterval === index + 1 ? "additive-set--active" : ""
-            }`}
+        <Heading 
+          opacity={ theme.resting[String(isTimerRunning)]}
+          as='h1'
+          size="2xl"
           key={idx}
         >
           {item.description}
-        </h1>
+      </Heading>
       ))}
     </div>
   );

@@ -26,16 +26,14 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
   
   return (
     <VStack 
-    className={`display-combination--${
-      isTimerRunning === true ? "running" : "paused"
-    }`}
+    data-testid="display-combination"
     minHeight={"clamp(200px, 23vh, 300px)"}
     justifyContent={"center"}
     >
       <Heading 
         opacity={theme.resting[String(isTimerRunning)]} 
         as='h1'
-        size="2x"
+        size="2xl"
         className="heading heading--1 combination"
       >
           {displayText}

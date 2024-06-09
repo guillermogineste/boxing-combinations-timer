@@ -131,10 +131,32 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
 
 
   return (
-    <HStack className="settings-container" gridTemplateColumns={"1fr auto"} gap={"3vw"} alignItems={"end"} width={"100%"}>
-      <HStack className="settings-panel" alignItems={"end"} justifyContent={"flex-start"} flex={"1"}>
-        <Grid className={`settings ${isSettingsCollapsed ? "settings--collapsed" : ""}`} gridTemplateColumns={"auto repeat(3, 1fr)"} gap={"2vw"}>
-          <FormControl>
+    <HStack
+      data-testid="settings-container"
+      gridTemplateColumns={"1fr auto"}
+      gap={"3vw"}
+      alignItems={"end"}
+      width={"100%"}
+      h={"76px"}
+    >
+      <HStack
+        data-testid="settings-panel"
+        alignItems={"end"}
+        justifyContent={"flex-start"}
+        flex={"1"}
+      >
+        <Grid
+          data-testid="settings"
+          transition={"width 300ms ease-in-out, opacity 200ms ease-in-out;"}
+          overflow={"hidden"}
+          width={isSettingsCollapsed ? "0" : "100%" }
+          opacity={isSettingsCollapsed ? "0" : "1"}
+          gridTemplateColumns={"auto repeat(3, 1fr)"}
+          gap={"2vw"}
+        >
+          <FormControl
+            minWidth={"128px"}
+          >
             <FormLabel htmlFor="rounds-input">Rounds</FormLabel>
             <InputGroup size="lg">
               <Input
@@ -159,7 +181,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               />
             </InputGroup>
           </FormControl>
-          <FormControl>
+          <FormControl
+            minWidth={"128px"}
+          >
             <FormLabel htmlFor="stance-select">Stance</FormLabel>
             <Select
               id="stance-select"
@@ -177,7 +201,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               ))}
             </Select>
           </FormControl>
-          <FormControl>
+          <FormControl
+            minWidth={"128px"}
+          >
             <FormLabel htmlFor="mode-select">Mode</FormLabel>
             <Select
               id="mode-select"
@@ -195,7 +221,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               ))}
             </Select>
           </FormControl>
-          <FormControl>
+          <FormControl
+            minWidth={"128px"}
+          >
             <FormLabel htmlFor="speed-select">Action beep</FormLabel>
             <Select
               id="speed-select"

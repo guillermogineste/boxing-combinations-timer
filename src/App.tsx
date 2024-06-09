@@ -13,7 +13,7 @@ import { getRandomSet } from "./utils/getRandomSet";
 import { getRandomFocusItem } from "./utils/getRandomFocusItem";
 import { useTimer } from './hooks/useTimer';
 import { useActionBeep } from './hooks/useActionBeep';
-import { ChakraProvider, VStack, Center } from "@chakra-ui/react";
+import { ChakraProvider, VStack, Center, useTheme } from "@chakra-ui/react";
 import { theme } from './theme';
 import {
   NUMBER_OF_ROUNDS,
@@ -93,20 +93,29 @@ const App: React.FC = () => {
     setSelectedSpeed
   } = useActionBeep(isTimerRunning, isResting);
 
+  const restingBackground = `radial-gradient(${theme.colors.app.restBackground} 10%, transparent 10%),
+    linear-gradient(45deg, transparent 49.5%, ${theme.colors.app.restBackground} 49.5% 50.5%, transparent 50.5%),
+    linear-gradient(-45deg, transparent 49.5%, ${theme.colors.app.restBackground} 49.5% 50.5%, transparent 50.5%)`;
+
+  const activeBackground = `radial-gradient(${theme.colors.app.background} 10%, transparent 10%),
+    linear-gradient(45deg, transparent 49.5%, ${theme.colors.app.background} 49.5% 50.5%, transparent 50.5%),
+    linear-gradient(-45deg, transparent 49.5%, ${theme.colors.app.background} 49.5% 50.5%, transparent 50.5%)`;
+
   return (
     <ChakraProvider theme={theme}>
       <Center
         w="100vw"
         h="100vh"
-        className={isResting ? "is-rest resting-bg" : " is-work active-bg"}
+        bg={isResting ? restingBackground : activeBackground}
+        bgSize={"5em 5em"}
       >
         <VStack
+          data-testid="timer-container"
           justifyContent={"space-between"}
           paddingTop={"120px"}
           position={"relative"}
           w={"90vw"}
           maxW={"1280px"}
-          // h={"80vh"}
           _before={{
             // Round shape behind timer
             content: '""',
@@ -137,6 +146,7 @@ const App: React.FC = () => {
             isResting={isResting}
           />
           <VStack
+            data-testid="timer-content"
             bg={isResting ? "app.restBackground" : "app.workBackground"}
             p={"clamp(140px, 2.1vw, 160px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px)"}
             borderRadius={"clamp(100px, 17vw, 260px) clamp(100px, 17vw, 260px) 40px 40px"}
@@ -174,12 +184,8 @@ const App: React.FC = () => {
             />
 
             <TimerDisplay
-              currentRound={currentRound}
-              numberOfRounds={numberOfRounds}
-              currentInterval={currentInterval}
-              intervalsPerRound={INTERVALS_PER_ROUND}
-              isResting={isResting}
               countdown={countdown}
+              isTimerRunning={isTimerRunning}
             />
             <ProgressBar
               currentRound={currentRound}

@@ -68,6 +68,7 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
     countdown < (countdownType === "interval" ? intervalTime : restTime);
   return (
     <VStack
+      className={isResting ? "is-rest" : ""}
       justifyContent={"top"}
       gap={"0"}
       w={"360px"}

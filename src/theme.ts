@@ -62,18 +62,28 @@ export const theme = extendTheme({
         wordSpacing: "-5px",
         margin: "0",
         padding: "0",
+        textAlign: "center",
       },
       sizes: {
         "2xl": {
-          fontSize: ["2em", "4vw", "4.5em"],
-          lineHeight: ["1.2em", "2.5vw", "3em"],
+          fontSize: "clamp(2em, 4vw, 4.5em)",
+          lineHeight: "clamp(1.2em, 2.5vw, 3em)",
         },
         "xl": {
-          fontSize: ["1em", "2.5vw", "1.8em"],
+          fontSize: "clamp(1em, 2.5vw, 1.8em)",
         },
         "lg": {
-          fontSize: ["1em", "2vw", "2.2em"],
+          fontSize: "clamp(1em, 2vw, 2.2em)",
         },
+      },
+    },
+    Text: {
+      baseStyle: {
+        fontFamily: "'logic-monospace', mono",
+        fontWeight: "400",
+        fontStyle: "normal",
+        color: "white",
+        lineHeight: "normal",
       },
     },
   },
