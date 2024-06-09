@@ -1043,6 +1043,66 @@
       "stance": [
         "southpaw"
       ]
+    },
+    {
+      "description": "(Loop) 6, Shuffle R w/ 3, 5 Shuffle L w/ 4",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Pendulum step. FWD 1, Back, FWD 2, Back, 2 3 Slip 2, 7",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Block 4 punches, Exit L w/ 4 (OH), Pivot, 2",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Pivot L w/ step 90º, 2 1 2",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Pivot R w/ step 90º, 2 1 2",
+      "stance": [
+        "southpaw"
+      ]
+    },
+    {
+      "description": "Inside. 7 5, 8 6",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Inside. 3, 7, 3",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Inside. 7, 7, 3",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Inside. 8, 4",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Inside. 8, 5",
+      "stance": [
+        "orthodox"
+      ]
     }
   ],
   "advanced": [
@@ -1586,6 +1646,33 @@
     },
     {
       "description": "Getting in with the jab"
+    },
+    {
+      "description": "Fainting all the time"
+    },
+    {
+      "description": "Threaten and faint all the time"
+    },
+    {
+      "description": "Pivot w/ step after every combination"
+    },
+    {
+      "description": "Loose and fast hands"
+    },
+    {
+      "description": "Relax shoulders"
+    },
+    {
+      "description": "Throw punches w/ body rotation not arms"
+    },
+    {
+      "description": "Effortless, no tension"
+    },
+    {
+      "description": "Speed, each rep faster, relaxed"
+    },
+    {
+      "description": "Pull head back after last strike"
     }
   ]
 }
