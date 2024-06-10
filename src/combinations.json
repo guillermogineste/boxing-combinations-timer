@@ -87,6 +87,20 @@
       ]
     },
     {
+      "description": "2, 6, 7, 3",
+      "stance": [
+        "orthodox",
+        "southpaw"
+      ]
+    },
+    {
+      "description": "6, 2, 3, 7",
+      "stance": [
+        "orthodox",
+        "southpaw"
+      ]
+    },
+    {
       "description": "Block 5, Block 6, Pull back",
       "stance": [
         "orthodox"
