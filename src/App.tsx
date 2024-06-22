@@ -156,6 +156,21 @@ const App: React.FC = () => {
             w={"100%"}
             justifyContent={"space-between"}
           >
+            <SettingsPanel
+              setSelectedLevel={setSelectedLevel}
+              setSelectedSpeed={setSelectedSpeed}
+              isActionBeepEnabled={isActionBeepEnabled}
+              setIsActionBeepEnabled={setIsActionBeepEnabled}
+              isAdditiveModeEnabled={isAdditiveModeEnabled}
+              setIsAdditiveModeEnabled={setIsAdditiveModeEnabled}
+              numberOfRounds={numberOfRounds}
+              setNumberOfRounds={setNumberOfRounds}
+              totalWorkoutDuration={totalWorkoutDuration}
+              selectedStance={selectedStance}
+              setSelectedStance={setSelectedStance}
+              isResting={isResting}
+              isTimerRunning={isTimerRunning}
+            />
             {currentCombination ? (
               isAdditiveModeEnabled ? (
                 <DisplayAdditiveSet
@@ -194,21 +209,7 @@ const App: React.FC = () => {
               intervalsPerRound={INTERVALS_PER_ROUND}
               isResting={isResting}
             />
-            <SettingsPanel
-              setSelectedLevel={setSelectedLevel}
-              setSelectedSpeed={setSelectedSpeed}
-              isActionBeepEnabled={isActionBeepEnabled}
-              setIsActionBeepEnabled={setIsActionBeepEnabled}
-              isAdditiveModeEnabled={isAdditiveModeEnabled}
-              setIsAdditiveModeEnabled={setIsAdditiveModeEnabled}
-              numberOfRounds={numberOfRounds}
-              setNumberOfRounds={setNumberOfRounds}
-              totalWorkoutDuration={totalWorkoutDuration}
-              selectedStance={selectedStance}
-              setSelectedStance={setSelectedStance}
-              isResting={isResting}
-              isTimerRunning={isTimerRunning}
-            />
+            
           </VStack>
         </VStack>
       </Center>
