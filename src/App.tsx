@@ -50,7 +50,7 @@ const App: React.FC = () => {
   useEffect(() => {
     setCurrentCombination(getRandomCombination(selectedStance));
     setCurrentAdditiveSet(getRandomSet(selectedStance));
-    setCurrentFocusItem(getRandomFocusItem());
+    getRandomFocusItem().then(setCurrentFocusItem);
   }, [selectedStance]);
 
   // Additive mode
@@ -154,7 +154,7 @@ const App: React.FC = () => {
             w={"100%"}
             justifyContent={"space-between"}
           >
-            <ApiTest />
+            {/* <ApiTest /> */}
             {currentCombination ? (
               isAdditiveModeEnabled ? (
                 <DisplayAdditiveSet

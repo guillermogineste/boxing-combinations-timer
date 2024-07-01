@@ -60,7 +60,7 @@ export const useTimer = (
         setCountdownType(INITIAL_COUNTDOWN_TYPE); // Set type to interval
         setCurrentCombination(getRandomCombination(selectedStance)); // Fetch a new random combination
         setCurrentAdditiveSet(getRandomSet(selectedStance)); // Fetch a new random set
-        setCurrentFocusItem(getRandomFocusItem());
+        getRandomFocusItem().then(setCurrentFocusItem);
         resetUsedCombinations();
         resetUsedSets();
     };
@@ -158,7 +158,7 @@ export const useTimer = (
                         setCurrentInterval(1);
                         setCurrentRound(currentRound + 1);
                         setCurrentAdditiveSet(getRandomSet(selectedStance));
-                        setCurrentFocusItem(getRandomFocusItem());
+                        getRandomFocusItem().then(setCurrentFocusItem);
                     } else {
                         // End of workout
                         setIsTimerRunning(false);
@@ -169,7 +169,7 @@ export const useTimer = (
                         setCountdownType(INITIAL_COUNTDOWN_TYPE);
                         setCurrentCombination(getRandomCombination(selectedStance));
                         setCurrentAdditiveSet(getRandomSet(selectedStance));
-                        setCurrentFocusItem(getRandomFocusItem());
+                        getRandomFocusItem().then(setCurrentFocusItem);
                         resetUsedCombinations();
                         resetUsedSets();
                     }

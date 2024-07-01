@@ -1,9 +1,9 @@
-import { createClient } from '@sanity/client';
+const { createClient } = require('@sanity/client');
 
 const client = createClient({
-  projectId: 'z0g8iogi', // Your project ID
-  dataset: 'production', // Your dataset name
-  useCdn: true, // `false` if you want to ensure fresh data
+  projectId: 'z0g8iogi',
+  dataset: 'production',
+  useCdn: true,
 });
 
 exports.handler = async (event, context) => {
