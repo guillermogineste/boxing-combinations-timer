@@ -1117,9 +1117,7 @@
       "stance": [
         "orthodox"
       ]
-    }
-  ],
-  "advanced": [
+    },
     {
       "description": "1, 2, Parry L, Block R head, 3, Step back",
       "stance": [
@@ -1139,67 +1137,19 @@
       ]
     },
     {
-      "description": "Parry L, Block 6, 2, 3, Slip L, 2",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "Block 5, 3, Roll R, 1, Block R body, Step R",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "1, Parry 1, 1, Slip 1 6, 3, 2",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "1, Parry 1, 2, Drop to Slip 2, 5, 2, 3",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "1, Parry 1, 1, 2, Roll 3, Roll R Hook(4), 5, 6, 3, 2",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "3, 6, 7, Block 3, Pull 6, Block 7",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "Slip 2 w/ L step (faint), step R w/ L foot, Pivot R, 2, 3, 2",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "1, 2 w/ step to L, Switch hips to L w/ Hook to head, 2, 3 or 7",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "Parry 1, Block 2, Roll 3, Block 7, 6, 3, 2",
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "description": "1, Slip to L w/ L step, 7, Slip 6, Pivot",
+      "description": "Parry L, Block 6, 2, 3, Slip 1, 2",
       "stance": [
         "orthodox"
       ]
     },
     {
       "description": "1, 2 w/ L step, 7, Slip 6, Pivot",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "1, Parry 1, 1, Slip 1, 6, 3, 2",
       "stance": [
         "orthodox"
       ]
@@ -1221,394 +1171,211 @@
       "stance": [
         "orthodox"
       ]
+    },
+    {
+      "description": "3, 6, 7, Block 3, Pull 6, Block 7",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "1, Slip to L w/ L step, 7, Slip 6, Pivot",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Parry 1, Block 2, Roll 3, Block 7, 6, 3, 2",
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "description": "Block 5, 3, Roll 4, 1, Block 7, Step R",
+      "stance": [
+        "orthodox"
+      ]
     }
   ],
   "additive": [
     {
-      "set1": [
-        {
-          "description": "1, 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Parry 1, Block 2"
-        }
-      ],
-      "set3": [
-        {
-          "description": "3, 6"
-        }
-      ],
+      "set1": [{ "description": "1, Parry 1, 2" }],
+      "set2": [{ "description": "Drop to Slip 2, 5" }],
+      "set3": [{ "description": "2, 3"}],
+      "stance": ["orthodox"]
+    },
+    {
+      "set1": [{ "description": "1, Parry 1, 1, 2" }],
+      "set2": [{ "description": "Roll 3, Roll 4, 5, 6" }],
+      "set3": [{ "description": "3, 2"}],
+      "stance": ["orthodox"]
+    },
+    {
+      "set1": [{ "description": "Slip 2 w/ L step (faint), step R w/ L foot" }],
+      "set2": [{ "description": "Pivot R" }],
+      "set3": [{ "description": "2, 3, 2"}],
+      "stance": ["orthodox"]
+    },
+    {
+      "set1": [{ "description": "1, 2 w/ step to L" }],
+      "set2": [{ "description": "Switch hips to L w/ 3" }],
+      "set3": [{ "description": "2, 3 or 7"}],
+      "stance": ["orthodox"]
+    },
+    {
+      "set1": [{ "description": "1, 2" }],
+      "set2": [{ "description": "Parry 1, Block 2" }],
+      "set3": [{ "description": "3, 6"}],
+      "stance": ["orthodox", "southpaw"]
+    },
+    {
+      "set1": [{ "description": "1, 2" }],
+      "set2": [{ "description": "Slip 1, Roll 2" }],
+      "set3": [{ "description": "3, Body 2" }],
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "set1": [{ "description": "3, 6" }],
+      "set2": [{ "description": "Slip 1, Roll 2" }],
+      "set3": [{ "description": "1, 2" }],
       "stance": [
         "orthodox",
         "southpaw"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "1, 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Slip 1, Roll 2"
-        }
-      ],
-      "set3": [
-        {
-          "description": "3, Body 2"
-        }
-      ],
+      "set1": [{ "description": "2, 3" }],
+      "set2": [{ "description": "Block left body, Parry 2" }],
+      "set3": [{ "description": "6, 7" }],
       "stance": [
         "orthodox"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "3, 6"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Slip 1, Roll 2"
-        }
-      ],
-      "set3": [
-        {
-          "description": "1, 2"
-        }
-      ],
+      "set1": [{ "description": "1, 2" }],
+      "set2": [{ "description": "Slip 1, Roll 2" }],
+      "set3": [{ "description": "3, 2" }],
       "stance": [
         "orthodox",
         "southpaw"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "2, 3"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Block left body, Parry 2"
-        }
-      ],
-      "set3": [
-        {
-          "description": "6, 7"
-        }
-      ],
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "set1": [
-        {
-          "description": "1, 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Slip 1, Roll 2"
-        }
-      ],
-      "set3": [
-        {
-          "description": "3, 2"
-        }
-      ],
+      "set1": [{ "description": "1, 1, Body 2" }],
+      "set2": [{ "description": "3, 6" }],
+      "set3": [{ "description": "Slip 2, 7" }],
       "stance": [
         "orthodox",
         "southpaw"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "1, 1, Body 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "3, 6"
-        }
-      ],
-      "set3": [
-        {
-          "description": "Slip 2, 7"
-        }
-      ],
+      "set1": [{ "description": "L foot step inside, Back, L foot step left" }],
+      "set2": [{ "description": "1 w/ step inside, Back, 2 w/ step left" }],
+      "set3": [{ "description": "R foot pull 2, Back, R foot slip 1" }],
       "stance": [
         "orthodox",
         "southpaw"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "L foot step inside, Back, L foot step left"
-        }
-      ],
-      "set2": [
-        {
-          "description": "1 w/ step inside, Back, 2 w/ step left"
-        }
-      ],
-      "set3": [
-        {
-          "description": "R foot pull 2, Back, R foot slip 1"
-        }
-      ],
+      "set1": [{ "description": "Double 1, 2" }],
+      "set2": [{ "description": "Slip 1, 2, 3" }],
+      "set3": [{ "description": "Slip 2, 3, 2" }],
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "set1": [{ "description": "1, Slip 1" }],
+      "set2": [{ "description": "2, 3" }],
+      "set3": [{ "description": "Slip 2, Pivot L, 2" }],
+      "stance": [
+        "orthodox"
+      ]
+    },
+    {
+      "set1": [{ "description": "1, 1, 2" }],
+      "set2": [{ "description": "Pull 2, 3" }],
+      "set3": [{ "description": "Roll 2, 7, 3" }],
       "stance": [
         "orthodox",
         "southpaw"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "Double 1, 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Slip 1, 2, 3"
-        }
-      ],
-      "set3": [
-        {
-          "description": "Slip 2, 3, 2"
-        }
-      ],
+      "set1": [{ "description": "1, Step Right 45º, 2 5 2" }],
+      "set2": [{ "description": "1 1 Forward, Step back 2" }],
+      "set3": [{ "description": "Step Left 45º, 3 2 3" }],
       "stance": [
         "orthodox"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "1, Slip 1"
-        }
-      ],
-      "set2": [
-        {
-          "description": "2, 3"
-        }
-      ],
-      "set3": [
-        {
-          "description": "Slip 2, Pivot L, 2"
-        }
-      ],
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "set1": [
-        {
-          "description": "1, 1, 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Pull 2, 3"
-        }
-      ],
-      "set3": [
-        {
-          "description": "Roll 2, 7, 3"
-        }
-      ],
+      "set1": [{ "description": "1 1 Forward, Step Back 2" }],
+      "set2": [{ "description": "2, 6, 2" }],
+      "set3": [{ "description": "3, 2" }],
       "stance": [
         "orthodox",
         "southpaw"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "1, Step Right 45º, 2 5 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "1 1 Forward, Step back 2"
-        }
-      ],
-      "set3": [
-        {
-          "description": "Step Left 45º, 3 2 3"
-        }
-      ],
-      "stance": [
-        "orthodox"
-      ]
-    },
-    {
-      "set1": [
-        {
-          "description": "1 1 Forward, Step Back 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "2, 6, 2"
-        }
-      ],
-      "set3": [
-        {
-          "description": "3, 2"
-        }
-      ],
+      "set1": [{ "description": "1, 2, 3, 6" }],
+      "set2": [{ "description": "1, 2, 7" }],
+      "set3": [{ "description": "1, 2, 3" }],
       "stance": [
         "orthodox",
         "southpaw"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "1, 2, 3, 6"
-        }
-      ],
-      "set2": [
-        {
-          "description": "1, 2, 7"
-        }
-      ],
-      "set3": [
-        {
-          "description": "1, 2, 3"
-        }
-      ],
+      "set1": [{ "description": "1, 2, 3" }],
+      "set2": [{ "description": "Roll 4, 3, 2" }],
+      "set3": [{ "description": "Roll 3, 2, 3" }],
       "stance": [
         "orthodox",
         "southpaw"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "1, 2, 3"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Roll 4, 3, 2"
-        }
-      ],
-      "set3": [
-        {
-          "description": "Roll 3, 2, 3"
-        }
-      ],
-      "stance": [
-        "orthodox",
-        "southpaw"
-      ]
-    },
-    {
-      "set1": [
-        {
-          "description": "Slip inside, Pull"
-        }
-      ],
-      "set2": [
-        {
-          "description": "2, 3"
-        }
-      ],
-      "set3": [
-        {
-          "description": "3, 7"
-        }
-      ],
+      "set1": [{ "description": "Slip inside, Pull" }],
+      "set2": [{ "description": "2, 3" }],
+      "set3": [{ "description": "3, 7" }],
       "stance": [
         "orthodox"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "1 2, Roll 3, 6 3"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Roll 3, Roll 4 w/ 6"
-        }
-      ],
-      "set3": [
-        {
-          "description": "2, 3"
-        }
-      ],
+      "set1": [{ "description": "1 2, Roll 3, 6 3" }],
+      "set2": [{ "description": "Roll 3, Roll 4 w/ 6" }],
+      "set3": [{ "description": "2, 3" }],
       "stance": [
         "orthodox"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "Parry 1, Forearm block 2, Absorb 3, 3 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Parry 1, Forearm block 2, Roll 3, 2 3"
-        }
-      ],
-      "set3": [
-        {
-          "description": "Parry 1, Forearm block 2, Block 3, 2 3"
-        }
-      ],
+      "set1": [{ "description": "Parry 1, Forearm block 2, Absorb 3, 3 2" }],
+      "set2": [{ "description": "Parry 1, Forearm block 2, Roll 3, 2 3" }],
+      "set3": [{ "description": "Parry 1, Forearm block 2, Block 3, 2 3" }],
       "stance": [
         "orthodox"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "1 1 2, Slip 1 w/ diagonal step, Switch 5 2 5 2"
-        }
-      ],
-      "set2": [
-        {
-          "description": "1 1 2, Slip 1 w/ step and pivot R, 6 3 6 3"
-        }
-      ],
-      "set3": [
-        {
-          "description": "1 1 2, Roll 3 w/ step 2 3 2 3"
-        }
-      ],
+      "set1": [{ "description": "1 1 2, Slip 1 w/ diagonal step, Switch 5 2 5 2" }],
+      "set2": [{ "description": "1 1 2, Slip 1 w/ step and pivot R, 6 3 6 3" }],
+      "set3": [{ "description": "1 1 2, Roll 3 w/ step 2 3 2 3" }],
       "stance": [
         "orthodox"
       ]
     },
     {
-      "set1": [
-        {
-          "description": "Only footwork"
-        }
-      ],
-      "set2": [
-        {
-          "description": "Add head movement"
-        }
-      ],
-      "set3": [
-        {
-          "description": "Add jab"
-        }
-      ],
+      "set1": [{ "description": "Only footwork" }],
+      "set2": [{ "description": "Add head movement" }],
+      "set3": [{ "description": "Add jab" }],
       "stance": [
         "orthodox",
         "southpaw"

@@ -20,6 +20,8 @@ import {
   INTERVALS_PER_ROUND,
 } from './constants';
 
+import ApiTest from "./components/ApiTest/ApiTest";
+
 
 const App: React.FC = () => {
   // Number of rounds
@@ -152,6 +154,7 @@ const App: React.FC = () => {
             w={"100%"}
             justifyContent={"space-between"}
           >
+            <ApiTest />
             {currentCombination ? (
               isAdditiveModeEnabled ? (
                 <DisplayAdditiveSet
