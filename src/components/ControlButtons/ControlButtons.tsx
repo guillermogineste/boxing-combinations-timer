@@ -60,12 +60,23 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
     currentRound > 1 ||
     currentInterval > 1 ||
     countdown < (countdownType === "interval" ? intervalTime : restTime);
-
   // Determine if the Replay button should be displayed
   const shouldShowReplayButton =
     isTimerRunning ||
     currentInterval > 1 ||
     countdown < (countdownType === "interval" ? intervalTime : restTime);
+  const maskShape ={
+    // Block to hide border
+    content: '""', // necessary for ::before to work
+    display: "block",
+    position: "absolute",
+    width: "390px",
+    height: "144px",
+    backgroundColor: "blue",
+    zIndex: "-1",
+    bottom: "-12px",
+    bg: isResting ? "app.restBackground" : "app.workBackground"
+  }
   return (
     <VStack
       className={isResting ? "is-rest" : ""}
@@ -80,18 +91,7 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
       borderRadius={"50vw 50vw 8px 8px"}
       top={0}
       zIndex={"50"}
-      _before={{
-        // Block to hide border
-        content: '""', // necessary for ::before to work
-        display: "block",
-        position: "absolute",
-        width: "390px",
-        height: "144px",
-        backgroundColor: "blue",
-        zIndex: "-1",
-        bottom: "-12px",
-        bg: isResting ? "app.restBackground" : "app.workBackground",
-      }}
+      _before={maskShape}
     >
 
       <button className={`button button--toggle button--${inactiveStateClass}`} onClick={toggleTimer}>

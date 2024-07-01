@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import { HStack, Box, Wrap, WrapItem } from "@chakra-ui/react";
 
 interface ProgressBarProps {

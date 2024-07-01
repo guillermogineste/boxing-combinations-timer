@@ -24,9 +24,7 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
   }
 
   const tooltipBg = isResting ? "#182d6c" : "#650d08";
-
   const setsArray = [additiveSet.set1, additiveSet.set2, additiveSet.set3];
-
   const theme = useTheme();
 
   const renderSet = (set: Array<{ description: string }>, index: number) => (

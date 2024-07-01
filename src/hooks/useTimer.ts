@@ -19,7 +19,6 @@ import { getRandomFocusItem } from "../utils/getRandomFocusItem";
 export const useTimer = (
     setCurrentCombination: (combination: Combination | null) => void,
     setCurrentAdditiveSet: (set: AdditiveSet | null) => void,
-    selectedLevel: "simple" | "advanced" | "both",
     selectedStance: "both" | "orthodox" | "southpaw",
     numberOfRounds: number,
     setCurrentFocusItem: (focusItem: FocusItem | null) => void
@@ -27,13 +26,8 @@ export const useTimer = (
 
     const noSleep = new NoSleep();
 
-    let intervalTime = INTERVAL_TIME;
-    let restTime = REST_TIME;
-
-    if (DEBUG_MODE) {
-        intervalTime = 4;
-        restTime = 4;
-    }
+    const intervalTime = DEBUG_MODE ? 4 : INTERVAL_TIME;
+    const restTime = DEBUG_MODE ? 4 : REST_TIME;
 
 
     const [currentRound, setCurrentRound] = useState(1);
@@ -64,7 +58,7 @@ export const useTimer = (
         setIsResting(INITIAL_IS_RESTING); // Not resting
         setCountdown(intervalTime); // Reset countdown to 60 seconds
         setCountdownType(INITIAL_COUNTDOWN_TYPE); // Set type to interval
-        setCurrentCombination(getRandomCombination(selectedLevel, selectedStance)); // Fetch a new random combination
+        setCurrentCombination(getRandomCombination(selectedStance)); // Fetch a new random combination
         setCurrentAdditiveSet(getRandomSet(selectedStance)); // Fetch a new random set
         setCurrentFocusItem(getRandomFocusItem());
         resetUsedCombinations();
@@ -149,7 +143,7 @@ export const useTimer = (
                     setCountdown(newCountdownDuration);
 
                     if (countdownType === "interval") {
-                        setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
+                        setCurrentCombination(getRandomCombination(selectedStance));
                     }
 
                     if (conditions.isNextIntervalInRound) {
@@ -173,7 +167,7 @@ export const useTimer = (
                         setIsResting(INITIAL_IS_RESTING);
                         setCountdown(intervalTime);
                         setCountdownType(INITIAL_COUNTDOWN_TYPE);
-                        setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
+                        setCurrentCombination(getRandomCombination(selectedStance));
                         setCurrentAdditiveSet(getRandomSet(selectedStance));
                         setCurrentFocusItem(getRandomFocusItem());
                         resetUsedCombinations();
@@ -191,8 +185,7 @@ export const useTimer = (
         currentRound,
         currentInterval,
         isTimerRunning,
-        countdownType,
-        selectedLevel,
+        countdownType
     ]);
 
     return {

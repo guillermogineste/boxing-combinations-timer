@@ -13,7 +13,7 @@ import { getRandomSet } from "./utils/getRandomSet";
 import { getRandomFocusItem } from "./utils/getRandomFocusItem";
 import { useTimer } from './hooks/useTimer';
 import { useActionBeep } from './hooks/useActionBeep';
-import { ChakraProvider, VStack, Center, useTheme } from "@chakra-ui/react";
+import { ChakraProvider, VStack, Center } from "@chakra-ui/react";
 import { theme } from './theme';
 import {
   NUMBER_OF_ROUNDS,
@@ -37,24 +37,19 @@ const App: React.FC = () => {
 
   // Refresh the combination
   const refreshCombination = () => {
-    setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
+    setCurrentCombination(getRandomCombination(selectedStance));
     setCurrentAdditiveSet(getRandomSet(selectedStance));
   };
-
-  // Track level
-  const [selectedLevel, setSelectedLevel] = useState<
-    "simple" | "advanced" | "both"
-  >("simple");
 
   // Track stance
   const [selectedStance, setSelectedStance] = useState<"orthodox" | "southpaw" | "both">("orthodox");
 
   // useEffect to set the random combination when the component mounts
   useEffect(() => {
-    setCurrentCombination(getRandomCombination(selectedLevel, selectedStance));
+    setCurrentCombination(getRandomCombination(selectedStance));
     setCurrentAdditiveSet(getRandomSet(selectedStance));
     setCurrentFocusItem(getRandomFocusItem());
-  }, [selectedLevel, selectedStance]);
+  }, [selectedStance]);
 
   // Additive mode
   useEffect(() => {
@@ -66,24 +61,24 @@ const App: React.FC = () => {
 
   const {
     currentRound,
-    setCurrentRound,
+    // setCurrentRound,
     currentInterval,
-    setCurrentInterval,
+    // setCurrentInterval,
     isResting,
-    setIsResting,
+    // setIsResting,
     countdown,
-    setCountdown,
+    // setCountdown,
     isTimerRunning,
-    setIsTimerRunning,
+    // setIsTimerRunning,
     countdownType,
-    setCountdownType,
+    // setCountdownType,
     toggleTimer,
     resetTimer,
     replayInterval,
     intervalTime,
     restTime,
     totalWorkoutDuration
-  } = useTimer(setCurrentCombination, setCurrentAdditiveSet, selectedLevel, selectedStance, numberOfRounds, setCurrentFocusItem);
+  } = useTimer(setCurrentCombination, setCurrentAdditiveSet, selectedStance, numberOfRounds, setCurrentFocusItem);
 
 
   const {
@@ -101,6 +96,21 @@ const App: React.FC = () => {
     linear-gradient(45deg, transparent 49.5%, ${theme.colors.app.background} 49.5% 50.5%, transparent 50.5%),
     linear-gradient(-45deg, transparent 49.5%, ${theme.colors.app.background} 49.5% 50.5%, transparent 50.5%)`;
 
+  const roundBackgroundShape = {
+    // Round shape behind timer
+    content: '""',
+    display: "block",
+    position: "absolute",
+    width: "376px",
+    height: "270px",
+    zIndex: "30",
+    top: "0",
+    outline: "2px solid",
+    outlineColor: isResting ? "app.restBackground" : "app.background",
+    border: "8px solid black",
+    bg: isResting ? "app.restBackground" : "app.workBackground",
+    borderRadius: "50vw 50vw 8px 8px"
+  }
   return (
     <ChakraProvider theme={theme}>
       <Center
@@ -116,21 +126,7 @@ const App: React.FC = () => {
           position={"relative"}
           w={"90vw"}
           maxW={"1280px"}
-          _before={{
-            // Round shape behind timer
-            content: '""',
-            display: "block",
-            position: "absolute",
-            width: "376px",
-            height: "270px",
-            zIndex: "30",
-            top: "0",
-            outline: "2px solid",
-            outlineColor: isResting ? "app.restBackground" : "app.background",
-            border: "8px solid black",
-            bg: isResting ? "app.restBackground" : "app.workBackground",
-            borderRadius: "50vw 50vw 8px 8px"
-          }}
+          _before={roundBackgroundShape}
         >
           <ControlButtons
             toggleTimer={toggleTimer}
@@ -195,7 +191,6 @@ const App: React.FC = () => {
               isResting={isResting}
             />
             <SettingsPanel
-              setSelectedLevel={setSelectedLevel}
               setSelectedSpeed={setSelectedSpeed}
               isActionBeepEnabled={isActionBeepEnabled}
               setIsActionBeepEnabled={setIsActionBeepEnabled}

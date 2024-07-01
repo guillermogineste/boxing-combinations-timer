@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
-// import Select, { StylesConfig, Theme } from "react-select";
 
 import { ReactComponent as ExitFullScreenIcon } from "../../icons/fullscreen_exit.svg";
 import { ReactComponent as FullScreenIcon } from "../../icons/fullscreen.svg";
-import { ReactComponent as ExpandIcon } from "../../icons/expand.svg";
 import { ReactComponent as CollapseIcon } from "../../icons/collapse.svg";
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
 
 import { Tooltip, HStack, Grid, FormControl, FormLabel, InputGroup, Input, InputRightAddon, Select } from "@chakra-ui/react";
 
 interface SettingsPanelProps {
-  setSelectedLevel: React.Dispatch<
-    React.SetStateAction<"simple" | "advanced" | "both">
-  >;
   setSelectedSpeed: React.Dispatch<
     React.SetStateAction<"off" | "fast" | "medium" | "slow">
   >;
@@ -28,17 +23,6 @@ interface SettingsPanelProps {
   isResting: boolean;
   isTimerRunning: boolean;
 }
-
-interface OptionType {
-  value: string;
-  label: string;
-}
-
-const levelOptions = [
-  { value: "simple", label: "Simple" },
-  { value: "advanced", label: "Advanced" },
-  { value: "both", label: "Both" },
-];
 
 const speedOptions = [
   { value: "off", label: "Off" },
@@ -59,9 +43,8 @@ const stanceOptions = [
 ];
 
 const SettingsPanel: React.FC<SettingsPanelProps> = ({
-  setSelectedLevel,
-  isActionBeepEnabled,
-  setIsActionBeepEnabled,
+  // isActionBeepEnabled,
+  // setIsActionBeepEnabled,
   isAdditiveModeEnabled,
   setIsAdditiveModeEnabled,
   setSelectedSpeed,

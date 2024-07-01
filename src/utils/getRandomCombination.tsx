@@ -4,16 +4,10 @@ import { Combination } from "../types";
 let usedCombinations: Combination[] = [];
 
 export const getRandomCombination = (
-  type: "simple" | "advanced" | "both",
   stance: "orthodox" | "southpaw" | "both"
 ): Combination => {
   let list: Combination[] = [];
-
-  if (type === "both") {
-    list = [...combinations.simple, ...combinations.advanced];
-  } else {
-    list = combinations[type];
-  }
+  list = combinations["simple"]
 
   if (stance !== "both") {
     list = list.filter(combination => combination.stance.includes(stance));
