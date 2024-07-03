@@ -27,18 +27,15 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
   const setsArray = [additiveSet.set1, additiveSet.set2, additiveSet.set3];
   const theme = useTheme();
 
-  const renderSet = (set: Array<{ description: string }>, index: number) => (
+  const renderSet = (set: string, index: number) => (
     <div key={index}>
-      {set.map((item, idx) => (
-        <Heading 
-          opacity={ theme.resting[String(isTimerRunning)]}
-          as='h1'
-          size="2xl"
-          key={idx}
-        >
-          {item.description}
+      <Heading 
+        opacity={ theme.resting[String(isTimerRunning)]}
+        as='h1'
+        size="2xl"
+      >
+        {set}
       </Heading>
-      ))}
     </div>
   );
 

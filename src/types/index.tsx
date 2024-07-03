@@ -9,12 +9,18 @@ export interface Combinations {
 }
 
 export interface AdditiveSet {
-  set1: Array<{ description: string }>;
-  set2: Array<{ description: string }>;
-  set3: Array<{ description: string }>;
-  stance: string[];
+  _id: string;
+  _type: string;
+  description: string;
+  set1: string;
+  set2: string;
+  set3: string;
+  isOrthodox: boolean;
+  isSouthpaw: boolean;
 }
 
 export interface FocusItem {
   description: string;
 }
+
+export type Stance = "orthodox" | "southpaw" | "both";

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getRandomCombination, resetUsedCombinations } from "../utils/getRandomCombination";
-import { getRandomSet, resetUsedSets } from "../utils/getRandomSet";
+import { resetUsedCombinations, getRandomCombinationAsync } from "../utils/getRandomCombination";
+import { getRandomSetAsync, resetUsedSets } from "../utils/getRandomSet";
 import { playBeep } from "../utils/playBeep";
 import {
     REST_TIME,
@@ -58,8 +58,8 @@ export const useTimer = (
         setIsResting(INITIAL_IS_RESTING); // Not resting
         setCountdown(intervalTime); // Reset countdown to 60 seconds
         setCountdownType(INITIAL_COUNTDOWN_TYPE); // Set type to interval
-        setCurrentCombination(getRandomCombination(selectedStance)); // Fetch a new random combination
-        setCurrentAdditiveSet(getRandomSet(selectedStance)); // Fetch a new random set
+        getRandomCombinationAsync(selectedStance).then(setCurrentCombination); // Fetch a new random combination
+        getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet); // Fetch a new random set
         getRandomFocusItem().then(setCurrentFocusItem);
         resetUsedCombinations();
         resetUsedSets();
@@ -143,7 +143,7 @@ export const useTimer = (
                     setCountdown(newCountdownDuration);
 
                     if (countdownType === "interval") {
-                        setCurrentCombination(getRandomCombination(selectedStance));
+                        getRandomCombinationAsync(selectedStance).then(setCurrentCombination);
                     }
 
                     if (conditions.isNextIntervalInRound) {
@@ -157,7 +157,7 @@ export const useTimer = (
                         setCountdownType("interval");
                         setCurrentInterval(1);
                         setCurrentRound(currentRound + 1);
-                        setCurrentAdditiveSet(getRandomSet(selectedStance));
+                        getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet);
                         getRandomFocusItem().then(setCurrentFocusItem);
                     } else {
                         // End of workout
@@ -167,8 +167,8 @@ export const useTimer = (
                         setIsResting(INITIAL_IS_RESTING);
                         setCountdown(intervalTime);
                         setCountdownType(INITIAL_COUNTDOWN_TYPE);
-                        setCurrentCombination(getRandomCombination(selectedStance));
-                        setCurrentAdditiveSet(getRandomSet(selectedStance));
+                        getRandomCombinationAsync(selectedStance).then(setCurrentCombination);
+                        getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet);
                         getRandomFocusItem().then(setCurrentFocusItem);
                         resetUsedCombinations();
                         resetUsedSets();

@@ -8,8 +8,8 @@ import SettingsPanel from "./components/SettingsPanel/SettingsPanel";
 import DisplayAdditiveSet from "./components/DisplayAdditiveSet/DisplayAdditiveSet";
 import FocusItemDisplay from "./components/FocusItemDisplay/FocusItemDisplay";
 import { Combination, AdditiveSet, FocusItem } from "./types";
-import { getRandomCombination } from "./utils/getRandomCombination";
-import { getRandomSet } from "./utils/getRandomSet";
+import {getRandomCombinationAsync } from "./utils/getRandomCombination";
+import { getRandomSetAsync } from "./utils/getRandomSet";
 import { getRandomFocusItem } from "./utils/getRandomFocusItem";
 import { useTimer } from './hooks/useTimer';
 import { useActionBeep } from './hooks/useActionBeep';
@@ -19,8 +19,6 @@ import {
   NUMBER_OF_ROUNDS,
   INTERVALS_PER_ROUND,
 } from './constants';
-
-import ApiTest from "./components/ApiTest/ApiTest";
 
 
 const App: React.FC = () => {
@@ -39,8 +37,9 @@ const App: React.FC = () => {
 
   // Refresh the combination
   const refreshCombination = () => {
-    setCurrentCombination(getRandomCombination(selectedStance));
-    setCurrentAdditiveSet(getRandomSet(selectedStance));
+    getRandomCombinationAsync(selectedStance).then(setCurrentCombination);
+    // setCurrentAdditiveSet(getRandomSet(selectedStance));
+    getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet);
   };
 
   // Track stance
@@ -48,14 +47,17 @@ const App: React.FC = () => {
 
   // useEffect to set the random combination when the component mounts
   useEffect(() => {
-    setCurrentCombination(getRandomCombination(selectedStance));
-    setCurrentAdditiveSet(getRandomSet(selectedStance));
+    // setCurrentCombination(getRandomCombination(selectedStance));
+    getRandomCombinationAsync(selectedStance).then(setCurrentCombination);
+    getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet);
+    // setCurrentAdditiveSet(getRandomSet(selectedStance));
     getRandomFocusItem().then(setCurrentFocusItem);
   }, [selectedStance]);
 
   // Additive mode
   useEffect(() => {
-    setCurrentAdditiveSet(getRandomSet(selectedStance));
+    // setCurrentAdditiveSet(getRandomSet(selectedStance));
+    getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet);
   }, [isAdditiveModeEnabled]);
 
   // Focus
@@ -154,7 +156,6 @@ const App: React.FC = () => {
             w={"100%"}
             justifyContent={"space-between"}
           >
-            {/* <ApiTest /> */}
             {currentCombination ? (
               isAdditiveModeEnabled ? (
                 <DisplayAdditiveSet
