@@ -16,6 +16,39 @@ import {
 import { Combination, AdditiveSet, FocusItem } from "../types";
 import { getRandomFocusItem } from "../utils/getRandomFocusItem";
 
+/**
+* Custom hook to manage a workout timer with intervals and rest periods.
+* 
+* @param setCurrentCombination - Function to set the current combination.
+* @param setCurrentAdditiveSet - Function to set the current additive set.
+* @param selectedStance - The selected stance ("both" | "orthodox" | "southpaw").
+* @param numberOfRounds - The number of rounds for the workout.
+* @param setCurrentFocusItem - Function to set the current focus item.
+* 
+* @returns {
+*   currentRound: number,                          // The current round number.
+*   setCurrentFocusItem: (focusItem: FocusItem | null) => void, // Function to set the current focus item.
+*   setCurrentRound: (round: number) => void,      // Function to set the current round number.
+*   currentInterval: number,                       // The current interval number.
+*   setCurrentInterval: (interval: number) => void,// Function to set the current interval number.
+*   isResting: boolean,                            // Boolean indicating if the timer is in a rest period.
+*   setIsResting: (isResting: boolean) => void,    // Function to set the resting state.
+*   countdown: number,                             // The current countdown value.
+*   setCountdown: (countdown: number) => void,     // Function to set the countdown value.
+*   isTimerRunning: boolean,                       // Boolean indicating if the timer is running.
+*   toggleTimer: () => void,                       // Function to toggle the timer on and off.
+*   resetTimer: () => void,                        // Function to reset the timer to its initial state.
+*   replayInterval: () => void,                    // Function to replay the current interval.
+*   setIsTimerRunning: (isRunning: boolean) => void, // Function to set the timer running state.
+*   countdownType: "interval" | "rest",            // The type of countdown ("interval" or "rest").
+*   setCountdownType: (type: "interval" | "rest") => void, // Function to set the countdown type.
+*   intervalTime: number,                          // The duration of an interval.
+*   restTime: number,                              // The duration of a rest period.
+*   totalWorkoutDuration: number                   // The total duration of the workout.
+* }
+*/
+
+
 export const useTimer = (
     setCurrentCombination: (combination: Combination | null) => void,
     setCurrentAdditiveSet: (set: AdditiveSet | null) => void,
@@ -41,6 +74,10 @@ export const useTimer = (
 
     const [totalWorkoutDuration, setTotalWorkoutDuration] = useState(NUMBER_OF_ROUNDS * intervalTime * INTERVALS_PER_ROUND + (NUMBER_OF_ROUNDS - 1) * restTime);
 
+    /**
+     * Toggles the timer on and off.
+     * Enables or disables the NoSleep functionality based on the timer state.
+     */
     const toggleTimer = () => {
         setIsTimerRunning(!isTimerRunning);
         if (!isTimerRunning) {
@@ -50,7 +87,11 @@ export const useTimer = (
         }
     };
 
-    // Function to reset the timer
+    /**
+     * Resets the timer to its initial state.
+     * Stops the timer, resets rounds, intervals, resting state, and countdown.
+     * Fetches new random combinations, sets, and focus items.
+     */
     const resetTimer = () => {
         setIsTimerRunning(false); // Stop the timer
         setCurrentRound(INITIAL_ROUND); // Reset to round 1
@@ -65,12 +106,17 @@ export const useTimer = (
         resetUsedSets();
     };
 
-    // Function to replay the current interval
+    /**
+     * Replays the current interval by resetting the countdown.
+     */
     const replayInterval = () => {
         setCountdown(intervalTime);
     };
 
-
+    /**
+     * Checks various conditions related to the timer state.
+     * Returns an object with boolean values indicating the state of the timer.
+     */
     const checkConditions = ({
         countdown,
         countdownType,

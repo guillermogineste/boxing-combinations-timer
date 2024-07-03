@@ -1,5 +1,6 @@
 import { HStack, Box, Wrap, WrapItem } from "@chakra-ui/react";
 
+// Define the props for the ProgressBar component
 interface ProgressBarProps {
     currentRound: number;
     numberOfRounds: number;
@@ -8,6 +9,7 @@ interface ProgressBarProps {
     isResting: boolean;
 }
 
+// ProgressBar component to display the progress of rounds and intervals
 const ProgressBar: React.FC<ProgressBarProps> = ({
     currentRound,
     numberOfRounds,
@@ -15,9 +17,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     intervalsPerRound,
     isResting
 }) => {
+    // Function to render intervals for a given round
     const renderIntervals = (round: number) => {
         const intervals = [];
         for (let i = 1; i <= intervalsPerRound; i++) {
+            // Determine the state of the interval (current, past, or future)
             const isCurrentInterval = round === currentRound && i === currentInterval && !isResting;
             const isPastInterval = round < currentRound || (round === currentRound && (i < currentInterval || (i === currentInterval && isResting)));
             const isFirstInterval = i === 1;

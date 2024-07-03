@@ -18,6 +18,12 @@ export const useActionBeep = (isTimerRunning: boolean, isResting: boolean) => {
   useEffect(() => {
     let actionBeepTimer: NodeJS.Timeout | null = null;
 
+    /**
+     * Sets a random interval for the action beep.
+     * The function calculates a random time between the minimum and maximum beep intervals,
+     * and sets a timeout to play a beep sound if the action beep mode is active.
+     * It recursively calls itself to continue setting random intervals.
+     */
     const setRandomActionBeep = () => {
       const randomTime =
         Math.random() * (maxActionBeepInterval - minActionBeepInterval) +
@@ -33,6 +39,7 @@ export const useActionBeep = (isTimerRunning: boolean, isResting: boolean) => {
       }, randomTime);
     };
 
+    // Check if the timer is running and not in resting state
     const isRunningInterval = isTimerRunning && !isResting;
     if (isRunningInterval) {
       setIsActionBeepRunning(true);
@@ -41,6 +48,7 @@ export const useActionBeep = (isTimerRunning: boolean, isResting: boolean) => {
       setIsActionBeepRunning(false);
     }
 
+    // Cleanup the timer on component unmount or when dependencies change
     return () => {
       if (actionBeepTimer) {
         clearTimeout(actionBeepTimer);
@@ -56,10 +64,12 @@ export const useActionBeep = (isTimerRunning: boolean, isResting: boolean) => {
   ]);
 
   useEffect(() => {
+    // Update the beep intervals based on the selected speed
     const speedSettings = SPEED_SETTINGS[selectedSpeed];
     setMinActionBeepInterval(speedSettings.min);
     setMaxActionBeepInterval(speedSettings.max);
 
+    // Enable or disable the action beep based on the selected speed
     if (selectedSpeed === "off") {
       setIsActionBeepEnabled(false);
     } else {

@@ -10,7 +10,6 @@ interface TimerDisplayProps {
 }
 
 const TimerDisplay: React.FC<TimerDisplayProps> = ({
-
   countdown,
   isTimerRunning
 }) => {

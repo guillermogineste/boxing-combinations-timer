@@ -7,6 +7,7 @@ import { ReactComponent as StopIcon } from "../../icons/stop.svg";
 
 import { HStack, VStack } from "@chakra-ui/react";
 
+// Define the props for the ControlButtons component
 interface ControlButtonsProps {
   toggleTimer: () => void;
   resetTimer: () => void;
@@ -21,6 +22,7 @@ interface ControlButtonsProps {
   isResting: boolean;
 }
 
+// ControlButtons component to control the timer and intervals
 const ControlButtons: React.FC<ControlButtonsProps> = ({
   toggleTimer,
   resetTimer,
@@ -34,8 +36,10 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
   restTime,
   isResting
 }) => {
+  // State to manage the inactive class for buttons
   const [inactiveStateClass, setInactiveStateClass] = useState('');
 
+  // Effect to handle mouse movement and set inactive state
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     const mouseMoveHandler = () => {
@@ -60,11 +64,14 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
     currentRound > 1 ||
     currentInterval > 1 ||
     countdown < (countdownType === "interval" ? intervalTime : restTime);
-  // Determine if the Replay button should be displayed
+  
+    // Determine if the Replay button should be displayed
   const shouldShowReplayButton =
     isTimerRunning ||
     currentInterval > 1 ||
     countdown < (countdownType === "interval" ? intervalTime : restTime);
+
+  // Style for the mask shape
   const maskShape ={
     // Block to hide border
     content: '""', // necessary for ::before to work
@@ -93,7 +100,7 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
       zIndex={"50"}
       _before={maskShape}
     >
-
+      {/* Toggle button to start/pause the timer */}
       <button className={`button button--toggle button--${inactiveStateClass}`} onClick={toggleTimer}>
         {isTimerRunning ?
           (<><PauseIcon /><span>Pause</span></>) :
@@ -101,11 +108,13 @@ const ControlButtons: React.FC<ControlButtonsProps> = ({
         }
       </button>
       <HStack gap={"22px"} flexGrow={1}>
+        {/* Replay button to replay the interval */}
         {shouldShowReplayButton && (
           <button className={`button button--replay button--${inactiveStateClass}`} onClick={replayInterval}>
             <ReplayIcon /><span>Replay</span>
           </button>
         )}
+        {/* Reset button to reset the timer */}
         {shouldShowResetButton && (
           <button className={`button button--reset button--${inactiveStateClass}`} onClick={resetTimer}>
             <StopIcon /><span>Stop</span>

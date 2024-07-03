@@ -14,49 +14,20 @@ const createAudioNodes = (
   const oscillator = audioCtx.createOscillator();
   const gainNode = audioCtx.createGain();
 
+  // Set the oscillator frequency and type
   oscillator.frequency.value = frequency;
   oscillator.type = "sine";
 
+  // Set the initial gain value
   gainNode.gain.setValueAtTime(volume, startTime);
   // gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
 
+  // Connect the oscillator to the gain node and the gain node to the audio context destination
   oscillator.connect(gainNode);
   gainNode.connect(audioCtx.destination);
 
   return { oscillator, gainNode };
 };
-
-// const playSingleBeep = (
-//   audioCtx: AudioContext,
-//   frequency: number,
-//   volume: number,
-//   startTime: number,
-//   duration: number,
-// ): void => {
-//   const { oscillator, gainNode } = createAudioNodes(
-//     audioCtx,
-//     frequency,
-//     volume,
-//     startTime,
-//     duration,
-//   );
-
-//   // Set initial gain to 0
-//   gainNode.gain.setValueAtTime(0, startTime);
-
-//   // 5ms ease-in (fade-in)
-//   gainNode.gain.linearRampToValueAtTime(volume, startTime + 0.005);
-
-//   // Start the tone
-//   oscillator.start(startTime);
-
-//   // Schedule the stop time for the oscillator
-//   oscillator.stop(startTime + duration);
-
-//   // 5ms ease-out (fade-out) before stopping
-//   gainNode.gain.setValueAtTime(volume, startTime + duration - 0.005);
-//   gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
-// };
 
 const playSingleBeep = (
   audioCtx: AudioContext,
@@ -76,16 +47,16 @@ const playSingleBeep = (
   // Set initial gain to 0
   gainNode.gain.setValueAtTime(0, startTime);
 
-  // Attack
+  // Attack phase: ramp up to the desired volume
   gainNode.gain.linearRampToValueAtTime(volume, startTime + 0.001); // 1ms
 
-  // Decay and Sustain
+  // Decay and Sustain phase: ramp down to 80% of the volume
   gainNode.gain.linearRampToValueAtTime(volume * 0.8, startTime + 0.001); // 1ms
 
-  // Release
+  // Release phase: ramp down to 0
   gainNode.gain.linearRampToValueAtTime(0, startTime + duration);
 
-  // Start the tone
+  // Start the oscillator
   oscillator.start(startTime);
 
   // Schedule the stop time for the oscillator

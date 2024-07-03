@@ -31,14 +31,12 @@ const App: React.FC = () => {
 
   // Additive set
   const [isAdditiveModeEnabled, setIsAdditiveModeEnabled] = useState(false);
-  // const [currentAdditiveInterval, setCurrentAdditiveInterval] = useState(1);
   const [currentAdditiveSet, setCurrentAdditiveSet] =
     useState<AdditiveSet | null>(null);
 
   // Refresh the combination
   const refreshCombination = () => {
     getRandomCombinationAsync(selectedStance).then(setCurrentCombination);
-    // setCurrentAdditiveSet(getRandomSet(selectedStance));
     getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet);
   };
 
@@ -47,16 +45,13 @@ const App: React.FC = () => {
 
   // useEffect to set the random combination when the component mounts
   useEffect(() => {
-    // setCurrentCombination(getRandomCombination(selectedStance));
     getRandomCombinationAsync(selectedStance).then(setCurrentCombination);
     getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet);
-    // setCurrentAdditiveSet(getRandomSet(selectedStance));
     getRandomFocusItem().then(setCurrentFocusItem);
   }, [selectedStance]);
 
   // Additive mode
   useEffect(() => {
-    // setCurrentAdditiveSet(getRandomSet(selectedStance));
     getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet);
   }, [isAdditiveModeEnabled]);
 
@@ -65,17 +60,11 @@ const App: React.FC = () => {
 
   const {
     currentRound,
-    // setCurrentRound,
     currentInterval,
-    // setCurrentInterval,
     isResting,
-    // setIsResting,
     countdown,
-    // setCountdown,
     isTimerRunning,
-    // setIsTimerRunning,
     countdownType,
-    // setCountdownType,
     toggleTimer,
     resetTimer,
     replayInterval,

@@ -7,6 +7,7 @@ import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
 
 import { Tooltip, HStack, Grid, FormControl, FormLabel, InputGroup, Input, InputRightAddon, Select } from "@chakra-ui/react";
 
+// Define the props for the SettingsPanel component
 interface SettingsPanelProps {
   setSelectedSpeed: React.Dispatch<
     React.SetStateAction<"off" | "fast" | "medium" | "slow">
@@ -24,6 +25,7 @@ interface SettingsPanelProps {
   isTimerRunning: boolean;
 }
 
+// Options for speed, mode, and stance
 const speedOptions = [
   { value: "off", label: "Off" },
   { value: "fast", label: "Fast" },
@@ -42,6 +44,7 @@ const stanceOptions = [
   { value: "both", label: "Both" }
 ];
 
+// SettingsPanel component to manage workout settings
 const SettingsPanel: React.FC<SettingsPanelProps> = ({
   // isActionBeepEnabled,
   // setIsActionBeepEnabled,
@@ -57,14 +60,15 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   isTimerRunning
 }) => {
 
+  // Background color for tooltips based on resting state
   const tooltipBg = isResting ? "#182d6c" : "#650d08";
 
+  // State to manage full screen and settings collapse
   const [isFullScreen, setIsFullScreen] = useState(!!document.fullscreenElement);
   const [isSettingsCollapsed, setIsSettingsCollapsed] = useState(false);
-
-
   const [lastToggle, setLastToggle] = useState(Date.now());
 
+  // Effect to collapse settings after 2 seconds if the timer is running
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     if (isTimerRunning && Date.now() - lastToggle > 2000) {
@@ -78,17 +82,20 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     };
   }, [isTimerRunning, lastToggle]);
 
+  // Effect to expand settings when the timer stops
   useEffect(() => {
     if (!isTimerRunning) {
       setIsSettingsCollapsed(false);
     }
   }, [isTimerRunning]);
 
+  // Toggle the settings panel collapse state
   const toggleSettings = () => {
     setIsSettingsCollapsed(!isSettingsCollapsed);
     setLastToggle(Date.now());
   };
 
+  // Effect to handle full screen changes
   useEffect(() => {
     const handleFullScreenChange = () => {
       setIsFullScreen(!!document.fullscreenElement);
@@ -101,7 +108,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     };
   }, []);
 
-
+  // Toggle full screen mode 
   const toggleFullScreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -137,6 +144,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           gridTemplateColumns={"auto repeat(3, 1fr)"}
           gap={"2vw"}
         >
+          {/* Form control for number of rounds */}
           <FormControl
             minWidth={"128px"}
           >
@@ -164,6 +172,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               />
             </InputGroup>
           </FormControl>
+          {/* Form control for stance selection */}
           <FormControl
             minWidth={"128px"}
           >
@@ -184,6 +193,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               ))}
             </Select>
           </FormControl>
+          {/* Form control for mode selection */}
           <FormControl
             minWidth={"128px"}
           >
@@ -204,6 +214,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
               ))}
             </Select>
           </FormControl>
+          {/* Form control for speed selection */}
           <FormControl
             minWidth={"128px"}
           >
@@ -226,13 +237,15 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
           </FormControl>
         </Grid>
 
+        {/* Button to toggle settings panel collapse */}
         <Tooltip label={isSettingsCollapsed ? "Expand settings" : "Collapse settings"} bg={tooltipBg} px="3" py="2" placement='top'>
           <button className="button button--expand" onClick={toggleSettings}>
             {isSettingsCollapsed ? <SettingsIcon /> : <CollapseIcon />}
           </button>
         </Tooltip>
       </HStack>
-
+      
+      {/* Button to toggle full screen mode */}
       <Tooltip label={isFullScreen ? "Exit full screen" : "Full screen"} bg={tooltipBg} px="3" py="2" placement='top'>
         <button className="button button--full-screen" onClick={toggleFullScreen}>
           {isFullScreen ? <ExitFullScreenIcon /> : <FullScreenIcon />}
