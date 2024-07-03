@@ -17,9 +17,14 @@ const FocusItemDisplay: React.FC<FocusItemDisplayProps> = ({
     const theme = useTheme();
     const opacity = isResting ? "0" : theme.resting[String(isTimerRunning)]
     return (
-        <VStack opacity={opacity}  gap={0} pb={5}>
+        <VStack opacity={opacity} gap={0} pb={5}>
             <Text fontWeight={"500"} >Focus</Text>
-            <Heading as="h3" size="lg">{focusItem?.description}</Heading>
+            {focusItem ?
+                (<Heading as="h3" size="lg">{focusItem?.description}</Heading>)
+                :
+                (<Heading as="h3" size="lg">Loading...</Heading>)
+            }
+
         </VStack>
     );
 };

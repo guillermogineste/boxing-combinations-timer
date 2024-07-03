@@ -8,7 +8,7 @@ interface Combination {
 }
 
 interface DisplayCombinationProps {
-  combination: Combination;
+  combination: Combination | null;
   refreshCombination: () => void;
   isResting: boolean;
   isTimerRunning: boolean;
@@ -21,22 +21,22 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
   isTimerRunning
 }) => {
   const theme = useTheme();
-  let displayText = isResting ? "~ Rest ~" : combination.description;
+  let displayText = isResting ? "~ Rest ~" : combination?.description || "Loading...";
   const tooltipBg = isResting ? "#182d6c" : "#650d08";
-  
+
   return (
-    <VStack 
-    data-testid="display-combination"
-    minHeight={"clamp(200px, 23vh, 300px)"}
-    justifyContent={"center"}
+    <VStack
+      data-testid="display-combination"
+      minHeight={"clamp(200px, 23vh, 300px)"}
+      justifyContent={"center"}
     >
-      <Heading 
-        opacity={theme.resting[String(isTimerRunning)]} 
+      <Heading
+        opacity={theme.resting[String(isTimerRunning)]}
         as='h1'
         size="2xl"
         className="heading heading--1 combination"
       >
-          {displayText}
+        {displayText}
       </Heading>
       {!isResting && (
         <Tooltip label="Refresh combination" bg={tooltipBg} px="3" py="2">

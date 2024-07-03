@@ -1,4 +1,3 @@
-// import combinations from "../combinations.json";
 import { Combination } from "../types";
 import { getTotalSimpleCombinations } from "../utils/getTotalSimpleCombinations";
 

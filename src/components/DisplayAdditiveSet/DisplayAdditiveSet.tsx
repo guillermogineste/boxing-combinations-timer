@@ -29,13 +29,24 @@ const DisplayAdditiveSet: React.FC<DisplayAdditiveSetProps> = ({
 
   const renderSet = (set: string, index: number) => (
     <div key={index}>
-      <Heading 
-        opacity={ theme.resting[String(isTimerRunning)]}
-        as='h1'
-        size="2xl"
-      >
-        {set}
-      </Heading>
+      {additiveSet ?
+        <Heading
+          opacity={theme.resting[String(isTimerRunning)]}
+          as='h1'
+          size="2xl"
+        >
+          {set}
+        </Heading>
+        :
+        <Heading
+          opacity={theme.resting[String(isTimerRunning)]}
+          as='h1'
+          size="2xl"
+        >
+          Loading...
+        </Heading>
+      }
+
     </div>
   );
 

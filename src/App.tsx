@@ -8,12 +8,12 @@ import SettingsPanel from "./components/SettingsPanel/SettingsPanel";
 import DisplayAdditiveSet from "./components/DisplayAdditiveSet/DisplayAdditiveSet";
 import FocusItemDisplay from "./components/FocusItemDisplay/FocusItemDisplay";
 import { Combination, AdditiveSet, FocusItem } from "./types";
-import {getRandomCombinationAsync } from "./utils/getRandomCombination";
+import { getRandomCombinationAsync } from "./utils/getRandomCombination";
 import { getRandomSetAsync } from "./utils/getRandomSet";
 import { getRandomFocusItem } from "./utils/getRandomFocusItem";
 import { useTimer } from './hooks/useTimer';
 import { useActionBeep } from './hooks/useActionBeep';
-import { ChakraProvider, VStack, Center } from "@chakra-ui/react";
+import { ChakraProvider, VStack, Center, Heading } from "@chakra-ui/react";
 import { theme } from './theme';
 import {
   NUMBER_OF_ROUNDS,
@@ -156,8 +156,7 @@ const App: React.FC = () => {
             w={"100%"}
             justifyContent={"space-between"}
           >
-            {currentCombination ? (
-              isAdditiveModeEnabled ? (
+            {isAdditiveModeEnabled ? (
                 <DisplayAdditiveSet
                   additiveSet={currentAdditiveSet}
                   isResting={isResting}
@@ -172,10 +171,7 @@ const App: React.FC = () => {
                   isResting={isResting}
                   isTimerRunning={isTimerRunning}
                 />
-              )
-            ) : (
-              <p>Loading...</p>
-            )}
+              )}
 
             <FocusItemDisplay
               focusItem={currentFocusItem}
