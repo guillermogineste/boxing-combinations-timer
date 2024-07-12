@@ -2,12 +2,13 @@
 
 :root {
   --primary-bg-color: #650d08;
+  --white: white;
 }
 
 html {
   background-color: #000000;
   opacity: 1;
-  color: white;
+  color: var(--white);
 }
 
 .button {
@@ -23,8 +24,8 @@ html {
   cursor: pointer;
   border: none;
   border-radius: 6px;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid var(--white);
+  color: var(--white);
 }
 
 .button:hover {
@@ -35,7 +36,7 @@ html {
 }
 
 .button svg {
-  fill: white;
+  fill: var(--white);
   width: 24px;
   height: 24px;
 }
@@ -95,7 +96,7 @@ html {
   border: none;
 }
 .button.button--refresh svg {
-  fill: white;
+  fill: var(--white);
   width: 24px;
   height: 24px;
 }
@@ -105,7 +106,7 @@ html {
   border: none;
 }
 .button.button--expand svg {
-  fill: white;
+  fill: var(--white);
   width: 24px;
   height: 24px;
 }
