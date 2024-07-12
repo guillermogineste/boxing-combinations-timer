@@ -2,22 +2,6 @@
 
 :root {
   --primary-bg-color: #650d08;
-  --quadrant-bg-color: #a33934;
-  --active-color: #f63c20;
-  --action-bar-bg-color: #a33934;
-  --button-text-color: white;
-  --button-border-color: white;
-  --button-background-color: transparent;
-  --button-hover-color: lightgray;
-  --segment-bg-color: lightsalmon;
-  --segment-rest-past-color: rgb(180, 88, 190);
-  --segment-rest-future-color: rgb(121, 55, 129);
-  --segment-rest-current-color: rgba(41, 83, 208);
-  --segment-round-past-color: rgb(219, 51, 42);
-  --segment-round-future-color: rgb(156, 30, 30);
-  --segment-round-current-color: rgb(156, 30, 30);
-  --segment-current-span-bg: rgb(219, 51, 42);
-  --aim-dot-bg-color: white;
 }
 
 html {
