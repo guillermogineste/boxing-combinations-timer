@@ -20,6 +20,13 @@ import {
   INTERVALS_PER_ROUND,
 } from './constants';
 
+// TODO:
+// DONE - Move settings to a dialog
+// DONE - Opening settings stops the timer
+// DONE - User has to manually restart the workout
+// Look into adding a prepare timer, can be customised
+// Look into adding options for short and long rest (30s or 1min)
+// Look into adding a heavy bag mode
 
 const App: React.FC = () => {
   // Number of rounds
@@ -191,6 +198,7 @@ const App: React.FC = () => {
               selectedStance={selectedStance}
               setSelectedStance={setSelectedStance}
               isResting={isResting}
+              toggleTimer={toggleTimer}
               isTimerRunning={isTimerRunning}
             />
           </VStack>

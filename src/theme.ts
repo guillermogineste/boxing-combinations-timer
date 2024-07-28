@@ -86,5 +86,22 @@ export const theme = extendTheme({
         lineHeight: "normal",
       },
     },
+    Modal: {
+      baseStyle: (props: Dict) => ({
+        dialog: {
+          bg: "app.workBackground",
+          color: "white",
+          border: "2px solid white",
+          boxShadow: "none"
+        },
+        header: {
+          borderBottom: "2px solid white"
+        },
+        body: {
+          pt:"16px",
+          pb:"32px"
+        }
+      }),
+    },
   },
 });
