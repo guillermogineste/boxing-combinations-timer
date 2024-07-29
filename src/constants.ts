@@ -15,4 +15,4 @@ export const SPEED_SETTINGS = {
   slow: { min: 3000, max: 8000 },
 };
 
-export const DEBUG_MODE = false;
+export const DEBUG_MODE = true;

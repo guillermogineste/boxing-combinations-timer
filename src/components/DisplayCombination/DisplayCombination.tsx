@@ -33,7 +33,7 @@ const DisplayCombination: React.FC<DisplayCombinationProps> = ({
       <Heading
         opacity={theme.resting[String(isTimerRunning)]}
         as='h1'
-        size="2xl"
+        size={{ base: "3xl", md: "3xl"}}
         className="heading heading--1 combination"
       >
         {displayText}

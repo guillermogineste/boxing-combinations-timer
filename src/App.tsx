@@ -18,14 +18,17 @@ import { theme } from './theme';
 import {
   NUMBER_OF_ROUNDS,
   INTERVALS_PER_ROUND,
+  REST_TIME,
+  DEBUG_MODE
 } from './constants';
 
 // TODO:
 // DONE - Move settings to a dialog
 // DONE - Opening settings stops the timer
 // DONE - User has to manually restart the workout
-// Look into adding a prepare timer, can be customised
 // Look into adding options for short and long rest (30s or 1min)
+// Mobile first refactor
+// Look into adding a prepare timer, can be customised
 // Look into adding a heavy bag mode
 
 const App: React.FC = () => {
@@ -46,6 +49,9 @@ const App: React.FC = () => {
     getRandomCombinationAsync(selectedStance).then(setCurrentCombination);
     getRandomSetAsync(selectedStance).then(setCurrentAdditiveSet);
   };
+
+  // Track rest time
+  const [restTime, setRestTime] = useState(DEBUG_MODE ? 4 : REST_TIME);
 
   // Track stance
   const [selectedStance, setSelectedStance] = useState<"orthodox" | "southpaw" | "both">("orthodox");
@@ -76,9 +82,8 @@ const App: React.FC = () => {
     resetTimer,
     replayInterval,
     intervalTime,
-    restTime,
     totalWorkoutDuration
-  } = useTimer(setCurrentCombination, setCurrentAdditiveSet, selectedStance, numberOfRounds, setCurrentFocusItem);
+  } = useTimer(setCurrentCombination, setCurrentAdditiveSet, selectedStance, numberOfRounds, setCurrentFocusItem, restTime);
 
 
   const {
@@ -122,11 +127,14 @@ const App: React.FC = () => {
         <VStack
           data-testid="timer-container"
           justifyContent={"space-between"}
-          paddingTop={"120px"}
+          paddingTop={{ base: '0', md: "120px"}}
           position={"relative"}
           w={"90vw"}
+          h={{ base: '95vh', md: "auto"}}
+          minH={{ base: '95vh', md: "85vh"}}
+          flexGrow={"1"}
           maxW={"1280px"}
-          _before={roundBackgroundShape}
+          _before={{ base: '', md: roundBackgroundShape}}
         >
           <ControlButtons
             toggleTimer={toggleTimer}
@@ -144,12 +152,18 @@ const App: React.FC = () => {
           <VStack
             data-testid="timer-content"
             bg={isResting ? "app.restBackground" : "app.workBackground"}
-            p={"clamp(140px, 2.1vw, 160px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px)"}
+            p={{ 
+              base: '180px 32px 32px 32px', 
+              md: "clamp(140px, 2.1vw, 160px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px) clamp(24px, 3.5vw, 250px)"
+            }}
             borderRadius={"clamp(100px, 17vw, 260px) clamp(100px, 17vw, 260px) 40px 40px"}
             outline={"2px solid"}
             outlineColor={isResting ? "app.restBackground" : "app.background"}
             border={"8px solid black"}
             w={"100%"}
+            h={{ base: '95vh', md: "auto"}}
+            minH={"80vh"}
+            flexGrow={"1"}
             justifyContent={"space-between"}
           >
             {isAdditiveModeEnabled ? (
@@ -200,6 +214,8 @@ const App: React.FC = () => {
               isResting={isResting}
               toggleTimer={toggleTimer}
               isTimerRunning={isTimerRunning}
+              restTime={restTime}
+              setRestTime={setRestTime}
             />
           </VStack>
         </VStack>

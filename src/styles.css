@@ -114,4 +114,5 @@ html {
 .button--full-screen {
   width: 48px;
   height: 48px;
+  border: none;
 }

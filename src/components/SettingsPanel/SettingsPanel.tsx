@@ -5,8 +5,7 @@ import { ReactComponent as FullScreenIcon } from "../../icons/fullscreen.svg";
 import { ReactComponent as CollapseIcon } from "../../icons/collapse.svg";
 import { ReactComponent as SettingsIcon } from "../../icons/settings.svg";
 
-import { Tooltip, HStack, Grid, FormControl, FormLabel, InputGroup, Input, InputRightAddon, Select, VStack,Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button } from "@chakra-ui/react";
-import {  } from "@chakra-ui/react";
+import { Heading, Tooltip, HStack, Grid, FormControl, FormLabel, InputGroup, Input, InputRightAddon, Select, VStack,Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Button } from "@chakra-ui/react";
 
 // Define the props for the SettingsPanel component
 interface SettingsPanelProps {
@@ -25,6 +24,8 @@ interface SettingsPanelProps {
   toggleTimer: () => void;
   isResting: boolean;
   isTimerRunning: boolean;
+  restTime: number; // Add restTime prop
+  setRestTime: React.Dispatch<React.SetStateAction<number>>; // Add setRestTime prop
 }
 
 // Options for speed, mode, and stance
@@ -46,6 +47,11 @@ const stanceOptions = [
   { value: "both", label: "Both" }
 ];
 
+const restOptions = [
+  { value: 30, label: "30 Seconds" },
+  { value: 60, label: "60 Seconds" },
+];
+
 // SettingsPanel component to manage workout settings
 const SettingsPanel: React.FC<SettingsPanelProps> = ({
   // isActionBeepEnabled,
@@ -60,7 +66,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
   setSelectedStance,
   isResting,
   toggleTimer,
-  isTimerRunning
+  isTimerRunning,
+  restTime,
+  setRestTime,
 }) => {
 
   // Background color for tooltips based on resting state
@@ -110,26 +118,15 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     <>
       <HStack
         data-testid="settings-container"
-        gridTemplateColumns={"1fr auto"}
-        gap={"3vw"}
-        alignItems={"end"}
         width={"100%"}
-        h={"76px"}
+        justifyContent={"space-between"}
       >
-        <HStack
-          data-testid="settings-panel"
-          alignItems={"end"}
-          justifyContent={"flex-start"}
-          flex={"1"}
-        >
-          {/* Button to open settings modal */}
-          <Tooltip label="Open settings" bg={tooltipBg} px="3" py="2" placement='top'>
-            <button className="button button--expand" onClick={openModal}>
-              <SettingsIcon />
-            </button>
-          </Tooltip>
-        </HStack>
-        
+        {/* Button to open settings modal */}
+        <Tooltip label="Open settings" bg={tooltipBg} px="3" py="2" placement='top'>
+          <button className="button button--expand" onClick={openModal}>
+            <SettingsIcon />
+          </button>
+        </Tooltip>
         {/* Button to toggle full screen mode */}
         <Tooltip label={isFullScreen ? "Exit full screen" : "Full screen"} bg={tooltipBg} px="3" py="2" placement='top'>
           <button className="button button--full-screen" onClick={toggleFullScreen}>
@@ -145,43 +142,69 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
         motionPreset='slideInBottom'
         isCentered
         scrollBehavior='inside'
-        size='md'
+        size={{ base: 'full', md: 'md'}}
         >
         <ModalOverlay backdropFilter='blur(16px)'/>
         <ModalContent>
-          <ModalHeader>Settings</ModalHeader>
-          <ModalCloseButton />
+          <ModalHeader>
+            <HStack width={"100%"} justifyContent={"space-between"}>
+              <Heading>Settings</Heading>
+              <ModalCloseButton position={"static"}/>
+            </HStack>
+          </ModalHeader>
           <ModalBody>
             <VStack
               data-testid="settings"
               gap={"2vw"}
             >
-              {/* Form control for number of rounds */}
-              <FormControl minWidth={"128px"}>
-                <FormLabel htmlFor="rounds-input">Rounds</FormLabel>
-                <InputGroup size="lg">
-                  <Input
-                    id="rounds-input"
-                    type="number"
-                    value={numberOfRounds}
-                    onChange={(e) => setNumberOfRounds(Number(e.target.value))}
-                    min="1"
-                    placeholder="mysite"
+              <HStack width={"100%"} gap={"2vw"}>
+                {/* Form control for number of rounds */}
+                <FormControl minWidth={"128px"} flex="1">
+                  <FormLabel htmlFor="rounds-input">Rounds</FormLabel>
+                  <InputGroup size="lg">
+                    <Input
+                      id="rounds-input"
+                      type="number"
+                      value={numberOfRounds}
+                      onChange={(e) => setNumberOfRounds(Number(e.target.value))}
+                      min="1"
+                      placeholder="mysite"
+                      border={"2px solid white"}
+                      fontWeight={"500"}
+                    />
+                    <InputRightAddon
+                      bg={"rgba(256,256,256, 0.1)"}
+                      border={"2px solid white"}
+                      borderLeft={0}
+                      fontSize={"sm"}
+                      children={`${Math.floor(totalWorkoutDuration / 60)} min`}
+                      cursor={"default"}
+                      fontWeight={"500"}
+                    />
+                  </InputGroup>
+                </FormControl>
+                {/* Form control for rest duration selection */}
+                <FormControl minWidth={"128px"} flex="1.5">
+                  <FormLabel htmlFor="rest-select">Rest duration</FormLabel>
+                  <Select
+                    id="rest-select"
+                    value={restTime}
+                    onChange={(e) => {
+                      setRestTime(Number(e.target.value));
+                    }}
+                    size='lg'
                     border={"2px solid white"}
-                    maxW={"64px"}
-                    fontWeight={"500"}
-                  />
-                  <InputRightAddon
-                    bg={"rgba(256,256,256, 0.1)"}
-                    border={"2px solid white"}
-                    borderLeft={0}
-                    fontSize={"sm"}
-                    children={`${Math.floor(totalWorkoutDuration / 60)} min`}
-                    cursor={"default"}
-                    fontWeight={"500"}
-                  />
-                </InputGroup>
-              </FormControl>
+                  >
+                    {restOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </Select>
+                </FormControl>
+              </HStack>
+              
+              
               {/* Form control for stance selection */}
               <FormControl minWidth={"128px"}>
                 <FormLabel htmlFor="stance-select">Stance</FormLabel>

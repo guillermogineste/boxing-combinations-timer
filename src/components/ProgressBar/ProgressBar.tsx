@@ -17,6 +17,12 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     intervalsPerRound,
     isResting
 }) => {
+
+    const intervalH = {base: '8px', md: '20px'};
+    const intervalW = {base: '16px', md: '24px'};
+    const restH = {base: '8px', md: '20px'};
+    const restW = {base: '8px', md: '20px'};
+
     // Function to render intervals for a given round
     const renderIntervals = (round: number) => {
         const intervals = [];
@@ -30,11 +36,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
                 <Box
                     key={`interval-${round}-${i}`}
                     border={"2px solid white"}
-                    h={"20px"}
-                    w={"24px"}
+                    h={intervalH}
+                    w={intervalW}
                     bgColor={isCurrentInterval || isPastInterval ? "white" : "transparent"}
                     opacity={isPastInterval ? ".4" : "1"}
-                    borderRadius={isFirstInterval ? " 24px 0 0 24px" : isLastInterval ? "0 24px 24px 0" : ""}
+                    borderRadius={isFirstInterval ? "24px 0 0 24px" : isLastInterval ? "0 24px 24px 0" : ""}
                     borderRight={isFirstInterval ? "0" : ""}
                     borderLeft={isLastInterval ? "0" : ""}
                 >
@@ -50,8 +56,10 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
             spacingY='8px'
             spacingX='0'
             justify='center'
-            mb={"clamp(32px, 7vh, 400px)"}
-            mt={"clamp(24px, 3vh, 100px)"}
+            mb={{base: '16px', md: '20px'}}
+            mt={{base: '16px', md: '20px'}}
+            // "clamp(32px, 7vh, 400px)"
+            // "clamp(24px, 2vh, 100px)"
         >
             {Array.from({ length: numberOfRounds }, (_, roundIndex) => {
                 const round = roundIndex + 1;
@@ -73,8 +81,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
                                     mr={1}
                                     border={"2px solid white"}
                                     borderRadius={"24px"}
-                                    h={"20px"}
-                                    w={"20px"}
+                                    h={restH}
+                                    w={restW}
                                     bgColor={isCurrentRest || isPastRound ? "white" : "transparent"}
                                     opacity={isPastRound ? ".4" : "1"}
                                 >

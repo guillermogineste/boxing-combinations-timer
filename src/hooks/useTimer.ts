@@ -54,13 +54,13 @@ export const useTimer = (
     setCurrentAdditiveSet: (set: AdditiveSet | null) => void,
     selectedStance: "both" | "orthodox" | "southpaw",
     numberOfRounds: number,
-    setCurrentFocusItem: (focusItem: FocusItem | null) => void
+    setCurrentFocusItem: (focusItem: FocusItem | null) => void,
+    restTime: number
 ) => {
 
     const noSleep = new NoSleep();
 
     const intervalTime = DEBUG_MODE ? 4 : INTERVAL_TIME;
-    const restTime = DEBUG_MODE ? 4 : REST_TIME;
 
 
     const [currentRound, setCurrentRound] = useState(1);
@@ -160,8 +160,10 @@ export const useTimer = (
     });
 
     useEffect(() => {
-        setTotalWorkoutDuration(numberOfRounds * intervalTime * INTERVALS_PER_ROUND + (numberOfRounds - 1) * restTime);
-    }, [numberOfRounds]);
+        setTotalWorkoutDuration(
+            numberOfRounds * intervalTime * INTERVALS_PER_ROUND + (numberOfRounds - 1) * restTime
+        );
+    }, [numberOfRounds, restTime]);
 
     useEffect(() => {
         let timer: NodeJS.Timeout | null = null;

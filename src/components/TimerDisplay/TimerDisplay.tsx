@@ -20,7 +20,7 @@ const TimerDisplay: React.FC<TimerDisplayProps> = ({
       mt={"clamp(0, 1vh, 100px)"}
     >
       <Text
-        fontSize="clamp(3em, 4.5vw, 6em)"
+        fontSize={{ base: "5em", md: "clamp(4em, 4.7vw, 7em)" }}
         p="0"
         m="0"
         letterSpacing="-4px"

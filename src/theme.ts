@@ -65,8 +65,12 @@ export const theme = extendTheme({
         textAlign: "center",
       },
       sizes: {
+        "3xl": {
+          fontSize: "clamp(2.5em, 5vw, 5em)",
+          lineHeight: "clamp(1.2em, 2.5vw, 3em)",
+        },
         "2xl": {
-          fontSize: "clamp(2em, 4vw, 4.5em)",
+          fontSize: "clamp(1.9em, 3.9vw, 4.2em)",
           lineHeight: "clamp(1.2em, 2.5vw, 3em)",
         },
         "xl": {
@@ -92,7 +96,7 @@ export const theme = extendTheme({
           bg: "app.workBackground",
           color: "white",
           border: "2px solid white",
-          boxShadow: "none"
+          boxShadow: "none",
         },
         header: {
           borderBottom: "2px solid white"
@@ -102,6 +106,45 @@ export const theme = extendTheme({
           pb:"32px"
         }
       }),
+    },
+    Button: {
+      variants: {
+        round: {
+          fontFamily: "'logic-monospace', mono",
+          fontWeight: "500",
+          fontStyle: "normal",
+          cursor: "pointer",
+          border: "2px solid white",
+          color: "white",
+          w: { base: "72px", md: "90px"},
+          h: { base: "72px", md: "90px"},
+          bg: "transparent",
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+          _hover: {
+            bg: "app.hover",
+            '.button-text': {
+              height: "auto",
+              opacity: "1",
+            },
+          },
+          '.button-text': {
+            height: "0",
+            opacity: "0",
+            overflow: "hidden",
+            transition: "height 80ms ease-in-out, opacity 200ms ease-in-out",
+            fontSize: "1em",
+          },
+          svg: {
+            fill: "var(--white)",
+            width: "24px",
+            height: "24px",
+          },
+        },
+      },
     },
   },
 });
